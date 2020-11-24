@@ -1,12 +1,13 @@
 {
   "python.pythonPath": ".venv/bin/python3",
   "terminal.integrated.env.osx": {
-    "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/shared",
+    "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/fakes",
    },
   "terminal.integrated.env.linux": {
-      "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/shared",
+      "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/fakes",
   },
   "terminal.integrated.env.windows": {
-      "PYTHONPATH": "${env:PYTHONPATH};${workspaceFolder}/shared",
-  }
+      "PYTHONPATH": "${env:PYTHONPATH};${workspaceFolder}/fakes",
+  },
+  "python.envFile": "${workspaceFolder}/.env.local.linux"
 }
