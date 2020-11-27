@@ -27,26 +27,31 @@ Here's [problem #2](https://projecteuler.net/problem=2):
 * Read up on [itertools](https://docs.python.org/3/library/itertools.html)
 
 """
+import itertools
+import operator
+import functools
+
+limit = 4e6
+
+def is_within_limit(n):
+  return n<=limit
 
 def is_even(n):
   return n%2==0
 
-def get_fibs(max):
-  previous = 1
-  yield previous
+@functools.lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
 
-  current = 2
-  while current<=max:
-    yield current
-    next = current + previous
-    previous = current
-    current = next
+fibs = (fib(n) for n in itertools.count())
 
-limit = 4e6
-sum = 0
+even_fibs = filter(is_even,fibs)
 
-for n in get_fibs(limit):
-  if is_even(n):
-    sum = sum + n
+even_fibs_below_limit = itertools.takewhile(is_within_limit, even_fibs)
 
-print(f'Here is your answer: {sum}')
+answer = functools.reduce(operator.add, even_fibs_below_limit)
+
+print(f'Here is your answer: {answer}')
+

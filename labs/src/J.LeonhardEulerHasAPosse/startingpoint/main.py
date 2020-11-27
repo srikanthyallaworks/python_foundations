@@ -24,8 +24,33 @@ Here's [problem #2](https://projecteuler.net/problem=2):
 
 
 ## Hints
-* Read up ...
+* Read up on [itertools](https://docs.python.org/3/library/itertools.html)
 
 """
+from itertools import takewhile
 
-print("lorem ipsum")
+limit = 4e6
+
+def is_within_limit(n):
+  return n<=limit
+
+def is_even(n):
+  return n%2==0
+
+def get_fibs():
+  previous = 1
+  yield previous
+
+  current = 2
+  while True:
+    yield current
+    next = current + previous
+    previous = current
+    current = next
+
+evens_below_limit = (n for n in takewhile(is_within_limit, get_fibs()) if is_even(n))
+
+answer = sum(list(evens_below_limit))
+
+print(f'Here is your answer: {answer}')
+
