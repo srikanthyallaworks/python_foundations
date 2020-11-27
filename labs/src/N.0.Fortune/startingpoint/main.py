@@ -4,10 +4,12 @@ https://realpython.com/api-integration-in-python/
 
 
 """
+import requests
 
 
 def main():
-    print("Lorem ipsum")
+    response = requests.get("http://api.kanye.rest/")
+    print(response.json())
 
 
 if __name__ == "__main__":
