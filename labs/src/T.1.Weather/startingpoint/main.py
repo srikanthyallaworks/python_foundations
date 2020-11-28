@@ -38,9 +38,6 @@ from PIL import Image
 from enum import Enum
 from forecast import get_local_forecast
 
-this_directory = os.path.dirname(__file__)
-parent_directory = os.path.dirname(this_directory)
-
 
 
 class Forecast(Enum):
@@ -63,9 +60,9 @@ icons = {
   TimeOfDay.Night:'night.png',
 }
 
-
-
 def getImage(forecast):
+  this_directory = os.path.dirname(__file__)
+  parent_directory = os.path.dirname(this_directory)
   img_file = os.path.join(parent_directory, f'_assets/{icons[forecast]}')
   return Image.open(img_file)
 
