@@ -35,11 +35,34 @@ import math
 import requests
 import time
 from PIL import Image
+from enum import Enum
 
 this_directory = os.path.dirname(__file__)
 parent_directory = os.path.dirname(this_directory)
-img_file = os.path.join(parent_directory, '_data/wind.png')
-img = Image.open(img_file)
+
+
+
+class Forecast(Enum):
+  Sun=1
+  Snow=2
+  Thunder=3
+  Wind=4
+  Storm=5
+
+
+icons = {
+  Forecast.Snow:'snow.png',
+  Forecast.Sun:'sun.png',
+  Forecast.Thunder: 'thunder.png',
+  Forecast.Wind:'wind.png',
+  Forecast.Storm:'storm.png'
+}
+
+
+
+def getImage(forecast):
+  img_file = os.path.join(parent_directory, f'_data/{icons[forecast]}')
+  return Image.open(img_file)
 
 
 def fetch(uri):
@@ -79,6 +102,7 @@ def draw():
   width=16
   height=16
   unicornhathd.set_rotation(-90)
+  img = getImage(Forecast.Sun)
 
   try:
       while True:
@@ -97,21 +121,12 @@ def draw():
 
 
 def main():
-
   draw()
   return
   geo_location = get_geo_location()
   grid_location = get_grid_location(geo_location["latitude"],geo_location["longitude"])
   forecast = get_forecast(grid_location["office"], grid_location["x"], grid_location["y"])
   
-  
-  #draw()
-  print('\n\n\n===========================\n')
-  print(f'Forecast: {forecast}')
-  #print(get_geo_location())
-  #print(get_grid_location(39.7628,-105.0263))
-  print('\n\n\n\n')
-
 if __name__ == "__main__":
     main()
 
