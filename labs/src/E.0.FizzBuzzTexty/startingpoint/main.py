@@ -1,6 +1,6 @@
 """
 
-# Lab: Fizz Buzz
+# Lab: Fizz Buzz - Text Edition
 
 ## Summary: 
 

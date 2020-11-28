@@ -1,34 +1,62 @@
 """
 
+# Lab: Fizz Buzz - Blinky Edition
 
+## Summary: 
+
+Surprisingly, lots of professional programmers can't really 
+code[1]. FizzBuzz is a classic interview question for sussing-out 
+the non-skilled. 
+                  
+Here it is:
+    Write a program that sequentially lights up an LED in a square grid.
+    But--
+      * For multiples of 3 color the LED red 
+      * For the multiples of 5 color the LED green
+      * For numbers which are multiples of both 3 and 5 color the LED blue
+
+## Requirements
+* Pause for .2 seconds before moving on to the next item
+* Start over again at the beginning
+
+Notes:
+1. https://blog.codinghorror.com/why-cant-programmers-program/
 
 """
+
 import unicornhathd
-import random
-import colorsys
+import time
+import math
+import itertools
 
-unicornhathd.brightness(1)
-unicornhathd.set_all(0,0,255)
+rows,columns=16,16
 
-def pin(val):
-  return max(0,min(val,1))
+def getPosition(n):
+  return (n%rows, math.floor(n/columns)%columns)
 
-def nudge(val,factor):
-  nudged= val + random.gauss(0,factor)
-  return pin(nudged)
+def toColor(n):
+    divisibleBy3 = n % 3 == 0
+    divisibleBy5 = n % 5 == 0
+    if divisibleBy3 and divisibleBy5:
+        return (255,0,0)
+    if divisibleBy3:
+        return (0,255,0)
+    if divisibleBy5:
+        return (0,0,255)
+    return (255,255,255)
 
-column = random.randrange(16)
-row = random.randrange(16)
-(r,g,b)=unicornhathd._buf[row,column]
-(h,s,v) = colorsys.rgb_to_hsv(r/255,g/255,b/255)
+def main():
 
-while True:
-  column = (column + random.randrange(-1,2))%16
-  row = (row + random.randrange(-1,2))%16
-  h = nudge(h,.005)
-  s = max(.85, nudge(s,.005))
-  v = max(.85,nudge(v,.01))
-  unicornhathd.set_pixel_hsv(row,column,h,s,v)
-  if random.random()>.95:
+  unicornhathd.brightness(1)
+  unicornhathd.set_all(0,0,255)
+
+  for i in itertools.count():
+    row,column = getPosition(i)
+    r,g,b = toColor(i)
+    unicornhathd.set_all(0,0,0)
+    unicornhathd.set_pixel(row,column,r,g,b)
     unicornhathd.show()
+    time.sleep(.20)
 
+if __name__ == "__main__":
+    main()
