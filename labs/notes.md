@@ -17,3 +17,8 @@ python3 -m venv .venv
 source ./.venv/bin/activate
 pip install -r requirements.txt
 
+
+
+## Emulation
+
+https://www.makeuseof.com/tag/emulate-raspberry-pi-pc/
