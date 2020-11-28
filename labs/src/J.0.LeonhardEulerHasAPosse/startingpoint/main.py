@@ -31,26 +31,14 @@ from itertools import takewhile
 
 limit = 4e6
 
-def is_within_limit(n):
-  return n<=limit
-
-def is_even(n):
-  return n%2==0
-
 def get_fibs():
-  previous = 1
-  yield previous
+  return [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
-  current = 2
-  while True:
-    yield current
-    next = current + previous
-    previous = current
-    current = next
+def get_euler02_solution():
+  return sum(get_fibs())
 
-evens_below_limit = (n for n in takewhile(is_within_limit, get_fibs()) if is_even(n))
+def main():
+  print(f'Here is your answer: {get_euler02_solution()}')
 
-answer = sum(list(evens_below_limit))
-
-print(f'Here is your answer: {answer}')
-
+if __name__ == "__main__":
+    main()

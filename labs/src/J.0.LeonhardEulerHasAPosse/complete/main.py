@@ -43,10 +43,16 @@ def get_fibs(max):
     current = next
 
 limit = 4e6
-sum = 0
 
-for n in get_fibs(limit):
-  if is_even(n):
-    sum = sum + n
+def get_euler02_solution():
+  sum = 0
+  for n in get_fibs(limit):
+    if is_even(n):
+      sum = sum + n
+  return sum
 
-print(f'Here is your answer: {sum}')
+def main():
+  print(f'Here is your answer: {get_euler02_solution()}')
+
+if __name__ == "__main__":
+    main()

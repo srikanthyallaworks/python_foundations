@@ -51,7 +51,11 @@ even_fibs = filter(is_even,fibs)
 
 even_fibs_below_limit = itertools.takewhile(is_within_limit, even_fibs)
 
-answer = functools.reduce(operator.add, even_fibs_below_limit)
+def get_euler02_solution():
+  return functools.reduce(operator.add, even_fibs_below_limit)
 
-print(f'Here is your answer: {answer}')
+def main():
+  print(f'Here is your answer: {get_euler02_solution()}')
 
+if __name__ == "__main__":
+    main()
