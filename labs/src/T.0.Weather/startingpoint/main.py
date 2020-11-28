@@ -24,6 +24,8 @@ Notes:
 
 Icons here: 
   - https://www.flaticon.com/free-icon/sun_2698194?term=sunny&page=1&position=34
+  - https://www.flaticon.com/packs/weather-238
+
 
 """
 import os
@@ -35,7 +37,7 @@ from PIL import Image
 
 this_directory = os.path.dirname(__file__)
 parent_directory = os.path.dirname(this_directory)
-img_file = os.path.join(parent_directory, '_data/snow.png')
+img_file = os.path.join(parent_directory, '_data/snowy.png')
 img = Image.open(img_file)
 
 
