@@ -23,8 +23,9 @@ Notes:
 1. https://blog.codinghorror.com/why-cant-programmers-program/
 
 Icons here: 
-  - https://www.flaticon.com/free-icon/sun_2698194?term=sunny&page=1&position=34
+  - https://www.flaticon.com/packs/nature-134
   - https://www.flaticon.com/packs/weather-238
+  - https://www.flaticon.com/packs/weather-141
 
 
 """
@@ -37,7 +38,7 @@ from PIL import Image
 
 this_directory = os.path.dirname(__file__)
 parent_directory = os.path.dirname(this_directory)
-img_file = os.path.join(parent_directory, '_data/thunder.png')
+img_file = os.path.join(parent_directory, '_data/wind.png')
 img = Image.open(img_file)
 
 
@@ -70,40 +71,46 @@ def get_grid_location(latitude, longitude):
 
 def get_forecast(office,x,y):
   url = f'https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast'
-  json = fetch(url)["properties"]
-  return {}
+  return fetch(url)["properties"]["periods"][0]["shortForecast"]
 
-width=16
-height=16
 
-unicornhathd.set_rotation(-90)
 
 def draw():
+  width=16
+  height=16
+  unicornhathd.set_rotation(-90)
+
   try:
       while True:
-        valid = False
         for x in range(width):
-            for y in range(height):
+          for y in range(height):
                 pixel = img.getpixel(( y, x))
-                r, g, b = int(pixel[0]), int(pixel[1]), int(pixel[2])
-                if r or g or b:
-                    valid = True
-                unicornhathd.set_pixel(x, y, r, g, b)
+                r, g, b, o = int(pixel[0]), int(pixel[1]), int(pixel[2]),float(pixel[3])
+                if(o>0):
+                  unicornhathd.set_pixel(x, y, r, g, b)
 
-        if valid:
-            unicornhathd.show()
-            time.sleep(0.5)
+        unicornhathd.show()
+        time.sleep(0.5)
 
   except KeyboardInterrupt:
       unicornhathd.off()
 
 
 def main():
+
   draw()
-  #print('\n\n\n===========================\n')
+  return
+  geo_location = get_geo_location()
+  grid_location = get_grid_location(geo_location["latitude"],geo_location["longitude"])
+  forecast = get_forecast(grid_location["office"], grid_location["x"], grid_location["y"])
+  
+  
+  #draw()
+  print('\n\n\n===========================\n')
+  print(f'Forecast: {forecast}')
   #print(get_geo_location())
   #print(get_grid_location(39.7628,-105.0263))
-  #print('\n\n\n\n')
+  print('\n\n\n\n')
 
 if __name__ == "__main__":
     main()
