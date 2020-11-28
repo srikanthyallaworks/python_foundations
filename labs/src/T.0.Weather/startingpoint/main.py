@@ -28,6 +28,7 @@ import unicornhathd
 import math
 import requests
 import time
+from PIL import Image
 
 
 def fetch(uri):
