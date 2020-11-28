@@ -50,13 +50,17 @@ class Forecast(Enum):
   Wind=4
   Storm=5
 
+class TimeOfDay(Enum):
+  Day=100
+  Night=101
 
 icons = {
   Forecast.Snow:'snow.png',
   Forecast.Sun:'sun.png',
   Forecast.Thunder: 'thunder.png',
   Forecast.Wind:'wind.png',
-  Forecast.Storm:'storm.png'
+  Forecast.Storm:'storm.png',
+  TimeOfDay.Night:'night.png',
 }
 
 
