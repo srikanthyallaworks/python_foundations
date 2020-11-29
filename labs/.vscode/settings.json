@@ -9,5 +9,6 @@
   "terminal.integrated.env.windows": {
       "PYTHONPATH": "${env:PYTHONPATH};${workspaceFolder}/fakes",
   },
-  "python.envFile": "${workspaceFolder}/.env.local.linux"
+  "python.envFile": "${workspaceFolder}/.env.local.linux",
+  "terminal.integrated.environmentChangesIndicator": "off"
 }

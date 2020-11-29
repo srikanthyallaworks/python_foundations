@@ -16,7 +16,7 @@
 Install venv like this:
 sudo apt-get install python3-pip python3-venv
 python3 -m pip install --user --upgrade pip
-python3 -m pip install --user virtualenv
+
 
 
 
@@ -27,8 +27,6 @@ cd python_foundations/labs
 
 
 
-
-export PATH="$(python3 -m site --user-base)/bin:${PATH}"
 python3 -m venv .venv
 source ./.venv/bin/activate
 pip install -r requirements.txt
@@ -43,6 +41,8 @@ pip install -r requirements.txt
   WARNING: The scripts pip, pip3 and pip3.8 are installed in '/home/bathcat/.local/bin' which is not on PATH.
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 
+
+do you allow this workspace to modify your terminal shell
 
 
 ## Emulation
