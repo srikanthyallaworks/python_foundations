@@ -41,20 +41,21 @@ from enum import Enum
 class Die:
   def __init__(self,sideCount=6):
     self.sideCount = sideCount
-    self.value=None
+    self.value=0
   
   def roll(self):
     self.value = random.randrange(1,self.sideCount+1)
-  
+
 
 class Cup:
   def __init__(self,dice):
     self.dice = dice
 
   def roll(self):
-    pass #TODO: .dice.forEach(d=>d.roll());
+    for die in self.dice:
+      die.roll()
   
-  def value(self):
+  def get_value(self):
     sum = 0
     for die in self.dice:
       sum += die.value
@@ -65,10 +66,7 @@ class Cup:
 class Outcome(Enum):
   Undecided=0
   Win=1
-  Loss=-2
-
-
-
+  Loss=2
 
 
 class Game:
@@ -80,39 +78,33 @@ class Game:
 
   def shoot(self):
     self.cup.roll()
-    #console.log(`${this.playerName} rolls a ${this.cup.value}`);
-    return self.cup.value
+    print(f'{self.playerName} rolls a {self.cup.get_value()}')
+    return self.cup.get_value()
   
 
-#   _won(){
-#     this.outcome= Outcome.Win;
-#     console.log('Game Over: Won!');
-#     this._over();
-#   }
+  def won(self):
+    self.outcome= Outcome.Win
+    print('Game Over: Won!')
+  
 
-#   _lost(){
-#     this.outcome= Outcome.Loss;
-#     console.log('Game Over: Lost');
-#     this._over();
-#   }
+  def lost(self):
+    self.outcome= Outcome.Loss
+    print('Game Over: Lost')
+  
 
   def play(self):
     firstRoll = self.shoot()
-
     if firstRoll in [2,3,12]:
-      raise AssertionError("you lost")
-
+      self.lost()
     if firstRoll in [7,11]:
-      raise AssertionError("you won!")
-    
+      self.won()
+  
     while(self.outcome == Outcome.Undecided):
       result = self.shoot()
-
       if result==7:
-        raise AssertionError("you lost")
-
+        self.lost()
       if result==firstRoll:
-        raise AssertionError("you won!")
+        self.won()
         
 
 
@@ -126,25 +118,26 @@ class Table:
     self.gameNumber=0  
 
   def getCurrentPlayer(self):
-    return self.players[self.gameNumber%self.players.length]
+    playerCount = len (self.players)
+    return self.players[self.gameNumber%playerCount]
   
 
   def playGame(self):
     self.gameNumber += 1
-    game = Game(self.currentPlayer)
-    game.play();
-    console.log();
+    game = Game(self.getCurrentPlayer())
+    game.play()
+    print('\n')
   
 
 
 
-
-
-
 def main():
-  d0 = Die()
-  d0.roll()
-  print(d0.value)
+  table = Table(["Lizzy", "Kim", "Alphonso", "Martin"])
+  for i in range(10):
+    table.playGame()
+
+
+
 
 if __name__ == "__main__":
     main()
