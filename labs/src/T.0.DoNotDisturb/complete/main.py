@@ -6,25 +6,56 @@
 
 from flask import Flask, render_template,request
 
-app = Flask(__name__)
 
-@app.route('/')
-def index() -> 'html':
-  return render_template('index.html',current_status = 'Green')
+class State():
+  def __init__(self):
+    self._current = { "status":"green"}    
 
-current_status = {
-  "status":"green"
-}
+  def get(self):
+    return self._current
 
-@app.route('/status', methods=['GET'])
-def get_status() -> 'json':
-  global current_status
-  return current_status
+  def set(self,new_status):
+    self._current=new_status
 
-@app.route('/status', methods=['POST'])
-def set_status() -> 'json':
-  global current_status
-  current_status = request.get_json()
-  return {"result":"ok"}
 
-app.run()
+def serve(state):
+
+  app = Flask(__name__)
+
+  @app.route('/')
+  def index() -> 'html':
+    return render_template('index.html')
+
+  @app.route('/status', methods=['GET'])
+  def get_status() -> 'json':
+    return state.get()
+
+  @app.route('/status', methods=['POST'])
+  def set_status() -> 'json':
+    new_status = request.get_json()
+    state.set(new_status)
+    return {"result":"ok"}
+
+  app.run()
+
+
+
+def main():
+  state = State()
+  serve(state)
+
+
+if __name__ == '__main__':
+  main()
+
+
+
+
+
+# def main():
+
+
+
+# if __name__ == '__main__':
+#   main()
+
