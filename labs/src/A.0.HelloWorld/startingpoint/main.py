@@ -3,5 +3,3 @@
 
 
 """
-
-print("lorem ipsum")
