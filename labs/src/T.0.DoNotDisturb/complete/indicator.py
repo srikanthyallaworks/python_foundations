@@ -36,7 +36,7 @@ def run():
     r,g,b = get_color()
     unicornhathd.set_all(r,g,b)
     unicornhathd.show()
-    time.sleep(1)
+    time.sleep(5)
 
 def main():
   try:

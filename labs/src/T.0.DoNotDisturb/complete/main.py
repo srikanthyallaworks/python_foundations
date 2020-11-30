@@ -16,7 +16,7 @@ this_directory = os.path.dirname(__file__)
 
 
 def run_script(script):
-  return subprocess.Popen([sys.executable, script], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+  return subprocess.Popen([sys.executable, script], stdout=subprocess.PIPE)
 
 
 def run_indicator():
@@ -28,13 +28,17 @@ def run_server():
   server_py = os.path.join(this_directory, 'server.py')
   return run_script(server_py)
 
+def report_progress(process):
+  for line in process.stdout:
+    print(line)
+
 
 def main():
   with run_indicator() as process_indicator, run_server() as process_server:
     while True:
-      print(process_server.stdout.readlines(10))
-      print(process_indicator.stdout.readlines(10))
-      time.sleep(2)
+      report_progress(process_server)
+      report_progress(process_indicator)
+      time.sleep(5)
   print('Exiting')
 
 
