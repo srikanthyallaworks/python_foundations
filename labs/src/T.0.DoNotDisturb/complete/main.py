@@ -5,6 +5,15 @@
 """
 
 from flask import Flask, render_template,request
+import unicornhathd
+import time
+
+
+unicornhathd.brightness(1)
+unicornhathd.set_all(255,0,0)
+unicornhathd.show()
+time.sleep(.25)
+unicornhathd.show()
 
 
 class State():
@@ -16,7 +25,18 @@ class State():
 
   def set(self,new_status):
     self._current=new_status
-
+    r=0
+    g=0
+    b=0
+    if new_status["status"]=='green':
+      g=255
+    elif new_status["status"]=='red':
+      r=255
+    else:
+      b=255
+    print(r,g,b)
+    unicornhathd.set_all(r,g,b)
+    unicornhathd.show()
 
 def serve(state):
 
@@ -42,7 +62,13 @@ def serve(state):
 
 def main():
   state = State()
+  
+
+
   serve(state)
+
+  
+
 
 
 if __name__ == '__main__':
