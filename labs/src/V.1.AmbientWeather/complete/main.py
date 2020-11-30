@@ -83,7 +83,6 @@ def get_image():
   return to_image(forecast)
 
 
-
 def update():
   img = get_image()
 
@@ -98,8 +97,7 @@ def update():
 
 
 def run():
-  unicornhathd.set_rotation(-90)
-  update()
+  unicornhathd.set_rotation(90)
   while True:
     update()
     time.sleep(poll_frequency)
