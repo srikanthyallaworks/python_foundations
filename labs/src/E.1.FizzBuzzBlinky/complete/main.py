@@ -24,7 +24,7 @@ Notes:
 
 """
 
-from unicornhathd import unicornhathd
+import unicornhathd
 import time
 import math
 import itertools
@@ -47,7 +47,7 @@ def toColor(n):
 
 def main():
 
-  #unicornhathd.brightness(1)
+  unicornhathd.brightness(1)
   unicornhathd.set_all(0,0,255)
 
   for i in itertools.count():

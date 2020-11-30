@@ -17,7 +17,7 @@ def nudge(val,factor):
 
 column = random.randrange(16)
 row = random.randrange(16)
-(r,g,b)=unicornhathd._buf[row,column]
+(r,g,b)=unicornhathd.get_pixel(row,column)
 (h,s,v) = colorsys.rgb_to_hsv(r/255,g/255,b/255)
 
 while True:

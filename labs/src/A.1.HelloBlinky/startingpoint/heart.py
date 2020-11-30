@@ -7,7 +7,7 @@ import numpy
 
 
 unicornhathd.brightness(1)
-unicornhathd.rotation(-90)
+unicornhathd.set_rotation(90)
 
 heart = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
          [0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0],

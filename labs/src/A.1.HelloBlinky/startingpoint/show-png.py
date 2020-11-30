@@ -24,7 +24,7 @@ Press Ctrl+C to exit!
 
 """)
 
-unicornhathd.rotation(270)
+unicornhathd.rotation(90)
 unicornhathd.brightness(0.6)
 
 width, height = unicornhathd.get_shape()
