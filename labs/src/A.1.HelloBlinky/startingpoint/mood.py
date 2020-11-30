@@ -27,6 +27,6 @@ while True:
   s = max(.85, nudge(s,.005))
   v = max(.85,nudge(v,.01))
   unicornhathd.set_pixel_hsv(row,column,h,s,v)
-  if random.random()>.95:
+  if random.random()>.9:
     unicornhathd.show()
 
