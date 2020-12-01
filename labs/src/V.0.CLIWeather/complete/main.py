@@ -7,9 +7,9 @@
 """
 
 import requests
+from typing import Dict
 
-
-def fetch(uri):
+def fetch(uri: str)->Dict:
   response = requests.get(uri)
   if response.status_code != 200:
     raise ConnectionError("Couldn't Connect")

@@ -14,7 +14,7 @@
 ```windows
 git clone https://github.com/bathcat/python_foundations
 cd python_foundations/labs
-python3 -m venv .venv
+py -m venv .venv
 .\.venv\Scripts\activate
 pip install -r requirements.txt
 ```
@@ -28,6 +28,10 @@ source ./.venv/bin/activate
 pip install -r requirements.txt
 ```
 
+Test it out:
+```
+python .\src\A.1.HelloBlinky\startingpoint\mood.py
+```
 
 
 ## Hooking up to the PI
