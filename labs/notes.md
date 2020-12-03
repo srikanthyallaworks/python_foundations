@@ -15,7 +15,7 @@
 
 Install venv like this:
 
-sudo apt-get install python3-pip python3-venv
+sudo apt-get install python3-pip python3-venv idle3
 git clone https://github.com/bathcat/python_foundations
 cd python_foundations/labs
 python3 -m venv .venv

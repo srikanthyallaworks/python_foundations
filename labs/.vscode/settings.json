@@ -1,4 +1,5 @@
 {
   "python.pythonPath": ".venv/bin/python3",
-  "terminal.integrated.environmentChangesIndicator": "off"
+  "terminal.integrated.environmentChangesIndicator": "off",
+  "editor.tabSize": 2
 }

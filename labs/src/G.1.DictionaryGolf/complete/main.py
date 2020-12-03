@@ -15,6 +15,8 @@ def sort(frequencies):
 def frequencies_by(students,field):
   counts = {}
 
+  # TODO: Consider using: from collections import defaultdict
+
   def add(value):
     if value not in counts:
       counts[value]=0
