@@ -31,8 +31,6 @@ Icons here:
 """
 import os
 import unicornhathd
-import math
-import requests
 import time
 from PIL import Image
 from enum import Enum
@@ -74,11 +72,10 @@ def to_forecast(short_forecast):
   return Forecast.Unknown
 
 
-def get_short_forecast():
-  return get_local_forecast()["properties"]["periods"][0]["shortForecast"]
+
 
 def get_image():
-  short_forecast = get_short_forecast()
+  short_forecast = get_local_forecast()
   forecast = to_forecast(short_forecast)
   return to_image(forecast)
 
