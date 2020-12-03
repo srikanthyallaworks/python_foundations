@@ -5,9 +5,6 @@
 """
 
 from roster import roster
-from collections import defaultdict
-
-
 
 def sort(frequencies):
   return sorted(frequencies,key=lambda t: t[1],reverse=True)
@@ -22,9 +19,14 @@ def frequencies_by(students,field):
 
   Returns: Sorted list of frequent fields
   """
-  counts = defaultdict(int)
+  counts = {}
   for student in roster:
-    counts[student[field]] +=1
+    value = student[field]
+    if value in counts:
+      counts[value]+=1
+    else:
+      counts[value]=1
+
   return sort(counts.items())
 
 
@@ -47,6 +49,8 @@ def main():
   report_frequencies(class_sizes)
 
   print(f'\n')
+
+
 
 if __name__ == "__main__":
     main()
