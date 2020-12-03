@@ -16,10 +16,8 @@ https://en.wikipedia.org/wiki/Fortune_(Unix)
 import requests
 
 def get_fortune():
-  json={}
   with requests.get('http://api.kanye.rest') as response:
-    json = response.json()
-  return json['quote']
+    return response.json()['quote']
 
 def main():
   message = get_fortune()
