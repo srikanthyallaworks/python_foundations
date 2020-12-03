@@ -7,12 +7,7 @@ import math
 from typing import List
 
 
-# /**
-#  * @brief Takes an array, returns a new
-#  *        array with no repeated values.
-#  * 
-#  * @param {Array} xs 
-#  */
+
 def unique_elements(xs):
   uniques = []
   for x in xs:
@@ -21,13 +16,21 @@ def unique_elements(xs):
   return uniques
 
 # /**
-#  * @brief Takes an array, returns a new
-#  *        array with no repeated values.
+#  * @brief Takes a list, returns a new
+#  *        list in the same order with no repeated values.
 #  * 
 #  * @param {Array} xs 
 #  */
-def unique_elements_simpler(xs):
-  return list(set(xs))
+def unique_elements_fancier(xs):
+  seen = set()
+
+  def already_seen(x):
+    if x not in seen:
+      seen.add(x)
+      return False
+    return True
+
+  return [x for x in xs if not already_seen(x)]
 
 
 
