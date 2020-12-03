@@ -10,6 +10,8 @@ import os
 import sys
 import time
 import subprocess
+from settings import get_settings
+import webbrowser
 
 
 this_directory = os.path.dirname(__file__)
@@ -34,7 +36,9 @@ def report_progress(process):
 
 
 def main():
+  settings = get_settings()
   with run_indicator() as process_indicator, run_server() as process_server:
+    webbrowser.open_new(f'http://127.0.0.1:{settings.port}')
     while True:
       report_progress(process_server)
       report_progress(process_indicator)
