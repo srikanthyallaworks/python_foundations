@@ -39,7 +39,7 @@ def main():
       report_progress(process_server)
       report_progress(process_indicator)
       time.sleep(5)
-  print('Exiting')
+
 
 
 if __name__ == '__main__':
