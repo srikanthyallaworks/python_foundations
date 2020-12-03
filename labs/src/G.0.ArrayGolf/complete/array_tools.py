@@ -23,7 +23,21 @@ def areEquivalentArrays(xs, ys):
 #  * @param {Array} xs 
 #  */
 def unique_elements(xs):
-  return xs
+  uniques = []
+  for x in xs:
+    if x not in uniques:
+      uniques.append(x)
+  return uniques
+
+# /**
+#  * @brief Takes an array, returns a new
+#  *        array with no repeated values.
+#  * 
+#  * @param {Array} xs 
+#  */
+def unique_elements_simpler(xs):
+  return list(set(xs))
+
 
 
 # /**

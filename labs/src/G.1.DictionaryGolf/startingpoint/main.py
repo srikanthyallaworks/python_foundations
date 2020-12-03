@@ -5,7 +5,6 @@
 """
 
 from roster import roster
-from collections import defaultdict
 
 
 
@@ -14,17 +13,18 @@ def sort(frequencies):
 
 
 def frequencies_by(students,field):
-  """[summary]
+  counts = {}
 
-  Args:
-      students: list of student records
-      field: field that we're counting on. i.e. 'surname'
+  # TODO: Consider using: from collections import defaultdict
 
-  Returns: Sorted list of frequent fields
-  """
-  counts = defaultdict(int)
+  def add(value):
+    if value not in counts:
+      counts[value]=0
+    counts[value] += 1
+
   for student in roster:
-    counts[student[field]] +=1
+    add(student[field])
+
   return sort(counts.items())
 
 
