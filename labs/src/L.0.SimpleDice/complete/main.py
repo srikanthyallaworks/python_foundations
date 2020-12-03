@@ -15,7 +15,7 @@ class Die():
   def get_value(self):
     return self._value; 
 
-  def roll(self):
+  def roll(self) ->int:
     self._value = random.randrange(1,self.sideCount+1)
     return self._value
 
@@ -25,13 +25,13 @@ class Cup():
   def __init__(self,dice):
     self._dice = dice
 
-  def roll(self):
+  def roll(self)->int:
     total=0
     for die in self._dice:
       total+=die.roll()
     return total
 
-  def get_value(self):
+  def get_value(self)->int:
     total=0
     for die in self._dice:
       total+=die.get_value()
