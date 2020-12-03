@@ -8,29 +8,26 @@ import unicornhathd
 import time
 import requests
 from settings import get_settings
+from status import Status
 
 
 settings= get_settings()
-red = (255,0,0)
-yellow = (255, 255, 0)
-green = (0, 128, 0)
-unknown = (100,100,100)
+
 url = f'http://127.0.0.1:{settings.port}/status'
 
-def to_color(status):
+def to_color(status:Status):
   if status=='green':
-    return green
+    return (0, 128, 0)
   if status == 'yellow':
-    return yellow
+    return (255, 255, 0)
   if status == 'red':
-    return red
-  return unknown
+    return (255,0,0)
+  return (100,100,100)
 
 def get_color():
-  response = requests.get(url)
-  message = response.json()
-  response.close()
-  return to_color(message['status'])
+  with requests.get(url) as response:
+    message = response.json()
+    return to_color(message['status'])
 
 def run():
   unicornhathd.brightness(1)

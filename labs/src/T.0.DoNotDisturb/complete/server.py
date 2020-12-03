@@ -8,19 +8,14 @@
 
 from flask import Flask, render_template,request
 from settings import get_settings
+from status import Status
+from dataclasses import dataclass
 
+@dataclass
 class State():
-  def __init__(self):
-    self._current = { "status":"green"}    
+  status:Status
 
-  def get(self):
-    return self._current
-
-  def set(self,new_status):
-    self._current=new_status
-
-
-def serve(state,settings):
+def serve(state:State,settings):
 
   app = Flask(__name__)
 
@@ -30,12 +25,11 @@ def serve(state,settings):
 
   @app.route('/status', methods=['GET'])
   def get_status() -> 'json':
-    return state.get()
+    return {'status':state.status}
 
   @app.route('/status', methods=['POST'])
   def set_status() -> 'json':
-    new_status = request.get_json()
-    state.set(new_status)
+    state.status = request.get_json()['status']
     return {"result":"ok"}
 
   app.run(port=settings.port)
@@ -43,7 +37,7 @@ def serve(state,settings):
 
 
 def main():
-  state = State()
+  state = State("green")
   settings=get_settings()
   serve(state, settings)
 
