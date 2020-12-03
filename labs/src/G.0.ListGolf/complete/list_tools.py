@@ -4,6 +4,7 @@
 
 """
 import math
+from typing import List
 
 
 # /**
@@ -77,3 +78,15 @@ def partition_fancier(items,partition_count=1):
   size = int(len(items) / partition_count)  
   return [items[i:i + size] for i in range(0, len(items), size)]
 
+
+
+def flatten(items):
+  flattened = []
+
+  for item in items:
+    if isinstance(item,List):
+      flattened += flatten(item)
+    else:
+      flattened.append(item)
+
+  return flattened

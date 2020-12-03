@@ -1,5 +1,5 @@
 import unittest
-from list_tools import clone,unique_elements,partition
+from list_tools import clone,unique_elements,partition, flatten
 import sys
 
 
@@ -53,6 +53,22 @@ class TestPartition(unittest.TestCase):
     self.assertEqual(original[0:2],partitions[0])
     self.assertEqual(original[2:4],partitions[1])
     self.assertEqual(original[4:6],partitions[2])
+
+
+class TestFlatten(unittest.TestCase):
+
+  def test_single_dimension(self):
+    expected = [1,2,3,4]
+    actual = flatten(expected)
+    self.assertEqual(expected,actual)
+
+
+  def test_lots_of_dimension(self):
+    original = [1,[2,3],[],[[4]]]
+    actual = flatten(original)
+    self.assertEqual(actual, [1,2,3,4])
+
+
 
 
 def run_tests():
