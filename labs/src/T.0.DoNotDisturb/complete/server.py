@@ -7,7 +7,7 @@
 """
 
 from flask import Flask, render_template,request
-
+from settings import get_settings
 
 class State():
   def __init__(self):
@@ -20,7 +20,7 @@ class State():
     self._current=new_status
 
 
-def serve(state):
+def serve(state,settings):
 
   app = Flask(__name__)
 
@@ -38,13 +38,14 @@ def serve(state):
     state.set(new_status)
     return {"result":"ok"}
 
-  app.run()
+  app.run(port=settings.port)
 
 
 
 def main():
   state = State()
-  serve(state)
+  settings=get_settings()
+  serve(state, settings)
 
   
 if __name__ == '__main__':

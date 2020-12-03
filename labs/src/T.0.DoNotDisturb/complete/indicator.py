@@ -7,13 +7,15 @@
 import unicornhathd
 import time
 import requests
+from settings import get_settings
 
 
+settings= get_settings()
 red = (255,0,0)
 yellow = (255, 255, 0)
 green = (0, 128, 0)
 unknown = (100,100,100)
-url = 'http://127.0.0.1:5000/status'
+url = f'http://127.0.0.1:{settings.port}/status'
 
 def to_color(status):
   if status=='green':
