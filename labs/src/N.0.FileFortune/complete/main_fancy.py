@@ -26,10 +26,10 @@ def get_fortunes()->List[str]:
   Returns:
       List[str]: Fortunes
   """
-  fortune_block = ''
+  fortune_text = ''
   with open(data_file) as reader:
-    fortune_block = reader.read()
-  return [fortune.lstrip().rstrip() for fortune in fortune_block.split('%')]
+    fortune_text = reader.read()
+  return [fortune.lstrip().rstrip() for fortune in fortune_text.split('%')]
   
 
 def main():
