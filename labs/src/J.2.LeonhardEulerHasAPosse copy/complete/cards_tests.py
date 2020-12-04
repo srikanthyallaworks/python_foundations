@@ -29,6 +29,39 @@ class Test_Hands_Is_Straight(unittest.TestCase):
     self.assertFalse(result)
 
 
+
+
+class Test_Hands_Get_Hand_Value(unittest.TestCase):
+
+  def test_high_card_scenario_1(self):
+    hand_a = {Cards.from_string(s) for s in ['♣4','♥6','♦7','♠8','♣9']}
+    hand_b = {Cards.from_string(s) for s in ['♣3','♥6','♦7','♠8','♣9']}
+
+    value_a = Hands.get_hand_value(hand_a)
+    value_b = Hands.get_hand_value(hand_b)
+
+    self.assertTrue(value_a>value_b)
+
+  def test_pair_scenario_0(self):
+    hand_a = {Cards.from_string(s) for s in ['♣5','♥5','♦9','♠4','♣2']}
+    hand_b = {Cards.from_string(s) for s in ['♣4','♥4','♦A','♠2','♣10']}
+
+    value_a = Hands.get_hand_value(hand_a)
+    value_b = Hands.get_hand_value(hand_b)
+
+    self.assertTrue(value_a>value_b)
+
+
+  def test_pair_scenario_1(self):
+    hand_a = {Cards.from_string(s) for s in ['♣5','♥5','♦A','♠2','♣3']}
+    hand_b = {Cards.from_string(s) for s in ['♦5','♠5','♣K','♣Q','♣10']}
+
+    value_a = Hands.get_hand_value(hand_a)
+    value_b = Hands.get_hand_value(hand_b)
+
+    self.assertTrue(value_a>value_b)
+
+
 class Test_Hands_Get_Hand_Rank(unittest.TestCase):
 
   def test_four_of_a_kind(self):

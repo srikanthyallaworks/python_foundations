@@ -9,6 +9,8 @@ class Color(Enum):
     Unknown=0
     Red=1
     Black=2
+
+
     
 @dataclass(frozen=True)
 class CardValue():
@@ -96,6 +98,9 @@ class HandRank(Enum):
     StraightFlush=8
 
 
+
+
+
 class Hands:
 
     def is_flush(cards:Hand)->bool:
@@ -111,6 +116,23 @@ class Hands:
     def get_sets(cards:Hand):
         groups = [list(g) for k,g in groupby(cards,lambda c:c.value.value)]
         return [g for g in groups if len(g)>1]
+
+
+    def get_hand_value(cards:Hand):
+        rank = Hands.get_hand_rank(cards)
+        value = rank.value << 32
+        tie_breaker_cards=sorted([c.value.value for c in cards])
+
+        if rank in [HandRank.ThreeOfAKind,HandRank.Pair,HandRank.FourOfAKind]:
+            tuple_value = Hands.get_sets(cards)[0][0].value
+            tie_breaker_cards=sorted([c.value.value for c in cards if c.value!=tuple_value])
+            tie_breaker_cards.append(tuple_value.value)
+
+        for i,v in enumerate(tie_breaker_cards):
+            value += v << (5*i)
+
+        return value 
+
 
     def get_hand_rank(cards:Hand):
 
