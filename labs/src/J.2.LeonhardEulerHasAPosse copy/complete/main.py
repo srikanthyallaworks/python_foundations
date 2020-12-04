@@ -13,21 +13,67 @@ this_directory = os.path.dirname(__file__)
 parent_directory = os.path.dirname(this_directory)
 data_file = os.path.join(parent_directory, '_data/p054_poker.txt')
 
-print('\n\n\n')
 
-p1_victory_count=0
-for line in open(data_file):
-    chars = line.strip().split(' ')
+def play():
+    print('\n\n\n')
 
-    hand_1 =  {Cards.from_chars(s) for s in chars[:5]}
-    hand_2 =  {Cards.from_chars(s) for s in chars[5:]}
+    p1_victory_count=0
+    for line in open(data_file):
+        chars = line.strip().split(' ')
 
-    winner='Player 2'
-    if Hands.get_hand_value(hand_1) >Hands.get_hand_value(hand_2):
-        p1_victory_count+=1
-        winner = 'Player 1'
+        hand_1 =  {Cards.from_chars(s) for s in chars[:5]}
+        hand_2 =  {Cards.from_chars(s) for s in chars[5:]}
 
-    print(f'{hand_1} x {hand_2} Winner: {winner} !')
+        winner='Player 2'
+        if Hands.get_hand_value(hand_1) >Hands.get_hand_value(hand_2):
+            p1_victory_count+=1
+            winner = 'Player 1'
 
-print(f'\n{p1_victory_count} wins for P1')
+        print(f'{hand_1} x {hand_2} Winner: {winner} !')
+
+    print(f'\n{p1_victory_count} wins for P1')
+
+
+def show_info():
+    def get_hands():
+        for line in open(data_file):
+            chars = line.strip().split(' ')
+            yield  {Cards.from_chars(s) for s in chars[:5]}
+            yield  {Cards.from_chars(s) for s in chars[5:]}
+
+
+    def get_hand_infos():
+        for hand in get_hands():
+            yield hand,Hands.get_hand_value(hand),Hands.get_hand_rank(hand)
+
+    for info in sorted(get_hand_infos(),key=lambda h:h[1]):
+        print('\n\n')
+        print(info[0])
+        print(info[1])
+        print(info[2])
+
+
+deck = Cards.build_deck()
+i=0
+while True:
+    i+=1
+    # if i%109001==0:
+    #     print(f'{i}')
+    deal = random.sample(deck,10)
+    hand_a=deal[:5]
+    hand_b=deal[5:]
+
+    rank_a=Hands.get_hand_rank(hand_a)
+    value_a=Hands.get_hand_value(hand_a)
+    
+    value_b=Hands.get_hand_value(hand_b)
+    rank_b=Hands.get_hand_rank(hand_b)
+
+    # if value_b==value_a and rank_a != rank_b:
+    #     print(f'\n\na:{hand_a} b:{hand_b}')    
+        
+    if rank_a.value > 5 and value_b!=value_a and rank_a == rank_b:
+        print(f'a:{hand_a}        {value_a}')
+        print(f'a:{hand_b}        {value_b}\n\n')
+        
 

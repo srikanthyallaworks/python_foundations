@@ -76,10 +76,10 @@ class Card():
         return self.value.character + self.suite.character
 
     def __str__(self):
-        return self.suite.symbol + self.value.symbol
+        return self.suite.symbol + self.value.character
 
     def __repr__(self):
-        return self.suite.symbol + self.value.symbol
+        return self.suite.symbol + self.value.character
 
 
 @dataclass(frozen=True,init=False)
@@ -138,7 +138,7 @@ class Hands:
 
     def get_hand_value(cards:Hand):
         rank = Hands.get_hand_rank(cards)
-        value = rank.value << 32
+        value = rank.value << 48
         tie_breaker_cards=[]
 
         if rank in [HandRank.ThreeOfAKind,HandRank.Pair,HandRank.FourOfAKind]:
@@ -160,7 +160,7 @@ class Hands:
             tie_breaker_cards=sorted([c.value.value for c in cards])
 
         for i,v in enumerate(tie_breaker_cards):
-            value += v << (5*i)
+            value |= v << (6*i)
 
         return value 
 
