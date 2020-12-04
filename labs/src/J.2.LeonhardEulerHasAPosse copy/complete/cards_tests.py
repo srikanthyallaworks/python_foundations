@@ -1,17 +1,20 @@
 import unittest
-from cards import Suites,Suite,Color,Cards
+from cards import Suites,Suite,Color,Cards,Hands
 import sys
 
 
-class TestIsFlush(unittest.TestCase):
-
-  def test_works_for_thing(self):
-    for s in Cards.build_deck():
-      print(s)
-
-    self.assertEqual(0,0)
+class Test_Hands_IsFlush(unittest.TestCase):
 
 
+  def test_works_for_real_flush(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♣6','♣8','♣9','♣10']}
+    result = Hands.is_flush(hand)
+    self.assertTrue(result)
+
+  def test_works_for_Non_flush(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♣6','♣8','♣9','♦10']}
+    result = Hands.is_flush(hand)
+    self.assertFalse(result)
 
 
 

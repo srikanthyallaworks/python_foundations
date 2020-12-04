@@ -1,7 +1,7 @@
 from abc import ABCMeta
 from dataclasses import dataclass
 from enum import Enum
-from typing import Tuple
+from typing import Tuple, Literal
 from custom_iter_tools import pairwise, groupby
 
 
@@ -17,7 +17,7 @@ class CardValue():
 
 
 class CardValues:
-    _symbols=['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+    _symbols=('2','3','4','5','6','7','8','9','10','J','Q','K','A')
     _lookup={s:CardValue(s,i+2) for i,s in enumerate(_symbols)}
 
     @classmethod
@@ -28,29 +28,30 @@ class CardValues:
     def get_all(cls):
         return CardValues._lookup.values()
 
-
+SuiteIdentifier=Literal['♠','♥','♦','♣']
 
 @dataclass(frozen=True)
 class Suite():
   name:str
-  symbol:str
+  symbol:SuiteIdentifier
   color:Color
 
-
+@dataclass(frozen=True,init=False)
 class Suites():
   spades=Suite('Spades','♠',Color.Black)
   hearts=Suite('Hearts','♥',Color.Red)
   diamonds=Suite('Diamonds','♦',Color.Red)
   clubs=Suite('Clubs','♣',Color.Black)
+  all=(clubs,diamonds,hearts,spades)
+  _symbol_lookup={s.symbol:s for s in all}
 
   @staticmethod
   def get_all():
-      return [Suites.clubs,Suites.diamonds,Suites.hearts,Suites.spades]
+      return list(Suites.all)
 
   @staticmethod
-  def from_string(value:str)->Suite:
-      lookup = {s.character:s for s in Suites.get_all()}
-      return lookup[value]
+  def from_string(value:SuiteIdentifier)->Suite:
+      return Suites._symbol_lookup[value]
 
 
 
@@ -66,47 +67,46 @@ class Card():
         return self.suite.symbol + self.value.symbol
 
 
-
+@dataclass(frozen=True,init=False)
 class Cards():
-  #_all = [Card(s,v) for s in Suites.get_all() for v in CardValues.get_all()]
-  #_all = [Card(Suites.spades,v) for v in CardValues.get_all()]
+  _all = [Card(s,v) for s in Suites.get_all() for v in CardValues.get_all()]
+  _repr_lookup = {repr(c):c for c in _all}
 
   @staticmethod
   def build_deck():
-      return [Card(s,v) for s in Suites.get_all() for v in CardValues.get_all()]  
+      return Cards._all[:]  
 
-#   @staticmethod
-#   def from_repr(chars):
-#       _repr_lookup = {repr(c):c for c in Cards._all}
-#       return _repr_lookup[chars]
+  @staticmethod
+  def from_string(chars):
+      return Cards._repr_lookup[chars]
 
-# Hand = Tuple[Card,Card,Card,Card,Card]
-
+Hand = Tuple[Card,Card,Card,Card,Card]
 
 
-# class HandType(Enum):
-#     HighCard=0
-#     Pair=1
-#     TwoPair=2
-#     ThreeOfAKind=3
-#     Straight=4
-#     Flush=5
-#     FullHouse=6
-#     FourOfAKind=7
-#     StraightFlush=8
+
+class HandType(Enum):
+    HighCard=0
+    Pair=1
+    TwoPair=2
+    ThreeOfAKind=3
+    Straight=4
+    Flush=5
+    FullHouse=6
+    FourOfAKind=7
+    StraightFlush=8
 
 
-# class Hands:
+class Hands:
 
-#     def is_flush(cards:Hand)->bool:
-#         return 1 == len({c.suite for c in cards})
+    def is_flush(cards:Hand)->bool:
+        return 1 == len({c.suite for c in cards})
 
-#     def is_straight(cards:Hand)->bool:
-#         values = sorted([c.value.value for c in cards])
-#         for a,b in pairwise(values):
-#             if (a+1)!=b:
-#                 return False
-#         return True
+    def is_straight(cards:Hand)->bool:
+        values = sorted([c.value.value for c in cards])
+        for a,b in pairwise(values):
+            if (a+1)!=b:
+                return False
+        return True
 
 #     def get_sets(cards:Hand):
 #         groups = [list(g) for k,g in groupby(cards,lambda c:c.value.value)]
