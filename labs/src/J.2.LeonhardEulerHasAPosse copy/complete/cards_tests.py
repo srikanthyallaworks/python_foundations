@@ -1,10 +1,9 @@
 import unittest
-from cards import Suites,Suite,Color,Cards,Hands
+from cards import Suites,Suite,Color,Cards,Hands,HandRank
 import sys
 
 
 class Test_Hands_IsFlush(unittest.TestCase):
-
 
   def test_works_for_real_flush(self):
     hand = {Cards.from_string(s) for s in ['♣5','♣6','♣8','♣9','♣10']}
@@ -17,10 +16,62 @@ class Test_Hands_IsFlush(unittest.TestCase):
     self.assertFalse(result)
 
 
+class Test_Hands_Is_Straight(unittest.TestCase):
+
+  def test_works_for_real_straight(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♣6','♦7','♣8','♣9']}
+    result = Hands.is_straight(hand)
+    self.assertTrue(result)
+
+  def test_works_for_missed_straight(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♣6','♣8','♣9','♦10']}
+    result = Hands.is_straight(hand)
+    self.assertFalse(result)
 
 
+class Test_Hands_Get_Hand_Rank(unittest.TestCase):
 
+  def test_four_of_a_kind(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♥5','♦5','♠5','♣9']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.FourOfAKind
+    self.assertEqual(actual,expected)
 
+  def test_two_pair(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♥5','♦2','♠2','♣9']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.TwoPair
+    self.assertEqual(actual,expected)
+
+  def test_full_house(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♥5','♦5','♠2','♣2']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.FullHouse
+    self.assertEqual(actual,expected)
+
+  def test_straight_flush(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♣6','♣7','♣8','♣9']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.StraightFlush
+    self.assertEqual(actual,expected)    
+
+  def test_trips(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♥5','♦5','♠8','♣9']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.ThreeOfAKind
+    self.assertEqual(actual,expected)     
+
+  def test_pair(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♥5','♦2','♠A','♣J']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.Pair
+    self.assertEqual(actual,expected)     
+
+  def test_high_card(self):
+    hand = {Cards.from_string(s) for s in ['♣5','♥6','♦2','♠A','♣J']}
+    actual = Hands.get_hand_rank(hand)
+    expected = HandRank.HighCard
+    self.assertEqual(actual,expected)    
 
 
 def run_tests():

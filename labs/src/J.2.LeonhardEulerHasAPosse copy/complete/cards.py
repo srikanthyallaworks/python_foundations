@@ -84,7 +84,7 @@ Hand = Tuple[Card,Card,Card,Card,Card]
 
 
 
-class HandType(Enum):
+class HandRank(Enum):
     HighCard=0
     Pair=1
     TwoPair=2
@@ -108,41 +108,40 @@ class Hands:
                 return False
         return True
 
-#     def get_sets(cards:Hand):
-#         groups = [list(g) for k,g in groupby(cards,lambda c:c.value.value)]
-#         return [g for g in groups if len(g)>1]
+    def get_sets(cards:Hand):
+        groups = [list(g) for k,g in groupby(cards,lambda c:c.value.value)]
+        return [g for g in groups if len(g)>1]
 
+    def get_hand_rank(cards:Hand):
 
-#     def get_hand_value(cards:Hand):
+        sets = Hands.get_sets(cards)
+        if sets:
+            if len(sets)>1:
+                biggest_set = max([len(s) for s in sets])
+                if biggest_set==3:
+                    return HandRank.FullHouse
+                return HandRank.TwoPair
 
-#         sets = Hands.get_sets(cards)
-#         if sets:
-#             if len(sets)>1:
-#                 biggest_set = max([len(s) for s in sets])
-#                 if biggest_set==3:
-#                     return HandType.FullHouse
-#                 return HandType.TwoPair
+            set_count = len(sets[0])
+            if set_count==2:
+                return HandRank.Pair
+            if set_count==3:
+                return HandRank.ThreeOfAKind            
 
-#             set_count = len(sets[0])
-#             if set_count==2:
-#                 return HandType.Pair
-#             if set_count==3:
-#                 return HandType.ThreeOfAKind            
+            return HandRank.FourOfAKind
 
-#             return HandType.FourOfAKind
+        straight = Hands.is_straight(cards)
+        flush = Hands.is_flush(cards)
 
-#         straight = Hands.is_straight(cards)
-#         flush = Hands.is_flush(cards)
+        if straight and flush:
+            return HandRank.StraightFlush
 
-#         if straight and flush:
-#             return HandType.StraightFlush
+        if straight:
+            return HandRank.Straight
 
-#         if straight:
-#             return HandType.Straight
+        if flush:
+            return HandRank.Flush
 
-#         if flush:
-#             return HandType.Flush
-
-#         return HandType.HighCard
+        return HandRank.HighCard
 
 
