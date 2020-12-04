@@ -3,6 +3,15 @@ from cards import Suites,Suite,Color,Cards,Hands,HandRank
 import sys
 
 
+lines = ['5H 5C 6S 7S KD 2C 3S 8S 8D TD',
+'5D 8C 9S JS AC 2C 5C 7D 8S QH',
+'2D 9C AS AH AC 3D 6D 7D TD QD',
+'4D 6S 9H QH QC 3D 6D 7H QD QS',
+'2H 2D 4C 4D 4S 3C 3D 3S 9S 9D']
+
+
+
+
 class Test_Hands_IsFlush(unittest.TestCase):
 
   def test_works_for_real_flush(self):
@@ -60,6 +69,35 @@ class Test_Hands_Get_Hand_Value(unittest.TestCase):
     value_b = Hands.get_hand_value(hand_b)
 
     self.assertTrue(value_a>value_b)
+
+
+  def test_full_house_scenario_0(self):
+    hand_a = {Cards.from_string(s) for s in ['♣A','♥A','♦A','♠2','♣2']}
+    hand_b = {Cards.from_string(s) for s in ['♦K','♠K','♣K','♣Q','♦Q']}
+    print(Hands.get_hand_rank(hand_b))
+
+    value_a = Hands.get_hand_value(hand_a)
+    value_b = Hands.get_hand_value(hand_b)
+
+    self.assertTrue(value_a>value_b) 
+
+  def test_two_pair_scenario_0(self):
+    hand_a = {Cards.from_string(s) for s in ['♣A','♥A','♦3','♠2','♣2']}
+    hand_b = {Cards.from_string(s) for s in ['♦K','♠K','♣J','♣Q','♣Q']}
+
+    value_a = Hands.get_hand_value(hand_a)
+    value_b = Hands.get_hand_value(hand_b)
+
+    self.assertTrue(value_a>value_b)        
+
+  def test_two_pair_scenario_1(self):
+    hand_a = {Cards.from_string(s) for s in ['♣A','♥A','♦3','♠Q','♣Q']}
+    hand_b = {Cards.from_string(s) for s in ['♦A','♠A','♣2','♣Q','♣Q']}
+
+    value_a = Hands.get_hand_value(hand_a)
+    value_b = Hands.get_hand_value(hand_b)
+
+    self.assertTrue(value_a>value_b)           
 
 
 class Test_Hands_Get_Hand_Rank(unittest.TestCase):

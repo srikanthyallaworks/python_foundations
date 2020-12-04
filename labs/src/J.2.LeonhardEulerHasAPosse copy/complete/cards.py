@@ -16,7 +16,11 @@ class Color(Enum):
 class CardValue():
     symbol:str
     value:int
-
+    @property
+    def character(self):
+        if self.symbol=='10':
+            return 'T'
+        return self.symbol
 
 class CardValues:
     _symbols=('2','3','4','5','6','7','8','9','10','J','Q','K','A')
@@ -37,6 +41,9 @@ class Suite():
   name:str
   symbol:SuiteIdentifier
   color:Color
+  @property
+  def character(self):
+      return self.name[0]
 
 @dataclass(frozen=True,init=False)
 class Suites():
@@ -52,8 +59,10 @@ class Suites():
       return list(Suites.all)
 
   @staticmethod
-  def from_string(value:SuiteIdentifier)->Suite:
+  def from_symbol(value:SuiteIdentifier)->Suite:
       return Suites._symbol_lookup[value]
+
+
 
 
 
@@ -61,6 +70,10 @@ class Suites():
 class Card():
     suite:Suite
     value:CardValue
+
+    @property
+    def chars(self):
+        return self.value.character + self.suite.character
 
     def __str__(self):
         return self.suite.symbol + self.value.symbol
@@ -73,6 +86,7 @@ class Card():
 class Cards():
   _all = [Card(s,v) for s in Suites.get_all() for v in CardValues.get_all()]
   _repr_lookup = {repr(c):c for c in _all}
+  _chars_lookup = {c.chars:c for c in _all}  
 
   @staticmethod
   def build_deck():
@@ -81,6 +95,10 @@ class Cards():
   @staticmethod
   def from_string(chars):
       return Cards._repr_lookup[chars]
+
+  @staticmethod
+  def from_chars(chars):
+      return Cards._chars_lookup[chars]
 
 Hand = Tuple[Card,Card,Card,Card,Card]
 
@@ -121,12 +139,25 @@ class Hands:
     def get_hand_value(cards:Hand):
         rank = Hands.get_hand_rank(cards)
         value = rank.value << 32
-        tie_breaker_cards=sorted([c.value.value for c in cards])
+        tie_breaker_cards=[]
 
         if rank in [HandRank.ThreeOfAKind,HandRank.Pair,HandRank.FourOfAKind]:
             tuple_value = Hands.get_sets(cards)[0][0].value
             tie_breaker_cards=sorted([c.value.value for c in cards if c.value!=tuple_value])
             tie_breaker_cards.append(tuple_value.value)
+
+        elif rank == HandRank.FullHouse:
+            sets = Hands.get_sets(cards)
+            triple = sets[0] if len(sets[0])==3 else sets[1]
+            tie_breaker_cards = [triple[0].value.value]
+
+        elif rank == HandRank.TwoPair:
+            pairs = [s[0].value.value for s in Hands.get_sets(cards)]
+            tie_breaker_cards = [c.value.value for c in cards if c.value.value not in pairs]
+            tie_breaker_cards += sorted(pairs)
+        
+        else:
+            tie_breaker_cards=sorted([c.value.value for c in cards])
 
         for i,v in enumerate(tie_breaker_cards):
             value += v << (5*i)
