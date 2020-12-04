@@ -14,14 +14,23 @@ https://en.wikipedia.org/wiki/Fortune_(Unix)
 """
 import random
 import os
+from typing import List
 
 this_directory = os.path.dirname(__file__)
 parent_directory = os.path.dirname(this_directory)
-data_file = os.path.join(parent_directory, '_data/fortunes.txt')
+data_file = os.path.join(parent_directory, '_data/people')
 
-def get_fortunes():
+def get_fortunes()->List[str]:
+  """Gets a list of strings from a data file
+
+  Returns:
+      List[str]: Fortunes
+  """
+  fortune_block = ''
   with open(data_file) as reader:
-    return [line for line in reader]
+    fortune_block = reader.read()
+  return [fortune.lstrip().rstrip() for fortune in fortune_block.split('%')]
+  
 
 def main():
   fortunes=get_fortunes()
