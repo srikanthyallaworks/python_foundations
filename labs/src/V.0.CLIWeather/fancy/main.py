@@ -1,7 +1,6 @@
 import requests
 from dataclasses import dataclass
 
-
 @dataclass(frozen=True)
 class GeoLocation:
   """Simple type to hold lat/long coordinates
@@ -17,6 +16,19 @@ class GridLocation:
   office:str
   x:int
   y:int
+
+
+class Uris:
+
+  def for_geolocation():
+    return 'http://www.geoplugin.net/json.gp'
+
+  def for_gridlocation(loc:GeoLocation):
+    return f'https://api.weather.gov/points/{loc.latitude},{loc.longitude}'
+
+  def for_forecast(loc:GridLocation):
+    return f'https://api.weather.gov/gridpoints/{loc.office}/{loc.x},{loc.y}/forecast'
+
 
 
 
@@ -46,7 +58,8 @@ def get_geo_location()->GeoLocation:
   Returns:
       [GeoLocation]: Lat/Long guess of the current location
   """
-  json = fetch_json('http://www.geoplugin.net/json.gp')
+  uri = Uris.for_geolocation()
+  json = fetch_json(uri)
   return GeoLocation(
     latitude= float(json["geoplugin_latitude"]),
     longitude=float(json["geoplugin_longitude"])
@@ -63,8 +76,8 @@ def get_grid_location(geo:GeoLocation)->GridLocation:
   Returns:
       GridLocation: Location used by weather.gov to get a forecast
   """
-  url = f'https://api.weather.gov/points/{geo.latitude},{geo.longitude}'
-  json = fetch_json(url)["properties"]
+  uri = Uris.for_gridlocation(geo)
+  json = fetch_json(uri)["properties"]
   return GridLocation(
     office=json["cwa"],
     x=int(json["gridX"]),
@@ -81,7 +94,7 @@ def get_forecast(loc:GridLocation)->str:
   Returns:
       str: Short forecast of the next couple hours
   """
-  url = f'https://api.weather.gov/gridpoints/{loc.office}/{loc.x},{loc.y}/forecast'
+  url = Uris.for_forecast(loc)
   return fetch_json(url)["properties"]["periods"][0]["shortForecast"]
 
 
