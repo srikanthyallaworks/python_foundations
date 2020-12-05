@@ -1,44 +1,15 @@
-"""
-
-# Lab: Fizz Buzz - Blinky Edition
-
-## Summary: 
-
-Surprisingly, lots of professional programmers can't really 
-code[1]. FizzBuzz is a classic interview question for sussing-out 
-the non-skilled. 
-                  
-Here it is:
-    Write a program that sequentially lights up an LED in a square grid.
-    But--
-      * For multiples of 3 color the LED red 
-      * For the multiples of 5 color the LED green
-      * For numbers which are multiples of both 3 and 5 color the LED blue
-
-## Requirements
-* Pause for .2 seconds before moving on to the next item
-* Start over again at the beginning
-
-Notes:
-1. https://blog.codinghorror.com/why-cant-programmers-program/
-
-Icons here: 
-  - https://www.flaticon.com/packs/nature-134
-  - https://www.flaticon.com/packs/weather-238
-  - https://www.flaticon.com/packs/weather-141
-
-
-"""
 import os
 import unicornhathd
 import time
 from PIL import Image
 from enum import Enum
-try: from .forecast import get_local_forecast
-except: pass
+try: 
+  from .forecast import get_local_forecast
+except: 
+  from forecast import get_local_forecast
 
-rows=16
-columns=16
+rows,columns = unicornhathd.get_shape()
+
 poll_frequency=90
 
 class Forecast(Enum):
@@ -108,6 +79,5 @@ def main():
 
   
 if __name__ == "__main__":
-  from forecast import get_local_forecast
   main()
 
