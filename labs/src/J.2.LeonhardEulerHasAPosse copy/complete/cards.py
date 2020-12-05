@@ -1,6 +1,6 @@
 from abc import ABCMeta
 from dataclasses import dataclass
-from enum import Enum
+from enum import IntEnum,Enum
 from typing import Tuple, Literal
 from custom_iter_tools import pairwise, groupby
 
@@ -104,7 +104,7 @@ Hand = Tuple[Card,Card,Card,Card,Card]
 
 
 
-class HandRank(Enum):
+class HandRank(IntEnum):
     HighCard=0
     Pair=1
     TwoPair=2
@@ -136,6 +136,10 @@ class Hands:
         return [g for g in groups if len(g)>1]
 
 
+    def from_string(reprs:str)->Hand:
+        return {Cards.from_string(s) for s in reprs.split(' ')}
+
+    # TODO: Consider using struct.pack
     def get_hand_value(cards:Hand):
         rank = Hands.get_hand_rank(cards)
         value = rank.value << 48

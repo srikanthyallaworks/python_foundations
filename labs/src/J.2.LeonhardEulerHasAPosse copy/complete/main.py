@@ -54,11 +54,10 @@ def show_info():
 
 
 deck = Cards.build_deck()
-i=0
+
+print('\n\n')
 while True:
-    i+=1
-    # if i%109001==0:
-    #     print(f'{i}')
+
     deal = random.sample(deck,10)
     hand_a=deal[:5]
     hand_b=deal[5:]
@@ -72,8 +71,8 @@ while True:
     # if value_b==value_a and rank_a != rank_b:
     #     print(f'\n\na:{hand_a} b:{hand_b}')    
         
-    if rank_a.value > 5 and value_b!=value_a and rank_a == rank_b:
+    if rank_a > HandRank.Straight and rank_a == rank_b:
         print(f'a:{hand_a}        {value_a}')
-        print(f'a:{hand_b}        {value_b}\n\n')
+        print(f'b:{hand_b}        {value_b}\n\n')
         
 
