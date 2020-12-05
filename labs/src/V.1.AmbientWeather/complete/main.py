@@ -34,8 +34,8 @@ import unicornhathd
 import time
 from PIL import Image
 from enum import Enum
-from forecast import get_local_forecast
-
+try: from .forecast import get_local_forecast
+except: pass
 
 rows=16
 columns=16
@@ -108,5 +108,6 @@ def main():
 
   
 if __name__ == "__main__":
-    main()
+  from forecast import get_local_forecast
+  main()
 
