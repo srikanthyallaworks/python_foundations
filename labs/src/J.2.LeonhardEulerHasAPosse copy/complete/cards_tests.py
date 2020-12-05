@@ -46,42 +46,42 @@ def string_to_value(value:str):
 class Test_Hands_Get_Hand_Value(unittest.TestCase):
 
   def test_high_card_scenario_1(self):
-    value_a = string_to_value('♣4 ♥6 ♦7 ♠8 ♣9')
-    value_b = string_to_value('♣3 ♥6 ♦7 ♠8 ♣9')
+    a = string_to_value('♣4 ♥6 ♦7 ♠8 ♣9')
+    b = string_to_value('♣3 ♥6 ♦7 ♠8 ♣9')
 
-    self.assertTrue(value_a>value_b)
+    self.assertTrue(a>b)
 
   def test_pair_scenario_0(self):
-    value_a = string_to_value('♣5 ♥5 ♦9 ♠4 ♣2')
-    value_b = string_to_value('♣4 ♥4 ♦A ♠2 ♣T')
+    a = string_to_value('♣5 ♥5 ♦9 ♠4 ♣2')
+    b = string_to_value('♣4 ♥4 ♦A ♠2 ♣T')
 
-    self.assertTrue(value_a>value_b)
+    self.assertTrue(a>b)
 
 
   def test_pair_scenario_1(self):
-    value_a = string_to_value('♣5 ♥5 ♦A ♠2 ♣3')
-    value_b = string_to_value('♦5 ♠5 ♣K ♣Q ♣T')
+    a = string_to_value('♣5 ♥5 ♦A ♠2 ♣3')
+    b = string_to_value('♦5 ♠5 ♣K ♣Q ♣T')
 
-    self.assertTrue(value_a>value_b)
+    self.assertTrue(a>b)
 
 
   def test_full_house_scenario_0(self):
-    value_a = string_to_value('♣A ♥A ♦A ♠Q ♣Q')
-    value_b = string_to_value('♦K ♠K ♣K ♣Q ♦Q')
+    a = string_to_value('♣A ♥A ♦A ♠Q ♣Q')
+    b = string_to_value('♦K ♠K ♣K ♣Q ♦Q')
 
-    self.assertTrue(value_a>value_b) 
+    self.assertTrue(a>b) 
 
   def test_two_pair_scenario_0(self):
-    value_a = string_to_value('♣A ♥A ♦3 ♠2 ♣2')
-    value_b = string_to_value('♦K ♠K ♣J ♣Q ♣Q')
+    a = string_to_value('♣A ♥A ♦3 ♠2 ♣2')
+    b = string_to_value('♦K ♠K ♣J ♣Q ♣Q')
 
-    self.assertTrue(value_a>value_b)        
+    self.assertTrue(a>b)        
 
   def test_two_pair_scenario_1(self):
-    value_a = string_to_value('♣A ♥A ♦3 ♠Q ♣Q')
-    value_b = string_to_value('♦A ♠A ♣2 ♣Q ♣Q')
+    a = string_to_value('♣A ♥A ♦3 ♠Q ♣Q')
+    b = string_to_value('♦A ♠A ♣2 ♣Q ♣Q')
 
-    self.assertTrue(value_a>value_b)        
+    self.assertTrue(a>b)        
 
 
 
