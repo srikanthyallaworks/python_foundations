@@ -139,6 +139,9 @@ class Hands:
     def from_string(reprs:str)->Hand:
         return {Cards.from_string(s) for s in reprs.split(' ')}
 
+    def from_chars_string(reprs:str)->Hand:
+        return {Cards.from_chars(s) for s in reprs.split(' ')}
+
     # TODO: Consider using struct.pack
     def get_hand_value(cards:Hand):
         rank = Hands.get_hand_rank(cards)

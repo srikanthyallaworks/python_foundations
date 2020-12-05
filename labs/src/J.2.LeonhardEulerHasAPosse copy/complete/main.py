@@ -37,9 +37,8 @@ def play():
 def show_info():
     def get_hands():
         for line in open(data_file):
-            chars = line.strip().split(' ')
-            yield  {Cards.from_chars(s) for s in chars[:5]}
-            yield  {Cards.from_chars(s) for s in chars[5:]}
+            yield  {Cards.from_chars(s) for s in line[:14]}
+            yield  {Cards.from_chars(s) for s in line[14:]}
 
 
     def get_hand_infos():
@@ -52,27 +51,28 @@ def show_info():
         print(info[1])
         print(info[2])
 
+def do_stuff():
+    deck = Cards.build_deck()
 
-deck = Cards.build_deck()
+    print('\n\n')
+    while True:
 
-print('\n\n')
-while True:
+        deal = random.sample(deck,10)
+        hand_a=deal[:5]
+        hand_b=deal[5:]
 
-    deal = random.sample(deck,10)
-    hand_a=deal[:5]
-    hand_b=deal[5:]
-
-    rank_a=Hands.get_hand_rank(hand_a)
-    value_a=Hands.get_hand_value(hand_a)
-    
-    value_b=Hands.get_hand_value(hand_b)
-    rank_b=Hands.get_hand_rank(hand_b)
-
-    # if value_b==value_a and rank_a != rank_b:
-    #     print(f'\n\na:{hand_a} b:{hand_b}')    
+        rank_a=Hands.get_hand_rank(hand_a)
+        value_a=Hands.get_hand_value(hand_a)
         
-    if rank_a > HandRank.Straight and rank_a == rank_b:
-        print(f'a:{hand_a}        {value_a}')
-        print(f'b:{hand_b}        {value_b}\n\n')
+        value_b=Hands.get_hand_value(hand_b)
+        rank_b=Hands.get_hand_rank(hand_b)
+
+        # if value_b==value_a and rank_a != rank_b:
+        #     print(f'\n\na:{hand_a} b:{hand_b}')    
+            
+        if rank_a > HandRank.Straight and rank_a == rank_b:
+            print(f'a:{hand_a}        {value_a}')
+            print(f'b:{hand_b}        {value_b}\n\n')
         
 
+play()

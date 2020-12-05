@@ -100,47 +100,45 @@ class Test_Hands_Get_Hand_Value(unittest.TestCase):
     self.assertTrue(value_a>value_b)           
 
 
+def string_to_rank(value:str):
+  hand = Hands.from_string(value)
+  return Hands.get_hand_rank(hand)
+
+
 class Test_Hands_Get_Hand_Rank(unittest.TestCase):
 
   def test_four_of_a_kind(self):
-    hand = Hands.from_string('♣5 ♥5 ♦5 ♠5 ♣9')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♥5 ♦5 ♠5 ♣9')
     expected = HandRank.FourOfAKind
     self.assertEqual(actual,expected)
 
   def test_two_pair(self):
-    hand = Hands.from_string('♣5 ♥5 ♦2 ♠2 ♣9')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♥5 ♦2 ♠2 ♣9')
     expected = HandRank.TwoPair
     self.assertEqual(actual,expected)
 
   def test_full_house(self):
-    hand = Hands.from_string('♣5 ♥5 ♦5 ♠2 ♣2')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♥5 ♦5 ♠2 ♣2')
     expected = HandRank.FullHouse
     self.assertEqual(actual,expected)
 
   def test_straight_flush(self):
-    hand = Hands.from_string('♣5 ♣6 ♣7 ♣8 ♣9')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♣6 ♣7 ♣8 ♣9')
     expected = HandRank.StraightFlush
     self.assertEqual(actual,expected)    
 
   def test_trips(self):
-    hand = Hands.from_string('♣5 ♥5 ♦5 ♠8 ♣9')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♥5 ♦5 ♠8 ♣9')
     expected = HandRank.ThreeOfAKind
     self.assertEqual(actual,expected)     
 
   def test_pair(self):
-    hand = Hands.from_string('♣5 ♥5 ♦2 ♠A ♣J')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♥5 ♦2 ♠A ♣J')
     expected = HandRank.Pair
     self.assertEqual(actual,expected)     
 
   def test_high_card(self):
-    hand = Hands.from_string('♣5 ♥6 ♦2 ♠A ♣J')
-    actual = Hands.get_hand_rank(hand)
+    actual = string_to_rank('♣5 ♥6 ♦2 ♠A ♣J')
     expected = HandRank.HighCard
     self.assertEqual(actual,expected)    
 
