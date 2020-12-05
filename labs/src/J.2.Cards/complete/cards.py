@@ -10,10 +10,8 @@ class Color(Enum):
     Red=1
     Black=2
 
-
-    
 @dataclass(frozen=True)
-class CardValue():
+class CardRank():
     symbol:str
     value:int
     @property
@@ -22,17 +20,15 @@ class CardValue():
             return 'T'
         return self.symbol
 
-class CardValues:
+class CardRanks:
     _symbols=('2','3','4','5','6','7','8','9','10','J','Q','K','A')
-    _lookup={s:CardValue(s,i+2) for i,s in enumerate(_symbols)}
+    _lookup={s:CardRank(s,i+2) for i,s in enumerate(_symbols)}
 
-    @classmethod
-    def from_string(cls,value:str)->CardValue:
-        return CardValues._lookup[value]
+    def from_string(value:str)->CardRank:
+        return CardRanks._lookup[value]
 
-    @classmethod
-    def get_all(cls):
-        return CardValues._lookup.values()
+    def get_all():
+        return CardRanks._lookup.values()
 
 SuiteIdentifier=Literal['♠','♥','♦','♣']
 
@@ -52,13 +48,12 @@ class Suites():
   diamonds=Suite('Diamonds','♦',Color.Red)
   clubs=Suite('Clubs','♣',Color.Black)
   all=(clubs,diamonds,hearts,spades)
+
   _symbol_lookup={s.symbol:s for s in all}
 
-  @staticmethod
   def get_all():
       return list(Suites.all)
 
-  @staticmethod
   def from_symbol(value:SuiteIdentifier)->Suite:
       return Suites._symbol_lookup[value]
 
@@ -69,22 +64,22 @@ class Suites():
 @dataclass(frozen=True)
 class Card():
     suite:Suite
-    value:CardValue
+    rank:CardRank
 
     @property
     def chars(self):
-        return self.value.character + self.suite.character
+        return self.rank.character + self.suite.character
 
     def __str__(self):
-        return self.suite.symbol + self.value.character
+        return self.suite.symbol + self.rank.character
 
     def __repr__(self):
-        return self.suite.symbol + self.value.character
+        return self.suite.symbol + self.rank.character
 
 
 @dataclass(frozen=True,init=False)
 class Cards():
-  _all = [Card(s,v) for s in Suites.get_all() for v in CardValues.get_all()]
+  _all = [Card(s,v) for s in Suites.get_all() for v in CardRanks.get_all()]
   _repr_lookup = {repr(c):c for c in _all}
   _chars_lookup = {c.chars:c for c in _all}  
 
@@ -125,14 +120,14 @@ class Hands:
         return 1 == len({c.suite for c in cards})
 
     def is_straight(cards:Hand)->bool:
-        values = sorted([c.value.value for c in cards])
+        values = sorted([c.rank.value for c in cards])
         for a,b in pairwise(values):
             if (a+1)!=b:
                 return False
         return True
 
     def get_sets(cards:Hand):
-        groups = [list(g) for k,g in groupby(cards,lambda c:c.value.value)]
+        groups = [list(g) for k,g in groupby(cards,lambda c:c.rank.value)]
         return [g for g in groups if len(g)>1]
 
 
@@ -149,22 +144,22 @@ class Hands:
         tie_breaker_cards=[]
 
         if rank in [HandRank.ThreeOfAKind,HandRank.Pair,HandRank.FourOfAKind]:
-            tuple_value = Hands.get_sets(cards)[0][0].value
-            tie_breaker_cards=sorted([c.value.value for c in cards if c.value!=tuple_value])
+            tuple_value = Hands.get_sets(cards)[0][0].rank
+            tie_breaker_cards=sorted([c.rank.value for c in cards if c.rank!=tuple_value])
             tie_breaker_cards.append(tuple_value.value)
 
         elif rank == HandRank.FullHouse:
             sets = Hands.get_sets(cards)
             triple = sets[0] if len(sets[0])==3 else sets[1]
-            tie_breaker_cards = [triple[0].value.value]
+            tie_breaker_cards = [triple[0].rank.value]
 
         elif rank == HandRank.TwoPair:
-            pairs = [s[0].value.value for s in Hands.get_sets(cards)]
-            tie_breaker_cards = [c.value.value for c in cards if c.value.value not in pairs]
+            pairs = [s[0].rank.value for s in Hands.get_sets(cards)]
+            tie_breaker_cards = [c.rank.value for c in cards if c.rank.value not in pairs]
             tie_breaker_cards += sorted(pairs)
         
         else:
-            tie_breaker_cards=sorted([c.value.value for c in cards])
+            tie_breaker_cards=sorted([c.rank.value for c in cards])
 
         for i,v in enumerate(tie_breaker_cards):
             value |= v << (6*i)
