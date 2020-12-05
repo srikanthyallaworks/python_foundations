@@ -1,9 +1,9 @@
-
 import random
 import os
+from typing import List
 
 
-def get_data_file():
+def get_data_file()->str:
   """Gets the absolute path of the file holding fortunes
 
   Returns:
@@ -11,20 +11,22 @@ def get_data_file():
   """
   this_directory = os.path.dirname(__file__)
   parent_directory = os.path.dirname(this_directory)
-  return os.path.join(parent_directory, '_data/fortunes.txt')
+  return os.path.join(parent_directory, '_data/people')
 
-def get_fortunes(data_file):
+
+def get_fortunes(data_file:str)->List[str]:
   """Gets a list of strings from a data file
 
   Returns:
       List[str]: Fortunes
   """
-  fortunes = []
-  for line in open(data_file):
-    fortunes.append(line)
-  return fortunes
+  fortune_text = ''
+  with open(data_file) as reader:
+    fortune_text = reader.read()
+  return [fortune.lstrip().rstrip() for fortune in fortune_text.split('%')]
 
-def get_fortune():
+
+def get_fortune()->str:
   """Gets a single fortune at random 
 
   Returns:
