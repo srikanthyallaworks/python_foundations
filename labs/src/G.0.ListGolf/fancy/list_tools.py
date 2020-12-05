@@ -14,7 +14,7 @@ from typing import List
 #  * 
 #  * @param {Array} xs 
 #  */
-def unique_elements_fancier(xs):
+def get_unique_elements(xs):
   seen = set()
 
   def already_seen(x):
@@ -34,16 +34,12 @@ def unique_elements_fancier(xs):
 #  * 
 #  * @param {Array} xs 
 #  */
-def clone_simpler(xs):
-  return xs.copy(xs)
+def get_clone(xs):
+  return xs[:]
 
 
 
-
-
-
-
-def partition_fancier(items,partition_count=1):
+def partition(items,partition_count=1):
   assert partition_count > 0
   assert partition_count < len(items)
   assert (len(items) % partition_count) ==0

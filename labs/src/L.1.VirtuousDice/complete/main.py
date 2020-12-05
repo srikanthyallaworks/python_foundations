@@ -1,67 +1,11 @@
 """
 
-# Lab: Virtuous Dice
-
-## Summary
-
-Simulate a one person game played with a pair of 6-sided dice.                
-              
-Rules:
-
-* __First roll__ 
-  - 7 or 11 results in a win.
-  - 2, 3, or 12 results in a loss.
-  - All other values roll again.
-* __Subsequent rolls__
-  - A total matching the first roll results in a win.
-  - 7 results in a loss.
-  - All other values roll again.
-
-## Requirements: 
-* Faithfully simulate the game
-* Output results to the console
-* No money changes hands
-    
-## Stretch Goals
-* Allow multiple players to play in succession.
-* Validate arguments and throw appropriate exceptions.
-* Write unit tests.
-* Build a graphical interface.
-
-## Hints 
-* Lorem 
-* Ipsum
-* Sic
 
 """
 
 import random
 from enum import Enum
-
-class Die:
-  def __init__(self,sideCount=6):
-    self.sideCount = sideCount
-    self.value=0
-  
-  def roll(self):
-    self.value = random.randrange(1,self.sideCount+1)
-
-
-class Cup:
-  def __init__(self,dice):
-    self.dice = dice
-
-  def roll(self):
-    for die in self.dice:
-      die.roll()
-  
-  def get_value(self):
-    sum = 0
-    for die in self.dice:
-      sum += die.value
-    return sum
-
-
+from dice import Die,Cup
 
 class Outcome(Enum):
   Undecided=0
@@ -73,13 +17,13 @@ class Game:
   def __init__(self,playerName):
     self.playerName=playerName
     self.outcome = Outcome.Undecided
-    self.cup= Cup([Die(), Die()])
+    self.cup= Cup()
   
 
   def shoot(self):
     self.cup.roll()
-    print(f'{self.playerName} rolls a {self.cup.get_value()}')
-    return self.cup.get_value()
+    print(f'{self.playerName} rolls a {self.cup.value}')
+    return self.cup.value
   
 
   def won(self):
@@ -107,11 +51,6 @@ class Game:
         self.won()
         
 
-
-
-
-
-
 class Table:
   def __init__(self,players):
     self.players = players
@@ -120,7 +59,6 @@ class Table:
   def getCurrentPlayer(self):
     playerCount = len (self.players)
     return self.players[self.gameNumber%playerCount]
-  
 
   def playGame(self):
     self.gameNumber += 1
@@ -128,8 +66,6 @@ class Table:
     game.play()
     print('\n')
   
-
-
 
 def main():
   table = Table(["Lizzy", "Kim", "Alphonso", "Martin"])
@@ -142,20 +78,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-
-
-
-
-
-
-
-
-# const table = new Table(["Dave", "Erin", "Heather","Varoon"]);
-
-# table.playGame();
-
-# console.log();
-# console.log('Lab complete!');
-# console.log();
