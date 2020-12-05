@@ -38,66 +38,52 @@ class Test_Hands_Is_Straight(unittest.TestCase):
     self.assertFalse(result)
 
 
+def string_to_value(value:str):
+  hand = Hands.from_string(value)
+  return Hands.get_hand_value(hand)
 
 
 class Test_Hands_Get_Hand_Value(unittest.TestCase):
 
   def test_high_card_scenario_1(self):
-    hand_a = Hands.from_string('♣4 ♥6 ♦7 ♠8 ♣9')
-    hand_b = Hands.from_string('♣3 ♥6 ♦7 ♠8 ♣9')
-
-    value_a = Hands.get_hand_value(hand_a)
-    value_b = Hands.get_hand_value(hand_b)
+    value_a = string_to_value('♣4 ♥6 ♦7 ♠8 ♣9')
+    value_b = string_to_value('♣3 ♥6 ♦7 ♠8 ♣9')
 
     self.assertTrue(value_a>value_b)
 
   def test_pair_scenario_0(self):
-    hand_a = Hands.from_string('♣5 ♥5 ♦9 ♠4 ♣2')
-    hand_b = Hands.from_string('♣4 ♥4 ♦A ♠2 ♣T')
-
-    value_a = Hands.get_hand_value(hand_a)
-    value_b = Hands.get_hand_value(hand_b)
+    value_a = string_to_value('♣5 ♥5 ♦9 ♠4 ♣2')
+    value_b = string_to_value('♣4 ♥4 ♦A ♠2 ♣T')
 
     self.assertTrue(value_a>value_b)
 
 
   def test_pair_scenario_1(self):
-    hand_a = Hands.from_string('♣5 ♥5 ♦A ♠2 ♣3')
-    hand_b = Hands.from_string('♦5 ♠5 ♣K ♣Q ♣T')
-
-    value_a = Hands.get_hand_value(hand_a)
-    value_b = Hands.get_hand_value(hand_b)
+    value_a = string_to_value('♣5 ♥5 ♦A ♠2 ♣3')
+    value_b = string_to_value('♦5 ♠5 ♣K ♣Q ♣T')
 
     self.assertTrue(value_a>value_b)
 
 
   def test_full_house_scenario_0(self):
-    hand_a = Hands.from_string('♣A ♥A ♦A ♠Q ♣Q')
-    hand_b = Hands.from_string('♦K ♠K ♣K ♣Q ♦Q')
-    print(Hands.get_hand_rank(hand_b))
-
-    value_a = Hands.get_hand_value(hand_a)
-    value_b = Hands.get_hand_value(hand_b)
+    value_a = string_to_value('♣A ♥A ♦A ♠Q ♣Q')
+    value_b = string_to_value('♦K ♠K ♣K ♣Q ♦Q')
 
     self.assertTrue(value_a>value_b) 
 
   def test_two_pair_scenario_0(self):
-    hand_a = Hands.from_string('♣A ♥A ♦3 ♠2 ♣2')
-    hand_b = Hands.from_string('♦K ♠K ♣J ♣Q ♣Q')
-
-    value_a = Hands.get_hand_value(hand_a)
-    value_b = Hands.get_hand_value(hand_b)
+    value_a = string_to_value('♣A ♥A ♦3 ♠2 ♣2')
+    value_b = string_to_value('♦K ♠K ♣J ♣Q ♣Q')
 
     self.assertTrue(value_a>value_b)        
 
   def test_two_pair_scenario_1(self):
-    hand_a = Hands.from_string('♣A ♥A ♦3 ♠Q ♣Q')
-    hand_b = Hands.from_string('♦A ♠A ♣2 ♣Q ♣Q')
+    value_a = string_to_value('♣A ♥A ♦3 ♠Q ♣Q')
+    value_b = string_to_value('♦A ♠A ♣2 ♣Q ♣Q')
 
-    value_a = Hands.get_hand_value(hand_a)
-    value_b = Hands.get_hand_value(hand_b)
+    self.assertTrue(value_a>value_b)        
 
-    self.assertTrue(value_a>value_b)           
+
 
 
 def string_to_rank(value:str):
