@@ -8,31 +8,13 @@ from typing import List
 
 
 
-def unique_elements(xs):
+def get_unique_elements(xs):
   uniques = []
   for x in xs:
     if x not in uniques:
       uniques.append(x)
   return uniques
 
-# /**
-#  * @brief Takes a list, returns a new
-#  *        list in the same order with no repeated values.
-#  * 
-#  * @param {Array} xs 
-#  */
-def unique_elements_fancier(xs):
-  seen = set()
-
-  def already_seen(x):
-    if x not in seen:
-      seen.add(x)
-      return False
-    return True
-
-  return [x for x in xs if not already_seen(x)]
-
-
 
 # /**
 #  * @brief Takes an array, returns a new
@@ -40,24 +22,15 @@ def unique_elements_fancier(xs):
 #  * 
 #  * @param {Array} xs 
 #  */
-def clone(xs):
+def get_clone(xs):
   cloned=[]
   for x in xs:
     cloned.append(x)
   return cloned
 
-# /**
-#  * @brief Takes an array, returns a new
-#  *        array with the same contents.
-#  * 
-#  * @param {Array} xs 
-#  */
-def clone_simpler(xs):
-  return xs.copy(xs)
 
 
-
-def partition(items,partition_count=1):
+def get_partitions(items,partition_count=1):
   assert partition_count > 0
   assert partition_count < len(items)
   assert (len(items) % partition_count) ==0
@@ -73,22 +46,12 @@ def partition(items,partition_count=1):
 
 
 
-def partition_fancier(items,partition_count=1):
-  assert partition_count > 0
-  assert partition_count < len(items)
-  assert (len(items) % partition_count) ==0
-
-  size = int(len(items) / partition_count)  
-  return [items[i:i + size] for i in range(0, len(items), size)]
-
-
-
-def flatten(items):
+def get_flattened(items):
   flattened = []
 
   for item in items:
     if isinstance(item,List):
-      flattened += flatten(item)
+      flattened += get_flattened(item)
     else:
       flattened.append(item)
 

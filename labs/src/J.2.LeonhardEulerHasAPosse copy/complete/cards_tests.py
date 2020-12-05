@@ -10,37 +10,10 @@ lines = ['5H 5C 6S 7S KD 2C 3S 8S 8D TD',
 '2H 2D 4C 4D 4S 3C 3D 3S 9S 9D']
 
 
-
-
-class Test_Hands_IsFlush(unittest.TestCase):
-
-  def test_works_for_real_flush(self):
-    hand = Hands.from_string('♣5 ♣6 ♣8 ♣9 ♣T')
-    result = Hands.is_flush(hand)
-    self.assertTrue(result)
-
-  def test_works_for_Non_flush(self):
-    hand = Hands.from_string('♣5 ♣6 ♣8 ♣9 ♦T')
-    result = Hands.is_flush(hand)
-    self.assertFalse(result)
-
-
-class Test_Hands_Is_Straight(unittest.TestCase):
-
-  def test_works_for_real_straight(self):
-    hand = Hands.from_string('♣5 ♣6 ♦7 ♣8 ♣9')
-    result = Hands.is_straight(hand)
-    self.assertTrue(result)
-
-  def test_works_for_missed_straight(self):
-    hand = Hands.from_string('♣5 ♣6 ♣8 ♣9 ♦T')
-    result = Hands.is_straight(hand)
-    self.assertFalse(result)
-
-
 def string_to_value(value:str):
   hand = Hands.from_string(value)
   return Hands.get_hand_value(hand)
+
 
 
 class Test_Hands_Get_Hand_Value(unittest.TestCase):

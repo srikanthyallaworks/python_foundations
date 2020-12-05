@@ -6,46 +6,40 @@
 
 import random
 
-class Die():
+class Die:
+  _side_count = 6
 
-  def __init__(self,sideCount):
-    self.sideCount=sideCount
+  def __init__(self):
     self._value = None
 
-  def get_value(self):
-    return self._value; 
-
-  def roll(self) ->int:
-    self._value = random.randrange(1,self.sideCount+1)
+  def roll(self):
+    self._value = random.randrange(1,Die._side_count+1)
     return self._value
 
 
-class Cup():
+class Cup:
+  _die_count=3
 
-  def __init__(self,dice):
-    self._dice = dice
+  def __init__(self):
+    self._dice = [Die() for i in range(Cup._die_count)]
 
-  def roll(self)->int:
+  def roll(self):
     total=0
     for die in self._dice:
       total+=die.roll()
     return total
 
-  def get_value(self)->int:
-    total=0
-    for die in self._dice:
-      total+=die.get_value()
-    return total
-
 
 def main():
-  cup = Cup([Die(6),Die(6),Die(6)])
-  while True:
-    result = cup.roll()
+  cup = Cup()
+  result = cup.roll()
+
+  while result != 18:
     print(f'Rolled a {result}')
-    if result==18:
-      print('You won!')
-      return  
+    result = cup.roll()
+
+  print("18! You won!")
+
 
 if __name__ == "__main__":
     main()
