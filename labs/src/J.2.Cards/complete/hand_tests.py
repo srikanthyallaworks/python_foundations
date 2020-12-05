@@ -1,5 +1,5 @@
 import unittest
-from cards import Suites,Suite,Color,Cards,Hands,HandRank
+from hand import Hands,HandRank
 import sys
 
 

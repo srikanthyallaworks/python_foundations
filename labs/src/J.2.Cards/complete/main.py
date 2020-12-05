@@ -6,7 +6,8 @@ from itertools import tee
 from collections import defaultdict
 import time
 import os
-from cards import Suites,Suite,Color,Cards,Hands,HandRank
+from deck import Deck
+from hand import Hands,HandRank
 
 
 this_directory = os.path.dirname(__file__)
@@ -21,8 +22,8 @@ def play():
     for line in open(data_file):
         chars = line.strip().split(' ')
 
-        hand_1 =  {Cards.from_chars(s) for s in chars[:5]}
-        hand_2 =  {Cards.from_chars(s) for s in chars[5:]}
+        hand_1 =  {Deck.from_chars(s) for s in chars[:5]}
+        hand_2 =  {Deck.from_chars(s) for s in chars[5:]}
 
         winner='Player 2'
         if Hands.get_hand_value(hand_1) >Hands.get_hand_value(hand_2):
@@ -37,8 +38,8 @@ def play():
 def show_info():
     def get_hands():
         for line in open(data_file):
-            yield  {Cards.from_chars(s) for s in line[:14]}
-            yield  {Cards.from_chars(s) for s in line[14:]}
+            yield  {Deck.from_chars(s) for s in line[:14]}
+            yield  {Deck.from_chars(s) for s in line[14:]}
 
 
     def get_hand_infos():
@@ -52,7 +53,7 @@ def show_info():
         print(info[2])
 
 def do_stuff():
-    deck = Cards.build_deck()
+    deck = Deck.build_deck()
 
     print('\n\n')
     while True:
