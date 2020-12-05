@@ -2,11 +2,18 @@ from abc import ABCMeta
 from dataclasses import dataclass
 from enum import IntEnum,Enum
 from typing import Tuple, Literal
-from custom_iter_tools import pairwise, groupby
-from deck import Card, Deck
 
 
-Hand = Tuple[Card,Card,Card,Card,Card]
+
+try:
+    from .custom_iter_tools import pairwise, groupby
+    from .deck import *
+except:
+    from deck import *
+    from custom_iter_tools import *
+
+
+Hand = Tuple[Card,Card,Card,Card]
 
 
 

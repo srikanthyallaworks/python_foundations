@@ -1,7 +1,9 @@
 import unittest
-from hand import Hands,HandRank
 import sys
-
+try:
+  from .hand import Hands,HandRank
+except:
+  pass
 
 lines = ['5H 5C 6S 7S KD 2C 3S 8S 8D TD',
 '5D 8C 9S JS AC 2C 5C 7D 8S QH',
@@ -110,4 +112,5 @@ def run_tests():
 
 
 if __name__ == '__main__':
-    run_tests()
+  from hand import Hands,HandRank
+  run_tests()

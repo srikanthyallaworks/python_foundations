@@ -1,21 +1,18 @@
-from dataclasses import dataclass
-from enum import Enum
-from typing import Tuple
-import random
-from itertools import tee
-from collections import defaultdict
-import time
 import os
-from deck import Deck
-from hand import Hands,HandRank
+try:
+    from .deck import Deck
+    from .hand import Hands
+except:
+    from deck import Deck
+    from hand import Hands
 
 
-this_directory = os.path.dirname(__file__)
-parent_directory = os.path.dirname(this_directory)
-data_file = os.path.join(parent_directory, '_data/p054_poker.txt')
+def get_data_file():
+    this_directory = os.path.dirname(__file__)
+    parent_directory = os.path.dirname(this_directory)
+    return os.path.join(parent_directory, '_data/p054_poker.txt')
 
-
-def play():
+def play(data_file):
     print('\n\n\n')
 
     p1_victory_count=0
@@ -35,45 +32,10 @@ def play():
     print(f'\n{p1_victory_count} wins for P1')
 
 
-def show_info():
-    def get_hands():
-        for line in open(data_file):
-            yield  {Deck.from_chars(s) for s in line[:14]}
-            yield  {Deck.from_chars(s) for s in line[14:]}
+def main():
+    data_file = get_data_file()
+    play(data_file)
 
 
-    def get_hand_infos():
-        for hand in get_hands():
-            yield hand,Hands.get_hand_value(hand),Hands.get_hand_rank(hand)
-
-    for info in sorted(get_hand_infos(),key=lambda h:h[1]):
-        print('\n\n')
-        print(info[0])
-        print(info[1])
-        print(info[2])
-
-def do_stuff():
-    deck = Deck.build_deck()
-
-    print('\n\n')
-    while True:
-
-        deal = random.sample(deck,10)
-        hand_a=deal[:5]
-        hand_b=deal[5:]
-
-        rank_a=Hands.get_hand_rank(hand_a)
-        value_a=Hands.get_hand_value(hand_a)
-        
-        value_b=Hands.get_hand_value(hand_b)
-        rank_b=Hands.get_hand_rank(hand_b)
-
-        # if value_b==value_a and rank_a != rank_b:
-        #     print(f'\n\na:{hand_a} b:{hand_b}')    
-            
-        if rank_a > HandRank.Straight and rank_a == rank_b:
-            print(f'a:{hand_a}        {value_a}')
-            print(f'b:{hand_b}        {value_b}\n\n')
-        
-
-play()
+if __name__=='__main__':
+    main()
