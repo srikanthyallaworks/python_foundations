@@ -1,38 +1,58 @@
-"""
 
-
-
-"""
 
 import random
 
+
 class Die:
-  _side_count = 6
 
+  def __init__(self,side_count=6):
+    """Sets up the class
+
+    Args:
+        side_count (int): Number of sides.
+    """
+    self._side_count=side_count
+
+  
   def roll(self):
-    return random.randrange(1,Die._side_count+1)
-    
+    """Rolls the die
+
+    Returns:
+        int: Some random value from 1 up to the number of sides 
+    """
+    return random.randrange(1,self._side_count+1)
+
+
 class Cup:
-  _die_count=3
+  def __init__(self,dice):
+    """Sets up the cup
 
-  def __init__(self):
-    self._dice = [Die() for i in range(Cup._die_count)]
+    Args:
+        dice (list[Die]): Dice to put in the cup
+    """
+    self._dice = dice
+
 
   def roll(self):
+    """Rolls all dice in the cup
+
+    Returns:
+        int: sum of the dice rolls
+    """
     total=0
     for die in self._dice:
       total+=die.roll()
     return total
 
 
-def main():
-  cup = Cup()
-  result = cup.roll()
 
+def main():
+  dice = (Die(6), Die(6),Die(12))
+  cup = Cup(dice)
+  result = cup.roll()
   while result != 18:
     print(f'Rolled a {result}')
     result = cup.roll()
-
   print("18! You won!")
 
 
