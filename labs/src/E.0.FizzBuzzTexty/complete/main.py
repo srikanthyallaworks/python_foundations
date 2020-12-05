@@ -1,18 +1,25 @@
-"""
-
-
-"""
-
-
 def toText(n):
-    divisibleBy3 = n % 3 == 0
-    divisibleBy5 = n % 5 == 0
-    if divisibleBy3 and divisibleBy5:
+    """Transforms this number to a fizbuzz message
+
+    Args:
+        n (int): number
+
+    Returns:
+        str: either a number, 'fizz', 'buzz', or 'fizzbuzz'
+    """
+
+    is_divisible_by_3 = n % 3 == 0
+    is_divisible_by_5 = n % 5 == 0
+    
+    if is_divisible_by_3 and is_divisible_by_5:
         return "fizzbuzz"
-    if divisibleBy3:
+    
+    if is_divisible_by_3:
         return "fizz"
-    if divisibleBy5:
+    
+    if is_divisible_by_5:
         return "buzz"
+        
     return str(n)
 
 

@@ -29,12 +29,30 @@ import time
 import math
 import itertools
 
-rows,columns=16,16
+rows,columns=unicornhathd.get_shape()
 
 def getPosition(n):
-  return (n%rows, math.floor(n/columns)%columns)
+    """Takes an integer, figures out the row/column
+
+    Args:
+        n (int): some number
+
+    Returns:
+        int,int: row,column tuple
+    """
+    return (n%rows, math.floor(n/columns)%columns)
+
 
 def toColor(n):
+    """Figures out what color the index is supposed to be
+
+    Args:
+        n (int): some number
+
+    Returns:
+        (int,int,int): RGB color. Will be white,red,blue,or green
+    """
+
     divisibleBy3 = n % 3 == 0
     divisibleBy5 = n % 5 == 0
     if divisibleBy3 and divisibleBy5:
@@ -45,8 +63,8 @@ def toColor(n):
         return (0,0,255)
     return (255,255,255)
 
-def main():
 
+def main():
   unicornhathd.brightness(1)
   unicornhathd.set_all(0,0,255)
 

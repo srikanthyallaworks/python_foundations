@@ -1,9 +1,13 @@
-"""
-
-
-"""
 
 def toText(n):
+    """Transforms this number to a fizbuzz message
+
+    Args:
+        n (int): number
+
+    Returns:
+        str: either a number, 'fizz', 'buzz', or 'fizzbuzz'
+    """
     return str(n)
 
 

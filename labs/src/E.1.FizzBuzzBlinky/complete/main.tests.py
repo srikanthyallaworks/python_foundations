@@ -1,5 +1,8 @@
 import unittest
-from main import toColor, getPosition
+try:
+    from .main import toColor, getPosition
+except:
+    from main import toColor, getPosition
 
 class TestToColor(unittest.TestCase):
 
