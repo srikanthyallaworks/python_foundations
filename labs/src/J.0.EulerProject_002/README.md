@@ -1,5 +1,3 @@
-"""
-
 # Project Euler #2
 
 ## Summary: 
@@ -25,37 +23,3 @@ Here's [problem #2](https://projecteuler.net/problem=2):
 
 ## Hints
 * Read up on [itertools](https://docs.python.org/3/library/itertools.html)
-
-"""
-import itertools
-import operator
-import functools
-
-limit = 4e6
-
-def is_within_limit(n):
-  return n<=limit
-
-def is_even(n):
-  return n%2==0
-
-@functools.lru_cache(maxsize=None)
-def fib(n):
-    if n < 2:
-        return n
-    return fib(n-1) + fib(n-2)
-
-fibs = (fib(n) for n in itertools.count())
-
-even_fibs = filter(is_even,fibs)
-
-even_fibs_below_limit = itertools.takewhile(is_within_limit, even_fibs)
-
-def get_euler02_solution():
-  return functools.reduce(operator.add, even_fibs_below_limit)
-
-def main():
-  print(f'Here is your answer: {get_euler02_solution()}')
-
-if __name__ == "__main__":
-    main()

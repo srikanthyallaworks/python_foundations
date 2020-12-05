@@ -1,5 +1,5 @@
 import unittest
-from main_functional import get_euler02_solution
+from main import get_euler02_solution
 
 
 class TestGetEuler02Solution(unittest.TestCase):
