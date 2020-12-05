@@ -1,52 +1,41 @@
-"""
-
-
-
-"""
-
 from roster import roster
 
 
+def run_surname_report():
+  """Prints a report of surnames shared by at least
+  3 people on the roster
+  """
+  print(f'\nHere are some common surnames:')  
+  surname_counts = {}
+  
+  # TODO: Magic goes here 
 
-def sort(frequencies):
-  return sorted(frequencies,key=lambda t: t[1],reverse=True)
-
-
-def frequencies_by(students,field):
-  counts = {}
-
-  # TODO: Consider using: from collections import defaultdict
-
-  def add(value):
-    if value not in counts:
-      counts[value]=0
-    counts[value] += 1
-
-  for student in roster:
-    add(student[field])
-
-  return sort(counts.items())
+  for surname,count in surname_counts.items():
+    print(f'\t{surname}: {count}')  
 
 
-def report_frequencies(frequencies):
-  for item in frequencies:
-    print(f'\t{item[0]}: {item[1]}')
+
+def run_class_size_report():
+  """Prints a report of the school population by grade
+  """
+
+  print(f'\nHere are the students in each grade:')  
+  grade_counts = { 1:0, 2:0, 3:0,4:0,5:0}
+
+  # TODO: Magic goes here 
+
+  for grade,count in grade_counts.items():
+    print(f'\t{grade}: {count}')   
+
 
 
 def main():
-  print(f'\nHere are the top 5 surnames:')
-  top_5_surnames = frequencies_by(roster,'surname')[:5]
-  report_frequencies(top_5_surnames)
+  print('\n=========================')
+  run_surname_report()
+  run_class_size_report()
+  print('\n=========================')
 
-  print(f'\nHere are the top 5 given names:')
-  top_5_givenNames = frequencies_by(roster,'givenName')[:5]
-  report_frequencies(top_5_givenNames)
 
-  print(f'\nHere are the class sizes:')  
-  class_sizes = sorted(frequencies_by(roster,'grade'),key=lambda pair: pair[0])
-  report_frequencies(class_sizes)
-
-  print(f'\n')
 
 if __name__ == "__main__":
     main()

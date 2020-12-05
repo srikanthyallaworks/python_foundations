@@ -1,54 +1,44 @@
-"""
-
-
-
-"""
-
 from roster import roster
 
-def sort(frequencies):
-  return sorted(frequencies,key=lambda t: t[1],reverse=True)
 
-
-def frequencies_by(students,field):
-  """[summary]
-
-  Args:
-      students: list of student records
-      field: field that we're counting on. i.e. 'surname'
-
-  Returns: Sorted list of frequent fields
+def run_surname_report():
+  """Prints a report of surnames shared by at least
+  3 people on the roster
   """
-  counts = {}
+  print(f'\nHere are some common surnames:')  
+  surname_counts = {}
   for student in roster:
-    value = student[field]
-    if value in counts:
-      counts[value]+=1
+    surname = student['surname']
+    if surname in surname_counts:
+      surname_counts[surname]+=1
     else:
-      counts[value]=1
+      surname_counts[surname]=1
 
-  return sort(counts.items())
+  for surname,count in surname_counts.items():
+    if count > 2:
+      print(f'\t{surname}: {count}')     
+  
 
+def run_class_size_report():
+  """Prints a report of the school population by grade
+  """
 
-def report_frequencies(frequencies):
-  for item in frequencies:
-    print(f'\t{item[0]}: {item[1]}')
+  print(f'\nHere are the students in each grade:')  
+  grade_counts = { 1:0, 2:0, 3:0,4:0,5:0}
+  for student in roster:
+    grade = student['grade']
+    grade_counts[grade]+=1
+  
+  for grade,count in grade_counts.items():
+    print(f'\t{grade}: {count}')   
+
 
 
 def main():
-  print(f'\nHere are the top 5 surnames:')
-  top_5_surnames = frequencies_by(roster,'surname')[:5]
-  report_frequencies(top_5_surnames)
-
-  print(f'\nHere are the top 5 given names:')
-  top_5_givenNames = frequencies_by(roster,'givenName')[:5]
-  report_frequencies(top_5_givenNames)
-
-  print(f'\nHere are the class sizes:')  
-  class_sizes = sorted(frequencies_by(roster,'grade'),key=lambda pair: pair[0])
-  report_frequencies(class_sizes)
-
-  print(f'\n')
+  print('\n=========================')
+  run_surname_report()
+  run_class_size_report()
+  print('\n=========================')
 
 
 
