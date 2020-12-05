@@ -1,8 +1,7 @@
 import unicornhathd
-import time, colorsys
-import numpy
-import math
+import colorsys
 import random
+import time
 
 
 unicornhathd.brightness(1)
@@ -29,4 +28,5 @@ while True:
   unicornhathd.set_pixel_hsv(row,column,h,s,v)
   if random.random()>.9:
     unicornhathd.show()
+    time.sleep(.1)
 
