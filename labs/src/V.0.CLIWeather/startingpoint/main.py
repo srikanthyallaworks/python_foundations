@@ -1,14 +1,17 @@
 import requests
 
 
-def get_geolocation_uri():
-  return 'http://www.geoplugin.net/json.gp'
 
-def get_gridlocation_uri(latitude,longitude):
-  return f'https://api.weather.gov/points/{latitude},{longitude}'
+class Uris:
 
-def get_forecast_uri(office,x,y):
-  return f'https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast'
+  def for_geolocation():
+    return 'http://www.geoplugin.net/json.gp'
+
+  def for_gridlocation(latitude,longitude):
+    return f'https://api.weather.gov/points/{latitude},{longitude}'
+
+  def for_forecast(office,x,y):
+    return f'https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast'
 
 
 
@@ -20,7 +23,7 @@ def get_geo_location():
   Returns:
       [GeoLocation]: Lat/Long guess of the current location
   """
-  uri = get_geolocation_uri()
+  uri = Uris.for_geolocation()
   response = requests.get(uri)
   if response.status_code != 200:
     raise ConnectionError("Couldn't Connect")
