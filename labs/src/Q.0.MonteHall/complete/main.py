@@ -21,6 +21,7 @@ def play_interactive():
 def main():
   print("\n\nLet's play a game!")
   play_interactive()
+  print()
 
 if __name__ == '__main__':
   main()

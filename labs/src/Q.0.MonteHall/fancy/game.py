@@ -45,6 +45,10 @@ class Game:
       msg+=f'Door #{i+1}: {door}\n'
     return msg
 
+  @property
+  def doors(self):
+      return self._doors
+
   def _reveal_goat(self):
     for d in self._doors:
       if d.state==DoorState.Closed:

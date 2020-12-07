@@ -6,9 +6,11 @@ try:
 except:
   from game import Game, Door, DoorState
 
+# Types for annotating functions
 Doors=Tuple[Door,Door,Door] 
 DoorNumber=Literal[0,1,2]
 DoorChooser=Callable[[Doors],DoorNumber]
+
 
 def choose_stick(doors:Doors)->DoorNumber:
   """Stays with the door initially chosen
@@ -39,7 +41,7 @@ def play_simulation(chooser:DoorChooser):
   initial_selection = random.choice([0,1,2])
   game.select_initial(initial_selection)
 
-  final_selection = chooser(game._doors)
+  final_selection = chooser(game.doors)
   prize = game.select_final(final_selection)
   return prize.value
 
