@@ -1,27 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
 import random
-from typing import Tuple, Iterable,Callable
-
-
-def first(predicate, iterable):
-  """find the first item matched by the predicate
-
-  Args:
-      predicate (Callable[[T],bool]): matches an item
-      iterable (Sequence[T]): Sequence
-
-  Raises:
-      Exception: Throws if nothing is found
-
-  Returns:
-      [type]: The matched item from the sequence
-  """
-
-  for item in iterable:
-    if predicate(item):
-      return item
-  raise Exception('Nothing found')
 
 
 @dataclass(frozen=True)
@@ -34,95 +13,66 @@ class DoorState(Enum):
   InitialSelection=1
   Open=2
 
-
 @dataclass
 class Door:
   prize:Prize 
   state=DoorState.Closed
 
-
-class Doors:
-  def build_random():
+class Game:
+  def __init__(self):
     prizes = [
       Prize('car',100),
       Prize('goat',0),
       Prize('goat',0)
     ]
     random.shuffle(prizes)
-    return [Door(prize) for prize in prizes]
+    self._doors= [Door(prize) for prize in prizes]
 
+  def print_state(self):
+    for i,d in enumerate(self._doors):
+      msg = f'Door #{i+1}: '
+      if(d.state==DoorState.Open):
+        msg += d.prize.name
+      elif d.state==DoorState.InitialSelection:
+        msg+= 'Closed *'
+      else:
+        msg+= 'Closed'
+      print(msg)
 
-def get_strategies(): 
-  """Gets a map of name: callable
-  """
+  def reveal_goat(self):
+    for d in self._doors:
+      if d.state==DoorState.Closed:
+        if d.prize.value==0:
+          d.state=DoorState.Open
+          return
 
-  def sticker(doors):
-    def is_stick_door(door:Door):
-      return door.state==DoorState.InitialSelection
-    return first(is_stick_door,doors)
+  def select_initial(self,door_number):
+    self._doors[door_number].state=DoorState.InitialSelection
 
-  def swapper(doors):
-    def is_swap_door(door:Door):
-      return door.state==DoorState.Closed
-    return first(is_swap_door,doors)
-
-  def randomr(doors):
-    closed_doors = [d for d in doors if d.state != DoorState.Open]
-    return random.choice(closed_doors)
-
-  strategies = [
-    sticker,
-    randomr,
-    swapper
-  ]
-  return {s.__name__:s for s in strategies}
-    
-
-
-class Game:
-
-  def pick_door_to_reveal(doors):
-    def is_candidate(door:Door):
-      return door.state!=DoorState.InitialSelection and door.prize.value==0
-    return first(is_candidate,doors)
-
-
-  def play(chooser)->int:
-    doors = Doors.build_random()
-
-    selection = random.choice(doors)
-    selection.state=DoorState.InitialSelection
-
-    revealed_goat = Game.pick_door_to_reveal(doors)
-    revealed_goat.state=DoorState.Open
-
-    final_selection = chooser(doors)
-    return final_selection.prize.value
+  def select_final(self,door_number):
+    return self._doors[door_number].prize
 
 
 
+print('\nLet us play!')
+
+game = Game()
+game.print_state()
+print('pick a door [1,2,3]')
+initial_door_no = int(input('? '))
+game.select_initial(initial_door_no-1)
+
+print('\nNow, monty will reveal a goat:')
+game.reveal_goat()
+game.print_state()
+
+print('\nMake your final selection [1,2,3]')
+final_door_no = int(input('? '))
+
+prize = game.select_final(final_door_no-1)
+
+print(f"You've won a {prize.name} worth ${prize.value}!!")
 
 
-def test_strategies(game_count=100):
-  strategies=get_strategies()
-  winnings={k:0 for k in strategies}
 
-  for i in range(game_count):
-    for k in strategies:
-      winnings[k]+=Game.play(strategies[k])
-
-  return winnings
-
-
-
-
-def main():
-  results = test_strategies()
-  print('\nResults:')
-  for n,v in results.items():
-    print(f'\t{n}:${v}')
-
-
-if __name__ == '__main__':
-  main()
 
