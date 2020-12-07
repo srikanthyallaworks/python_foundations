@@ -66,7 +66,8 @@ def play_interactive():
   game.reveal_goat()
   print(game)
 
-  print('\nMake your final selection [1,2,3]')
+  print('\nSwitch or stick?')
+  print('Make your final selection [1,2,3]')
   final_door_no = int(input('? '))
   prize = game.select_final(final_door_no-1)
   print(f"You've won a {prize.name} worth ${prize.value}!!")
