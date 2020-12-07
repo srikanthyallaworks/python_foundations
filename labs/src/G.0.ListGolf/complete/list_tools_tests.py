@@ -42,18 +42,17 @@ class TestPartition(unittest.TestCase):
 
   def test_wraps_for_single_partition(self):
     original = [2,11,'chicken',0,0,None]
-    partitions = get_partitions(original,1)
+    partitions = get_partitions(original,6)
     self.assertEqual(len(partitions),1)
     self.assertEqual(original,partitions[0])
 
   def test_splits_evenly(self):
     original = ['a','b','c','d','e','f']
     partitions = get_partitions(original,3)
-    self.assertEqual(len(partitions),3)
+    self.assertEqual(len(partitions),2)
 
-    self.assertEqual(original[0:2],partitions[0])
-    self.assertEqual(original[2:4],partitions[1])
-    self.assertEqual(original[4:6],partitions[2])
+    self.assertEqual(original[0:3],partitions[0])
+    self.assertEqual(original[3:6],partitions[1])
 
 
 class TestFlatten(unittest.TestCase):
