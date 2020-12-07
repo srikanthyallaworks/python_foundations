@@ -1,13 +1,14 @@
 from dataclasses import dataclass
 from enum import Enum
 import random
-from typing import Tuple
+from typing import Tuple, Iterable,Callable
 
 
 def first(predicate, iterable):
   for item in iterable:
     if predicate(item):
       return item
+  raise Exception('Nothing found')
 
 @dataclass(frozen=True)
 class Prize:
@@ -55,6 +56,9 @@ def choose_swap(doors):
     return door.state==DoorState.Closed
   return first(is_swap_door,doors)
 
+def choose_rando(doors):
+  closed_doors = [d for d in doors if d.state != DoorState.Open]
+  return random.choice(closed_doors)
 
 def pick_door_to_reveal(doors):
   def is_candidate(door:Door):
@@ -72,17 +76,38 @@ def play(chooser)->int:
   revealed_goat.state=DoorState.Open
 
   final_selection = chooser(doors)
-  print(f'Won a {final_selection.prize.name}!')
   return final_selection.prize.value
 
 
-total_winnings=0
-games_to_play=100
+
+@dataclass
+class Strategy:
+  name:str
+  choose:Callable
+
+strategies = [
+  Strategy('randomr',choose_rando),
+  Strategy('swapper',choose_swap),
+  Strategy('sticker', choose_stick)
+]
+
+def play_games(game_count=100):
+
+  winnings={s.name:0 for s in strategies}
+
+  for i in range(game_count):
+    for s in strategies:
+      winnings[s.name]+=play(s.choose)
+
+  return winnings
+
+def main():
+  results = play_games()
+  print('\nResults:')
+  for n,v in results.items():
+    print(f'\t{n}:${v}')
 
 
-for i in range(games_to_play):
-  
-  total_winnings += play(choose_stick)
-
-print(f'\n\nPer-game winnings: {total_winnings/games_to_play}')
+if __name__ == '__main__':
+  main()
 
