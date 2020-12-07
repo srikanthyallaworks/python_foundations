@@ -13,10 +13,35 @@ Here it is:
       * For the multiples of 5 print “Buzz”. 
       * For numbers which are multiples of both 3 and 5 print “FizzBuzz”.
 
+
 ## Requirements
-* Implement toText method.
-* Write the correct output--described above-- to the console.
-* Write specs to document and test.
+1. Implement toText method
+2. Write the correct output--described above-- to the console
+
+## Stretch Goals
+* Write unit tests to document and test.
 
 Notes:
 1. https://blog.codinghorror.com/why-cant-programmers-program/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Hints
+* Check out the built-in function [range](https://docs.python.org/3/library/functions.html#func-range).
+* To check divisibility, look into the operator [modulo](https://realpython.com/python-modulo-operator/)
+* For unit tests, here's a reference on the built-in framework [unittest](https://docs.python.org/3/library/unittest.html)
+
+

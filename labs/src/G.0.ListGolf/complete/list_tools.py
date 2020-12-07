@@ -1,12 +1,3 @@
-"""
-
-
-
-"""
-import math
-from typing import List
-
-
 
 def get_unique_elements(xs):
   uniques = []
@@ -16,12 +7,6 @@ def get_unique_elements(xs):
   return uniques
 
 
-# /**
-#  * @brief Takes an array, returns a new
-#  *        array with the same contents.
-#  * 
-#  * @param {Array} xs 
-#  */
 def get_clone(xs):
   cloned=[]
   for x in xs:
@@ -50,7 +35,7 @@ def get_flattened(items):
   flattened = []
 
   for item in items:
-    if isinstance(item,List):
+    if isinstance(item,list):
       flattened += get_flattened(item)
     else:
       flattened.append(item)
