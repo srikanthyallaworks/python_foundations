@@ -8,12 +8,6 @@ from typing import List
 
 
 
-# /**
-#  * @brief Takes a list, returns a new
-#  *        list in the same order with no repeated values.
-#  * 
-#  * @param {Array} xs 
-#  */
 def get_unique_elements(xs):
   seen = set()
 
@@ -26,20 +20,11 @@ def get_unique_elements(xs):
   return [x for x in xs if not already_seen(x)]
 
 
-
-
-# /**
-#  * @brief Takes an array, returns a new
-#  *        array with the same contents.
-#  * 
-#  * @param {Array} xs 
-#  */
 def get_clone(xs):
   return xs[:]
 
 
-
-def partition(items,partition_count=1):
+def get_partitions(items,partition_count=1):
   assert partition_count > 0
   assert partition_count < len(items)
   assert (len(items) % partition_count) ==0
@@ -49,12 +34,12 @@ def partition(items,partition_count=1):
 
 
 
-def flatten(items):
+def get_flattened(items):
   flattened = []
 
   for item in items:
     if isinstance(item,List):
-      flattened += flatten(item)
+      flattened += get_flattened(item)
     else:
       flattened.append(item)
 

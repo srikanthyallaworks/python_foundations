@@ -1,8 +1,9 @@
 import unittest
-from list_tools import get_unique_elements, get_clone
+try:
+  from .list_tools import *
+except:
+  from list_tools import *
 import sys
-
-
 
 class TestUniqueElements(unittest.TestCase):
 
@@ -37,36 +38,36 @@ class TestClone(unittest.TestCase):
     self.assertFalse(original is cloned)
 
 
-# class TestPartition(unittest.TestCase):
+class TestPartition(unittest.TestCase):
 
-#   def test_wraps_for_single_partition(self):
-#     original = [2,11,'chicken',0,0,None]
-#     partitions = partition(original,1)
-#     self.assertEqual(len(partitions),1)
-#     self.assertEqual(original,partitions[0])
+  def test_wraps_for_single_partition(self):
+    original = [2,11,'chicken',0,0,None]
+    partitions = get_partitions(original,1)
+    self.assertEqual(len(partitions),1)
+    self.assertEqual(original,partitions[0])
 
-#   def test_splits_evenly(self):
-#     original = ['a','b','c','d','e','f']
-#     partitions = partition(original,3)
-#     self.assertEqual(len(partitions),3)
+  def test_splits_evenly(self):
+    original = ['a','b','c','d','e','f']
+    partitions = get_partitions(original,3)
+    self.assertEqual(len(partitions),3)
 
-#     self.assertEqual(original[0:2],partitions[0])
-#     self.assertEqual(original[2:4],partitions[1])
-#     self.assertEqual(original[4:6],partitions[2])
-
-
-# class TestFlatten(unittest.TestCase):
-
-#   def test_single_dimension(self):
-#     expected = [1,2,3,4]
-#     actual = flatten(expected)
-#     self.assertEqual(expected,actual)
+    self.assertEqual(original[0:2],partitions[0])
+    self.assertEqual(original[2:4],partitions[1])
+    self.assertEqual(original[4:6],partitions[2])
 
 
-#   def test_lots_of_dimension(self):
-#     original = [1,[2,3],[],[[4]]]
-#     actual = flatten(original)
-#     self.assertEqual(actual, [1,2,3,4])
+class TestFlatten(unittest.TestCase):
+
+  def test_single_dimension(self):
+    expected = [1,2,3,4]
+    actual = get_flattened(expected)
+    self.assertEqual(expected,actual)
+
+
+  def test_lots_of_dimension(self):
+    original = [1,[2,3],[],[[4]]]
+    actual = get_flattened(original)
+    self.assertEqual(actual, [1,2,3,4])
 
 
 
