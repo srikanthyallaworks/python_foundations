@@ -1,11 +1,9 @@
-"""
-
-
-
-"""
-
-from roster import roster
 from collections import defaultdict
+
+try:
+  from .roster import roster
+except:
+  from roster import roster
 
 
 def get_frequencies_by(field):
@@ -47,6 +45,7 @@ def run_surname_report():
   print(f'\nHere are the top 5 surnames:')  
   report_top_5_frequencies('surname')
 
+  
 def run_givenName_report():
   print(f'\nHere are the top 5 given names:')  
   report_top_5_frequencies('givenName')

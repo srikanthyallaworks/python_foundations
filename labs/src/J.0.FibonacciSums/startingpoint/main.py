@@ -1,9 +1,3 @@
-"""
-
-
-"""
-from itertools import takewhile
-
 limit = 4e6
 
 def get_fibs():

@@ -1,20 +1,45 @@
 def is_even(n):
+  """Returns a value indicating whether the 
+  specified value is even
+
+  Args:
+      n (int): some number
+
+  Returns:
+      boolean: True means even; False means odd
+  """
   return n%2==0
 
 def get_fib_sequence(max):
-  fibs = [1]
+  """Gets a list containing the terms of the fibonacci
+  sequence up to and possibly including the specified max value.
+
+  Args:
+      max (int): Maximum size of term in the generated
+        sequence
+
+  Returns:
+      list[int]: Fibonacci sequence
+  """
   previous = 1
   current = 2
+  terms = [previous]
   while current<=max:
-    fibs.append(current)
+    terms.append(current)
     next = current + previous
     previous = current
     current = next
-  return fibs
+  return terms
 
-limit = 4e6
 
 def get_euler02_solution():
+  """Gets the solution.
+
+  Returns:
+      int: Sum of even terms of the fibonacci 
+      sequence below 4 million
+  """
+  limit = 4e6
   sum = 0
   for n in get_fib_sequence(limit):
     if is_even(n):
