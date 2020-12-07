@@ -1,48 +1,40 @@
 
 import random
-
+from typing import Callable, Tuple, Literal
 try:
   from .game import Game, Door, DoorState
 except:
   from game import Game, Door, DoorState
 
+Doors=Tuple[Door,Door,Door] 
+DoorNumber=Literal[0,1,2]
+DoorChooser=Callable[[Doors],DoorNumber]
 
-def get_strategies(): 
-  """Gets a map of name: callable
+def choose_stick(doors:Doors)->DoorNumber:
+  """Stays with the door initially chosen
   """
+  for door_number,door in enumerate(doors):
+    if door.state==DoorState.InitialSelection:
+      return door_number
+  raise Exception("Couldn't find the door I chose")
 
-  def sticker(doors):
-    """Stays with the door initially chosen
-    """
-    for door_number,door in enumerate(doors):
-      if door.state==DoorState.InitialSelection:
-        return door_number
-    raise Exception("Couldn't find the door I chose")
- 
-  def swapper(doors):
-    """Switches final selection to the other closed door
-    """
-    for door_number,door in enumerate(doors):
-      if door.state==DoorState.Closed:
-        return door_number
-    raise Exception("Couldn't find the door I chose")
- 
-  def randomr(doors):
-    """Randomly chooses a closed door
-    """
-    if random.random() > .5:
-      return sticker(doors)
-    return swapper(doors)
+def choose_swap(doors:Doors)->DoorNumber:
+  """Switches final selection to the other closed door
+  """
+  for door_number,door in enumerate(doors):
+    if door.state==DoorState.Closed:
+      return door_number
+  raise Exception("Couldn't find the door I chose")
 
-  strategies = [
-    sticker,
-    randomr,
-    swapper
-  ]
-  return {s.__name__:s for s in strategies}
-    
+def choose_random(doors:Doors)->DoorNumber:
+  """Randomly chooses a closed door
+  """
+  if random.random() > .5:
+    return choose_stick(doors)
+  return choose_swap(doors)
 
-def play_simulation(chooser):
+
+def play_simulation(chooser:DoorChooser):
   game = Game()
   initial_selection = random.choice([0,1,2])
   game.select_initial(initial_selection)
@@ -53,12 +45,16 @@ def play_simulation(chooser):
 
 
 def test_strategies(game_count=100):
-  strategies=get_strategies()
-  winnings={k:0 for k in strategies}
+  strategies={
+    'swapper':choose_swap,
+    'sticker':choose_stick,
+    'randomr':choose_random
+  }
+  winnings={label:0 for label in strategies}
 
   for i in range(game_count):
-    for k in strategies:
-      winnings[k]+=play_simulation(strategies[k])
+    for label in strategies:
+      winnings[label]+=play_simulation(strategies[label])
 
   return winnings
 
@@ -70,6 +66,7 @@ def main():
   print('\nResults:')
   for n,v in results.items():
     print(f'\t{n}:${v}')
+  print()
 
 if __name__ == '__main__':
   main()
