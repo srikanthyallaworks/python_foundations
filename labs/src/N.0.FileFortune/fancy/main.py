@@ -23,7 +23,7 @@ def get_fortunes(data_file:str)->List[str]:
   fortune_text = ''
   with open(data_file) as reader:
     fortune_text = reader.read()
-  return [fortune.lstrip().rstrip() for fortune in fortune_text.split('%')]
+  return [fortune.strip() for fortune in fortune_text.split('%')]
 
 
 def get_fortune()->str:

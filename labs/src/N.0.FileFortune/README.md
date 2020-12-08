@@ -3,25 +3,43 @@
 ## Summary
 You may be familiar with an old-school unix command-line
 application called [fortune](https://en.wikipedia.org/wiki/Fortune_(Unix)).
-The way it works is you type in 'fortune' and it gives you your fortune.
-
+The way it works is you type in `fortune` and it gives 
+you your fortune. Woo!
 
 
 
 ## Requirements: 
-* Lorem
-* Ipsum
-* Sic
-    
+* Parse the data file 
+  - Located here: `file _data/fortunes.txt`
+  - One fortune per line
+* Pick one at random
+* Display in on the terminal
+
+
+
 ## Stretch Goals
-* Lorem
-* Ipsum
-* Sic
+* Make sure to clean up resources
+* Anticipate the possibility of failure
+* Parse the actual `fortune` data file 
+  - Located here: `file _data/fortunes`
+  - Fortunes delimited by '%'
+  - Trim any whitespace
 
 
 
 
 
+
+
+
+
+
+
+
+
+## Hints
+* Read the docs on the built-in function [open](https://docs.python.org/3/library/functions.html#open)
+* And [files generally](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)
 
 
 
