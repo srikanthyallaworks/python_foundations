@@ -20,8 +20,8 @@ class Door:
     if self.state==DoorState.Open:
       return self.prize.name
     if self.state==DoorState.InitialSelection:
-      return 'Closed *'
-    return 'Closed'
+      return '🚪 *'
+    return '🚪'
 
 class GameState(Enum):
   NeedInitialSelection=0
@@ -32,9 +32,9 @@ class Game:
   def __init__(self):
     self._state = GameState.NeedInitialSelection
     prizes = [
-      Prize('car',100),
-      Prize('goat',0),
-      Prize('goat',0)
+      Prize('🚗',100),
+      Prize('🐐',0),
+      Prize('🐐',0)
     ]
     random.shuffle(prizes)
     self._doors= [Door(prize) for prize in prizes]
