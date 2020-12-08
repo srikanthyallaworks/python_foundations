@@ -1,17 +1,14 @@
 #!/usr/bin/env python
-
-"""
-
-
-
-"""
-
 import os
 import sys
 import time
 import subprocess
-from settings import get_settings
 import webbrowser
+
+try:
+  from .settings import get_settings
+except:
+  from settings import get_settings
 
 
 this_directory = os.path.dirname(__file__)

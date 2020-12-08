@@ -1,15 +1,12 @@
-"""
-
-
-
-"""
-
 import unicornhathd
 import time
 import requests
-from settings import get_settings
-from status import Status
-
+try:
+  from .settings import get_settings
+  from .status import Status
+except:
+  from settings import get_settings
+  from status import Status
 
 settings= get_settings()
 

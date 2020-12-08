@@ -1,15 +1,13 @@
 #!/usr/bin/env python
-
-"""
-
-
-
-"""
-
 from flask import Flask, render_template,request
-from settings import get_settings
-from status import Status
 from dataclasses import dataclass
+
+try:
+  from .settings import get_settings
+  from .status import Status
+except:
+  from settings import get_settings
+  from status import Status
 
 @dataclass
 class State():
