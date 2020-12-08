@@ -19,10 +19,9 @@ Here's [problem #2](https://projecteuler.net/problem=2):
 
 
 ## Product Requirements: 
-* Complete the generator function 
-* Complete the generator function 
-* Use a filter to get even numbers
-* Use reduce to get the sum
+* Lorem
+* Ipsum
+* Sic
 
 
 ## Hints
