@@ -1,3 +1,53 @@
+# Lab: File Fortune
+
+## Summary
+Lorem ipsum sic dolor
+
+## Requirements: 
+* Lorem
+* Ipsum
+* Sic
+    
+## Stretch Goals
+* Lorem
+* Ipsum
+* Sic
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Hints 
+* Lorem 
+* Ipsum
+* Sic
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 https://realpython.com/api-integration-in-python/
 https://en.wikipedia.org/wiki/Fortune_(Unix)
 
