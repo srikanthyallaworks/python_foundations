@@ -1,7 +1,12 @@
 # Lab: File Fortune
 
 ## Summary
-Lorem ipsum sic dolor
+You may be familiar with an old-school unix command-line
+application called [fortune](https://en.wikipedia.org/wiki/Fortune_(Unix)).
+The way it works is you type in 'fortune' and it gives you your fortune.
+
+
+
 
 ## Requirements: 
 * Lorem
