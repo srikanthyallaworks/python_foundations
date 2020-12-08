@@ -28,7 +28,7 @@ def get_cat_fortune()->str:
   return json['text']
 
 
-get_fortune = get_cat_fortune
+get_fortune = get_kanye_fortune
 
 
 def main():
