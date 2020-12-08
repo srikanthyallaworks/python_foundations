@@ -25,7 +25,7 @@
   <div class ='dek-card-title'>About Me</div>
   <div class='dek-card-body'><ul>
 <li>Software generalist</li>
-<li>Modern JavaScript enthusiast</li>
+<li>Modern Python enthusiast</li>
 <li>Recovering Microsoft partisan</li>
 <li><strong><em>Contact info in Zoom Chat</em></strong></li>
 </ul>
@@ -96,6 +96,7 @@
 <li>Questions</li>
 <li>Cameras</li>
 </ul>
+<h4 id="no-eye-contact-makes-this-even-more-important">No eye-contact makes this even <strong>more</strong> important</h4>
 </div>
   
 </section>
@@ -123,11 +124,10 @@
   <div class ='dek-card-title'>Tools You <strong><em>Want</em></strong></div>
   <div class='dek-card-body'><img src='assets/visual_Studio_Code_icon.png'>
 
-
 <ul>
 <li><p><a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
 <ul>
-<li>Python Extension: e.g. <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a></li>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote SSH</a></li>
 </ul>
 </li>
@@ -140,14 +140,6 @@
 </ul>
 </div>
   
-      <aside class='notes'>
-        <ul>
-<li>xkcd on git: <a href="https://xkcd.com/1597/">https://xkcd.com/1597/</a></li>
-<li>assets/xkcd_git.png</li>
-</ul>
-
-      </aside>
-    
 </section>
 <section class='dek-content'>
   <div class ='dek-card-title'>Materials</div>
@@ -155,7 +147,7 @@
 
 <ul>
 <li>Slides in HTML</li>
-<li>Labs are pure pythoon</li>
+<li>Labs are pure Pythoon</li>
 <li>Won&#39;t last forever</li>
 <li>Moving target</li>
 <li>Live here:
@@ -305,7 +297,6 @@
 <ul>
 <li>High-Level</li>
 <li>Interpreted (mostly)</li>
-<li>Sic</li>
 </ul>
 </div>
   
@@ -383,18 +374,39 @@ Over the years, the Python community has come to use the adjective
     
 </section>
 <section class='dek-content'>
-  <div class ='dek-card-title'>Other Good Parts</div>
-  <div class='dek-card-body'><ul>
-<li>Friendly syntax</li>
-<li><a href="https://www.python.org/dev/peps/pep-0206/">Batteries included</a></li>
-<li><a href="https://github.com/OrkoHunter/python-easter-eggs">Easter Eggs</a></li>
+  <div class ='dek-card-title'>Batteries included</div>
+  <div class='dek-card-body'><img src='assets/stack-battery.jpg' style='height:70%;width:auto'>
+
+<blockquote style='font-size:75%;width:60%'>
+<p>
+Python has long maintained the philosophy of "batteries included" 
+--Having a rich and versatile standard library which is immediately
+available, without making the user download separate packages.
+</p>
+</blockquote>
+
+</div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://www.python.org/dev/peps/pep-0206/">https://www.python.org/dev/peps/pep-0206/</a></li>
 </ul>
-<pre><code  class="hljs python line-numbers">def <span class="token function">play_hand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
-    deck <span class="token operator">=</span> <span class="token function">get_deck</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    random<span class="token punctuation">.</span><span class="token function">shuffle</span><span class="token punctuation">(</span>deck<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> p <span class="token keyword">in</span> players<span class="token operator">:</span>
-        hand<span class="token punctuation">,</span> deck<span class="token operator">=</span>deck<span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>deck<span class="token punctuation">[</span><span class="token number">5</span><span class="token operator">:</span><span class="token punctuation">]</span>
-        <span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">'{p} gets {hand} - {get_hand_type(hand)}'</span><span class="token punctuation">)</span></code></pre></div>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Friendly syntax</div>
+  <div class='dek-card-body'><ul>
+<li>Significant indentation</li>
+<li>Low-mystery<pre><code  class="hljs python line-numbers">def <span class="token function">play_hand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+  deck <span class="token operator">=</span> <span class="token function">get_deck</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  random<span class="token punctuation">.</span><span class="token function">shuffle</span><span class="token punctuation">(</span>deck<span class="token punctuation">)</span>
+  <span class="token keyword">for</span> p <span class="token keyword">in</span> players<span class="token operator">:</span>
+      hand<span class="token punctuation">,</span> deck<span class="token operator">=</span>deck<span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>deck<span class="token punctuation">[</span><span class="token number">5</span><span class="token operator">:</span><span class="token punctuation">]</span>
+      <span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">'{p} gets {hand}'</span><span class="token punctuation">)</span></code></pre></li>
+</ul>
+</div>
   
 </section>
 <section class='dek-content'>
@@ -424,7 +436,7 @@ Over the years, the Python community has come to use the adjective
 <section class='dek-content'>
   <div class ='dek-card-title'>Firing up the <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a></div>
   <div class='dek-card-body'><ul>
-<li>For Linux/MacOS<pre><code  class="hljs shell line-numbers">python3</code></pre></li>
+<li>For Linux/MacOS<pre><code  class="hljs shell line-numbers">  python3</code></pre></li>
 <li>For Windows</li>
 </ul>
 <img src='assets/sc-win-interpreter.png' style='width:80%'>
@@ -437,11 +449,11 @@ Over the years, the Python community has come to use the adjective
 <section class='dek-content'>
   <div class ='dek-card-title'>Using <a href="https://docs.python.org/3/library/idle.html">IDLE</a></div>
   <div class='dek-card-body'><ul>
-<li>Integrated Development Environment</li>
+<li><strong>I</strong>ntegrated <strong>D</strong>evelopment <strong>E</strong>nvironment</li>
 <li>Comes with Python</li>
 <li>Not very good</li>
 </ul>
-<img src='assets/sc-win-idle.png' style='width:70%'>
+<img src='assets/sc-win-idle.png' style='width:60%'>
 
 
 
@@ -506,26 +518,163 @@ y <span class="token operator">=</span> <span class="token number">2</span> <spa
   <div class='dek-card-body'><pre><code  class="hljs python line-numbers">x<span class="token punctuation">,</span> y <span class="token operator">=</span> True<span class="token punctuation">,</span> False
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x or y<span class="token punctuation">)</span> <span class="token operator">==</span> True<span class="token punctuation">)</span> # True
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x and y<span class="token punctuation">)</span> <span class="token operator">==</span> False<span class="token punctuation">)</span> # True
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>not y<span class="token punctuation">)</span> <span class="token operator">==</span> True<span class="token punctuation">)</span> # True</code></pre><p>Notes:* <a href="https://www.freecodecamp.org/news/truthy-and-falsy-values-in-python/">https://www.freecodecamp.org/news/truthy-and-falsy-values-in-python/</a></p>
-<ul>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>not y<span class="token punctuation">)</span> <span class="token operator">==</span> True<span class="token punctuation">)</span> # True</code></pre></div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://www.freecodecamp.org/news/truthy-and-falsy-values-in-python/">https://www.freecodecamp.org/news/truthy-and-falsy-values-in-python/</a></li>
 <li><a href="https://stackoverflow.com/questions/39983695/what-is-truthy-and-falsy-how-is-it-different-from-true-and-false">https://stackoverflow.com/questions/39983695/what-is-truthy-and-falsy-how-is-it-different-from-true-and-false</a></li>
 </ul>
-</div>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Strings with <a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></div>
+  <div class='dek-card-body'><ul>
+<li>Delimited with &#39; or &quot;</li>
+<li>Immutable</li>
+<li>Unicode support</li>
+</ul>
+<pre><code  class="hljs python line-numbers">message1 <span class="token operator">=</span> <span class="token string">"I've got an apostraphe."</span>
+message2 <span class="token operator">=</span> 'Dude<span class="token punctuation">.</span> <span class="token string">"Big Changes"</span> are coming<span class="token punctuation">.</span>"
+message3 <span class="token operator">=</span> <span class="token string">"I'm a 🐐 and "</span> <span class="token operator">+</span> message1</code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Format Strings</div>
+  <div class='dek-card-body'><ul>
+<li>For interpolation prefix with <strong><em>f</em></strong></li>
+<li>Put information in brackets <strong><em>{}</em></strong></li>
+</ul>
+<pre><code  class="hljs python line-numbers">id<span class="token operator">=</span><span class="token number">11</span>
+name <span class="token operator">=</span> <span class="token string">'Sandy'</span>
+<span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">"Hello {name} your id is: {id}"</span><span class="token punctuation">)</span></code></pre></div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://docs.python.org/3/library/string.html">https://docs.python.org/3/library/string.html</a></li>
+<li><a href="https://realpython.com/python-formatted-output/">https://realpython.com/python-formatted-output/</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Stupid <code>str</code> tricks</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token string">'Dr. Who'</span><span class="token punctuation">.</span><span class="token function">removeprefix</span><span class="token punctuation">(</span><span class="token string">'Dr. '</span><span class="token punctuation">)</span>
+<span class="token string">'1,2,3'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span>    
+<span class="token string">'Hello world'</span><span class="token punctuation">.</span><span class="token function">title</span><span class="token punctuation">(</span><span class="token punctuation">)</span> </code></pre></div>
+  
+      <aside class='notes'>
+        <ul>
+<li>TODO: Lab/mini lab to find palindromes</li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>None</div>
+  <div class='dek-card-body'><ul>
+<li>Represents the absence of a value</li>
+<li>Equivalent to <code>null</code> in C++,Java,etc</li>
+<li>Implicit function return value </li>
+</ul>
+<pre><code  class="hljs python line-numbers">x <span class="token operator">=</span> None
+y <span class="token operator">=</span> <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token keyword">if</span> y <span class="token operator">==</span> None<span class="token operator">:</span>
+  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'Y is none too!'</span><span class="token punctuation">)</span></code></pre></div>
+  
+      <aside class='notes'>
+        <p><a href="https://www.w3schools.com/python/ref_keyword_none.asp">https://www.w3schools.com/python/ref_keyword_none.asp</a></p>
+
+      </aside>
+    
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Containers</div>
+  <div class='dek-card-body'></div>
   
 </section>
 <section class='dek-content'>
   <div class ='dek-card-title'><a href="https://docs.python.org/3/library/stdtypes.html#list">List</a></div>
-  <div class='dek-card-body'><pre><code  class="hljs python line-numbers">words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'here'</span><span class="token punctuation">,</span><span class="token string">'are'</span><span class="token punctuation">,</span><span class="token string">'words'</span><span class="token punctuation">]</span>
-numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">938</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">33</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">]</span>
-stuff <span class="token operator">=</span> words <span class="token operator">+</span> numbers
-<span class="token function">print</span><span class="token punctuation">(</span>stuff<span class="token punctuation">)</span></code></pre></div>
+  <div class='dek-card-body'><ul>
+<li>Delimited with square brackets <strong><em>[]</em></strong></li>
+<li>Mutable</li>
+<li>Holds anything</li>
+</ul>
+<pre><code  class="hljs python line-numbers">words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'here'</span><span class="token punctuation">,</span><span class="token string">'are'</span><span class="token punctuation">,</span><span class="token string">'words'</span><span class="token punctuation">]</span>
+word_count <span class="token operator">=</span> <span class="token function">len</span><span class="token punctuation">(</span>words<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">"There's {word_count} words"</span><span class="token punctuation">)</span></code></pre></div>
   
 </section>
 <section class='dek-content'>
-  <div class ='dek-card-title'><a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">dict</a></div>
+  <div class ='dek-card-title'>Indexing</div>
+  <div class='dek-card-body'><ul>
+<li>Access elements with brackets <strong><em>[]</em></strong></li>
+<li>Zero based</li>
+<li>Negative indexing: relative to the end</li>
+</ul>
+<pre><code  class="hljs python line-numbers">xs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'it'</span><span class="token punctuation">,</span><span class="token string">'is'</span><span class="token punctuation">,</span><span class="token string">'like'</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'weasel'</span><span class="token punctuation">]</span>
+first_thing <span class="token operator">=</span> xs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+second_thing <span class="token operator">=</span> xs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+last_thing <span class="token operator">=</span> xs<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Adding Elements</div>
+  <div class='dek-card-body'><ul>
+<li>Add single element with <code>append</code></li>
+<li>Add multiple elements with <code>extend</code><ul>
+<li>Or the operator <code>+=</code></li>
+</ul>
+</li>
+</ul>
+<pre><code  class="hljs python line-numbers">nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+nums<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'three'</span><span class="token punctuation">)</span>
+nums <span class="token operator">+=</span> <span class="token punctuation">[</span><span class="token string">'four'</span><span class="token punctuation">,</span><span class="token string">'five'</span><span class="token punctuation">]</span>
+nums<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'six'</span><span class="token punctuation">,</span><span class="token string">'seven'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Removing Elements</div>
+  <div class='dek-card-body'><ul>
+<li>Remove by <em>index</em> with <code>pop</code></li>
+<li>Remove by <em>value</em> with <code>remove</code></li>
+</ul>
+<pre><code  class="hljs python line-numbers">bag <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token string">'Chicken'</span><span class="token punctuation">,</span><span class="token string">'Lizard'</span><span class="token punctuation">]</span>
+bird <span class="token operator">=</span> bag<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+bag<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'Lizard'</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Membership with <a href="">in</a></div>
   <div class='dek-card-body'><ul>
 <li>Lorem</li>
 <li>Ipsum</li>
+</ul>
+<pre><code  class="hljs python line-numbers">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+l<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Sorting</div>
+  <div class='dek-card-body'><ul>
+<li>Use the <code>sort</code> method</li>
+<li>Works in-place</li>
+</ul>
+<pre><code  class="hljs python line-numbers">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
+l<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'><a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict">Dictionary</a></div>
+  <div class='dek-card-body'><ul>
+<li>Stores key / value pairs</li>
+<li>Delimited with curly brackets <strong><em>{}</em></strong></li>
 </ul>
 <pre><code  class="hljs python line-numbers">employee <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'id'</span><span class="token operator">:</span><span class="token number">2399</span><span class="token punctuation">,</span>
@@ -545,22 +694,6 @@ stuff <span class="token operator">=</span> words <span class="token operator">+
 </ul>
 </div>
   
-</section>
-<section class='dek-content'>
-  <div class ='dek-card-title'><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></div>
-  <div class='dek-card-body'><ul>
-<li>Lorem</li>
-<li></li>
-</ul>
-</div>
-  
-      <aside class='notes'>
-        <ul>
-<li>TODO: Lab/mini lab to find palindromes</li>
-</ul>
-
-      </aside>
-    
 </section>
 <section class='dek-content'>
   <div class ='dek-card-title'>Integers with</div>
