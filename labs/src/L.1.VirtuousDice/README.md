@@ -5,7 +5,6 @@
 Simulate a one person game played with a pair of 6-sided dice.                
               
 Rules:
-
 * __First roll__ 
   - 7 or 11 results in a win.
   - 2, 3, or 12 results in a loss.

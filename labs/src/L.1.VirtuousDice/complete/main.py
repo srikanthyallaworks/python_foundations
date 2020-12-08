@@ -1,7 +1,7 @@
 try: 
   from .dice import Die,Cup
 except:
-  pass
+  from dice import Die,Cup
 
 
 
@@ -42,11 +42,12 @@ class Game:
 
 
 def main():
+  print()
   game = Game('Lizzy')
   game.play()
+  print()
 
 
 if __name__ == "__main__":
-  from dice import Die,Cup
   main()
 
