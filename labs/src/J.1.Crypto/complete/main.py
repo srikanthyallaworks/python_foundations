@@ -22,18 +22,17 @@ def crypt(key: bytes, data: bytes) -> bytes:
 def to_bytes(text: str) -> List[int]:
     return [ord(b) for b in text]
 
-
 def from_bytes(bs: List[int]) -> str:
     return bytes(bs).decode('ascii')
 
 def potential_keys():
     letters = 'abcdefghijklmnopqrstuvwxyz'
-    return [(l[0] + l[1] + l[2]) for l in permutations(letters,3)]
+    return (f'{a}{b}{c}' for a,b,c in permutations(letters,3))
 
-def looks_like_real_text(text:str):
+def looks_like_real_text(text:str)->bool:
     return ' the ' in text
 
-def get_plaintext(encrypted):
+def get_plaintext(encrypted:bytes)->str:
     for key in potential_keys():
         key_bytes = to_bytes(key)
         plaintext_bytes = crypt(key_bytes, encrypted)
