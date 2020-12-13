@@ -25,7 +25,7 @@ class Game:
   
   def shoot(self):
     self.cup.roll()
-    print(f'{self.playerName} rolls a {self.cup.value}')
+    print(f'{self.playerName} rolls {self.cup} for {self.cup.value}')
     return self.cup.value
   
   def finish_game(self,outcome:Outcome):

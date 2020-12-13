@@ -14,7 +14,7 @@ Rules:
   - 7 results in a loss.
   - All other values roll again.
 
-## Requirements: 
+## Requirements
 * Faithfully simulate the game
 * Output results to the console
 * No money changes hands
@@ -23,7 +23,9 @@ Rules:
 * Allow multiple players to play in succession.
 * Validate arguments and throw appropriate exceptions.
 * Write unit tests.
-* Build a graphical interface.
+* Spruce up the user interface
+  - Low budget: Unicode ⚀ ⚁ ⚂ ⚃ ⚄ ⚅
+
 
 ## Hints 
 * Lorem 

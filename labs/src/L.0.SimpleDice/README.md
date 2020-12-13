@@ -24,8 +24,10 @@ Game play:
 
 
 
-
-
+## Stretch Goals
+* Determine the average number of rolls per game
+* Load the dice-- in a subtle way-- to increase or decrease the 
+  average rolls per game
 
 
 
