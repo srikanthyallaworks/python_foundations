@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import IntEnum,Enum
-from typing import Tuple, Literal
+from typing import Tuple
 
 
 
@@ -34,10 +34,10 @@ class CardRanks:
         return CardRanks._lookup.values()
 
 
+# Note: >=3.8 supports this:
+#     SuiteIdentifier=Literal['♠','♥','♦','♣']
 
-SuiteIdentifier=Literal['♠','♥','♦','♣']
-
-
+SuiteIdentifier=chr
 
 @dataclass(frozen=True)
 class Suite:
