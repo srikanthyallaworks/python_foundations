@@ -65,7 +65,6 @@ def update():
 
 
 def run():
-  unicornhathd.set_rotation(90)
   while True:
     update()
     time.sleep(poll_frequency)
