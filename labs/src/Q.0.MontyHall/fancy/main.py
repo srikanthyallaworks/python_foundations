@@ -1,6 +1,6 @@
 
 import random
-from typing import Callable, Tuple, Literal
+from typing import Callable, Tuple
 try:
   from .game import Game, Door, DoorState
 except:
@@ -8,7 +8,7 @@ except:
 
 # Types for annotating functions
 Doors=Tuple[Door,Door,Door] 
-DoorNumber=Literal[0,1,2]
+DoorNumber=int
 DoorChooser=Callable[[Doors],DoorNumber]
 
 

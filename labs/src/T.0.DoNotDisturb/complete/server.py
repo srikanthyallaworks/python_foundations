@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request, jsonify
 from dataclasses import dataclass
 
 try:
@@ -23,19 +23,22 @@ def serve(state:State,settings):
 
   @app.route('/status', methods=['GET'])
   def get_status() -> 'json':
-    return {'status':state.status}
+    print(f'get: {state.status.value}')
+    return jsonify({'status':state.status.value})
 
   @app.route('/status', methods=['POST'])
   def set_status() -> 'json':
-    state.status = request.get_json()['status']
-    return {"result":"ok"}
+    value = request.get_json()['status']
+    print(f'set: {value}')
+    state.status = Status(value)
+    return jsonify({"result":"ok"})
 
-  app.run(port=settings.port)
+  app.run(port=settings.port,host='0.0.0.0')
 
 
 
 def main():
-  state = State("green")
+  state = State(Status.Green)
   settings=get_settings()
   serve(state, settings)
 

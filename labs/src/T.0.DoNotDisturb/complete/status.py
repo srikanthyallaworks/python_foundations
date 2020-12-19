@@ -1,4 +1,8 @@
-#!/usr/bin/env python
-from typing import Literal
+from enum import Enum
 
-Status=Literal["red","yellow","green"]
+
+class Status(Enum):
+  Red='red'
+  Green='green'
+  Yellow='yellow'
+
