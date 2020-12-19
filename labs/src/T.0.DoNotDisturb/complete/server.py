@@ -23,13 +23,11 @@ def serve(state:State,settings):
 
   @app.route('/status', methods=['GET'])
   def get_status() -> 'json':
-    print(f'get: {state.status.value}')
     return jsonify({'status':state.status.value})
 
   @app.route('/status', methods=['POST'])
   def set_status() -> 'json':
     value = request.get_json()['status']
-    print(f'set: {value}')
     state.status = Status(value)
     return jsonify({"result":"ok"})
 
