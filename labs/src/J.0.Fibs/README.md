@@ -18,10 +18,6 @@ Here's [problem #2](https://projecteuler.net/problem=2):
 > _even-valued_ terms.
 
 
-## Product Requirements: 
-* Lorem
-* Ipsum
-* Sic
 
 
 ## Hints

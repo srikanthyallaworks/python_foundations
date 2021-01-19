@@ -41,11 +41,6 @@ Here's [problem #59](https://projecteuler.net/problem=59):
 
 
 
-## Product Requirements: 
-* Lorem
-* Ipsum
-* Sic
-* Dolor
 
 
 
