@@ -9,23 +9,20 @@
 
 ## Installing
 
+First, make sure you have the repository:
+  git clone https://github.com/bathcat/python_foundations
+  cd python_foundations/labs
+
 ### On Windows
-```windows
-git clone https://github.com/bathcat/python_foundations
-cd python_foundations/labs
-py -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-```
+  py -m venv .venv
+  .\.venv\Scripts\activate
+  pip install -r requirements.txt
+
 
 ### On Linux:
-```
-git clone https://github.com/bathcat/python_foundations
-cd python_foundations/labs
-python3 -m venv .venv
-source ./.venv/bin/activate
-pip install -r requirements.txt
-```
+  python3 -m venv .venv
+  source ./.venv/bin/activate
+  pip install -r requirements.txt
 
 ### Test it out:
 ```
