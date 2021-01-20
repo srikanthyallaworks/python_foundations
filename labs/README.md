@@ -16,7 +16,7 @@ First, make sure you have the repository:
 ### On Windows
   py -m venv .venv
   .\.venv\Scripts\activate
-  pip install -r requirements.txt
+  py -m pip install -r requirements.txt
 
 
 ### On Linux:
@@ -26,7 +26,7 @@ First, make sure you have the repository:
 
 ### Test it out:
 ```
-python .\src\A.1.HelloBlinky\startingpoint\mood.py
+py .\src\A.1.HelloSetup\startingpoint\mood.py
 ```
 
 ## Troubleshooting
