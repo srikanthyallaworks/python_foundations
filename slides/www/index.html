@@ -1480,6 +1480,816 @@ calories<span class="token punctuation">[</span><span class="token string">'butt
 </ul>
 </div>
   
+</section><section class= 'dek-spacer'></section><section class='dek-deck-title'>
+  <div class ='dek-card-title'>Containers</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-goals'>
+  <div class ='dek-card-title'>Goals</div>
+  <div class='dek-card-body'><ol>
+<li>Create a Python <code>set</code></li>
+<li>Create a Python <code>tuple</code></li>
+<li>Explain the difference between common data structures</li>
+</ol>
+</div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Sets</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'><a href="https://docs.python.org/3/library/stdtypes.html#set">Set</a></div>
+  <div class='dek-card-body'><ul>
+<li>Like a math set</li>
+<li>Unordered</li>
+<li>Unique</li>
+<li>Elements must be immutable</li>
+</ul>
+</div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html#sets">https://docs.python.org/3/tutorial/datastructures.html#sets</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Creating Sets</div>
+  <div class='dek-card-body'><ul>
+<li>Curly braces <strong><em>{}</em></strong><pre><code  class="hljs python line-numbers">colors<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'green'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>colors<span class="token punctuation">)</span></code></pre></li>
+<li>Constructor:<pre><code  class="hljs python line-numbers">colors<span class="token operator">=</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'green'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>colors<span class="token punctuation">)</span></code></pre></li>
+</ul>
+</div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://realpython.com/python-sets/">https://realpython.com/python-sets/</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Keyword: <code>in</code></div>
+  <div class='dek-card-body'><ul>
+<li><strong>Unordered</strong> means you can&#39;t use a subscript<pre><code  class="hljs python line-numbers">colors<span class="token operator">=</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'green'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+first_one <span class="token operator">=</span> colors<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> # Error<span class="token operator">!</span></code></pre></li>
+<li>Use <code>in</code> instead<pre><code  class="hljs python line-numbers">colors<span class="token operator">=</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">,</span><span class="token string">'green'</span><span class="token punctuation">,</span><span class="token string">'red'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+has_purple <span class="token operator">=</span> <span class="token string">'purple'</span> <span class="token keyword">in</span> colors</code></pre></li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Use a Set When...</div>
+  <div class='dek-card-body'><ul>
+<li>Filter duplicates from a sequence</li>
+<li>Do mathy things<ul>
+<li>Union</li>
+<li>Intersections</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Tuples</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'><a href="https://docs.python.org/3/library/stdtypes.html#tuple">Tuple</a></div>
+  <div class='dek-card-body'><ul>
+<li>Immutable</li>
+<li>Ordered collection</li>
+<li>Heterogeneous data</li>
+<li>Delimited with parenthesis <strong><em>()</em></strong></li>
+</ul>
+<pre><code  class="hljs python line-numbers">red <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+green <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+blue <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">255</span><span class="token punctuation">)</span>
+yellow <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Indexing</div>
+  <div class='dek-card-body'><ul>
+<li>Access elements with brackets <strong><em>[]</em></strong></li>
+<li>Zero based</li>
+<li>Negative indexing: relative to the end</li>
+</ul>
+<pre><code  class="hljs python line-numbers">xs <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'it'</span><span class="token punctuation">,</span><span class="token string">'is'</span><span class="token punctuation">,</span><span class="token string">'like'</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'weasel'</span><span class="token punctuation">)</span>
+first_thing <span class="token operator">=</span> xs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+last_thing <span class="token operator">=</span> xs<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+xs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1200</span> # Error<span class="token operator">!</span>
+</code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Multiple Return Values</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers">def <span class="token function">divide</span><span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span><span class="token operator">:</span>
+   quotient <span class="token operator">=</span> numerator <span class="token comment">// denominator</span>
+   remainder <span class="token operator">=</span> numerator <span class="token operator">%</span> denominator
+   <span class="token keyword">return</span> quotient<span class="token punctuation">,</span> remainder
+
+q<span class="token punctuation">,</span>r <span class="token operator">=</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">'quotient:{q} remainder:{r}'</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>When to use a Tuple</div>
+  <div class='dek-card-body'><ul>
+<li>Good: Quick and dirty bundle of data</li>
+<li>Bad: No built-in documentation<pre><code  class="hljs python line-numbers">points <span class="token operator">=</span> <span class="token punctuation">[</span>
+<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span></code></pre></li>
+</ul>
+</div>
+  
+</section><section class= 'dek-spacer'></section><section class='dek-deck-title'>
+  <div class ='dek-card-title'>Objects</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>What and Why?</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Complaints about Tuples</div>
+  <div class='dek-card-body'><ul>
+<li>Immutable</li>
+<li>No naming for clarity</li>
+<li>No protection of invariants<pre><code  class="hljs python line-numbers">red <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'chicken'</span><span class="token punctuation">)</span>
+yellow <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">275</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+purple <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">)</span></code></pre></li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Dictionary Complaints</div>
+  <div class='dek-card-body'><ul>
+<li>Only data-- no behavior</li>
+<li>No help from intellisense</li>
+<li>Awkward syntax</li>
+<li>No protection of invariants<pre><code  class="hljs python line-numbers">yellow <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'r'</span><span class="token operator">:</span><span class="token number">755</span><span class="token punctuation">,</span><span class="token string">'g'</span><span class="token operator">:</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">}</span>
+purple <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'r'</span><span class="token operator">:</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token string">'g'</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token operator">:</span><span class="token string">'spam'</span><span class="token punctuation">}</span></code></pre></li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Good Old OO</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>What&#39;s an Object?</div>
+  <div class='dek-card-body'><ul>
+<li>Associates names with <ul>
+<li>Data </li>
+<li>Behavior</li>
+</ul>
+</li>
+<li>Usual OO stuff supported (mostly):<ul>
+<li>Inheritance</li>
+<li>Polymorphism</li>
+<li>Methods</li>
+<li>Properties</li>
+<li>Encapsulation</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Example: Color Class</div>
+  <div class='dek-card-body'><ul>
+<li>Ignore <code>self</code> for now</li>
+</ul>
+<pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Color</span><span class="token operator">:</span>
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>r<span class="token punctuation">,</span>g<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token operator">:</span>
+    self<span class="token punctuation">.</span>red <span class="token operator">=</span> r
+    self<span class="token punctuation">.</span>green <span class="token operator">=</span> g
+    self<span class="token punctuation">.</span>blue <span class="token operator">=</span> b
+
+paint <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">'Channel red: {paint.red}'</span><span class="token punctuation">)</span></code></pre></div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Better Color Class</div>
+  <div class='dek-card-body'><ul>
+<li>Protect those invariants</li>
+</ul>
+<pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Color</span><span class="token operator">:</span>
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>r<span class="token punctuation">,</span>g<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token keyword">if</span> r <span class="token operator">&lt;</span> <span class="token number">0</span> or r <span class="token operator">></span> <span class="token number">255</span><span class="token operator">:</span>
+      raise <span class="token function">ValueError</span><span class="token punctuation">(</span><span class="token string">"Something's wrong here"</span><span class="token punctuation">)</span>
+    # Etc <span class="token operator">...</span>
+
+yellow <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">1128</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> #Error<span class="token operator">!</span>
+purple <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">)</span></code></pre></div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://docs.python.org/3/tutorial/classes.html">https://docs.python.org/3/tutorial/classes.html</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Adding Behavior</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Color</span><span class="token operator">:</span>
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>red<span class="token punctuation">,</span>blue<span class="token punctuation">,</span>green<span class="token punctuation">)</span><span class="token operator">:</span>
+      self<span class="token punctuation">.</span>red<span class="token operator">=</span>red
+      self<span class="token punctuation">.</span>blue<span class="token operator">=</span>blue
+      self<span class="token punctuation">.</span>green<span class="token operator">=</span>green    
+  def <span class="token function">to_hex</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> f<span class="token string">'#{self.red:x}{self.green:x}{self.blue:x}'</span>
+
+purple <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>purple<span class="token punctuation">.</span><span class="token function">to_hex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>More Behavior</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token operator">:</span>
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>make<span class="token punctuation">,</span>model<span class="token punctuation">)</span><span class="token operator">:</span>
+      self<span class="token punctuation">.</span>make<span class="token operator">=</span>make
+      self<span class="token punctuation">.</span>model<span class="token operator">=</span>model
+
+  def <span class="token function">drive</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> f<span class="token string">'This {self.make} is one sweet ride!'</span>
+
+ride <span class="token operator">=</span> <span class="token function">Car</span><span class="token punctuation">(</span><span class="token string">'volvo'</span><span class="token punctuation">,</span><span class="token string">'240'</span><span class="token punctuation">)</span>
+ride<span class="token punctuation">.</span><span class="token function">drive</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Instances</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>About <code>self</code></div>
+  <div class='dek-card-body'><ul>
+<li>Current instance is the first parameter on instance methods</li>
+<li>Explicit equivalent to <code>this</code> in other languages</li>
+<li>Called <code>self</code> by convention</li>
+<li>Passed by the Python runtime, <strong>not</strong> the caller</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Static Methods</div>
+  <div class='dek-card-body'><ul>
+<li>Anything that doesn&#39;t touch an instance member</li>
+</ul>
+<pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token operator">:</span>
+    def <span class="token function">get_makes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">"volvo"</span><span class="token punctuation">,</span><span class="token string">"chevy"</span><span class="token punctuation">]</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span>Car<span class="token punctuation">.</span><span class="token function">get_makes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+ride <span class="token operator">=</span> <span class="token function">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span><span class="token function">get_makes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> #Bork<span class="token operator">!</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'><a href="https://docs.python.org/3/library/functions.html#staticmethod"><code>@staticmethod</code></a></div>
+  <div class='dek-card-body'><ul>
+<li>Makes a &#39;static&#39; property accessible via instance reference </li>
+</ul>
+<pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token operator">:</span>
+    @staticmethod
+    def <span class="token function">get_makes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'volo'</span><span class="token punctuation">,</span><span class="token string">'chevy'</span><span class="token punctuation">]</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span>Car<span class="token punctuation">.</span><span class="token function">get_makes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> #No problem<span class="token operator">!</span>
+
+ride <span class="token operator">=</span> <span class="token function">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>ride<span class="token punctuation">.</span><span class="token function">get_makes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> #Ok<span class="token operator">!</span></code></pre></div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Encapsulation</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Access Modifiers</div>
+  <div class='dek-card-body'><ul>
+<li>Prefix <em>private</em> members with double-underscores <strong><em>__</em></strong><ul>
+<li>Enforced via &#39;name mangling&#39;</li>
+</ul>
+</li>
+<li>Prefix <em>non-public</em> members with underscore <strong><em>_</em></strong><ul>
+<li>Convention only, no runtime enforcement</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://en.wikipedia.org/wiki/Access_modifiers">https://en.wikipedia.org/wiki/Access_modifiers</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Name Mangling</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token operator">:</span>
+  def <span class="token function">__diagnose</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+    pass
+  def <span class="token function">drive</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+    pass
+
+car <span class="token operator">=</span> <span class="token function">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> attr <span class="token keyword">in</span> <span class="token function">dir</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span><span class="token operator">:</span>
+  <span class="token keyword">if</span> not attr<span class="token punctuation">.</span><span class="token function">endswith</span><span class="token punctuation">(</span><span class="token string">'__'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>attr<span class="token punctuation">)</span></code></pre></div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://en.wikipedia.org/wiki/Name_mangling#Python">https://en.wikipedia.org/wiki/Name_mangling#Python</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Properties</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Property Getters</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token operator">:</span>
+
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>make<span class="token punctuation">,</span>model<span class="token punctuation">)</span><span class="token operator">:</span>
+    self<span class="token punctuation">.</span>_make<span class="token operator">=</span>make
+    self<span class="token punctuation">.</span>_model<span class="token operator">=</span>model
+
+  @property
+  def <span class="token function">make</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>_make</code></pre></div>
+  
+      <aside class='notes'>
+        <p><a href="https://docs.python.org/3/library/functions.html#property">https://docs.python.org/3/library/functions.html#property</a></p>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Property Setters</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token operator">:</span>
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token operator">:</span>
+    self<span class="token punctuation">.</span>_age <span class="token operator">=</span> age
+
+  @property
+  def <span class="token function">age</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>_age
+
+  @age<span class="token punctuation">.</span>setter
+  def <span class="token function">age</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token keyword">if</span> value<span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">:</span>
+      raise <span class="token function">ValueError</span><span class="token punctuation">(</span><span class="token string">'age must be > 0'</span><span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>_age <span class="token operator">=</span> value
+</code></pre></div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>New Hotness: the <code>dataclass</code></div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Using <a href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a></div>
+  <div class='dek-card-body'><ul>
+<li>Creates <code>__init__</code> for you</li>
+<li>Optionally immutable</li>
+<li>May contain methods like any other class</li>
+<li>Requires type annotation</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Example</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">from</span> dataclasses <span class="token keyword">import</span> dataclass
+
+@<span class="token function">dataclass</span><span class="token punctuation">(</span>frozen<span class="token operator">=</span>True<span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">Color</span><span class="token operator">:</span>
+  r<span class="token operator">:</span>int
+  g<span class="token operator">:</span>int
+  b<span class="token operator">:</span>int
+
+  def <span class="token function">to_hex</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> f<span class="token string">'#{self.r:x}{self.g:x}{self.b:x}'</span>
+
+purple <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">128</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>purple<span class="token punctuation">.</span><span class="token function">to_hex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+  
+      <aside class='notes'>
+        <pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">Color</span><span class="token operator">:</span>
+  def <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>red<span class="token punctuation">,</span>blue<span class="token punctuation">,</span>green<span class="token punctuation">)</span><span class="token operator">:</span>
+      self<span class="token punctuation">.</span>red<span class="token operator">=</span>red
+      self<span class="token punctuation">.</span>blue<span class="token operator">=</span>blue
+      self<span class="token punctuation">.</span>green<span class="token operator">=</span>green
+
+  def <span class="token function">to_seq</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> self<span class="token punctuation">.</span>red<span class="token punctuation">,</span>self<span class="token punctuation">.</span>green<span class="token punctuation">,</span>self<span class="token punctuation">.</span>blue
+
+  def <span class="token function">to_hex</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token keyword">return</span> <span class="token string">'#'</span> <span class="token operator">+</span> <span class="token function">bytes</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span><span class="token function">to_seq</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hex</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+      </aside>
+    
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Dunder</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Dunder Methods</div>
+  <div class='dek-card-body'><ul>
+<li>Called for the double-underscore</li>
+<li>Used for python internal behavior</li>
+<li><a href="https://docs.python.org/3/reference/datamodel.html#special-method-names"><strong><em>Lots</em></strong> of them</a></li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Example: DoNothing</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">DoNothing</span><span class="token operator">:</span>
+    pass
+
+instance <span class="token operator">=</span> <span class="token function">DoNothing</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">)</span> #Error<span class="token operator">!</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Example: DoVeryLittle</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">class</span> <span class="token class-name">DoVeryLittle</span><span class="token operator">:</span>
+    def <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token number">5</span>
+
+instance <span class="token operator">=</span> <span class="token function">DoVeryLittle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>More Dunders</div>
+  <div class='dek-card-body'><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__init__</code></td>
+<td>Constructor</td>
+</tr>
+<tr>
+<td><code>__del__</code></td>
+<td>Finalizer</td>
+</tr>
+<tr>
+<td><code>__str__</code></td>
+<td>To string</td>
+</tr>
+<tr>
+<td><code>__hash__</code></td>
+<td>Get hash</td>
+</tr>
+</tbody></table>
+</div>
+  
+</section><section class= 'dek-spacer'></section><section class='dek-deck-title'>
+  <div class ='dek-card-title'>Adding Guardrails</div>
+  <div class='dek-card-body'></div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://realpython.com/python-code-quality/">https://realpython.com/python-code-quality/</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Lint Extravaganza</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Linting Defined</div>
+  <div class='dek-card-body'><img src='assets/Douglas_Crockford.jpg' class='dek-img-framed'>
+
+<ul>
+<li>Linting is<ul>
+<li>Static analysis</li>
+<li>Finds style and quality issues</li>
+</ul>
+</li>
+<li>In Python<ul>
+<li>PyLint - <a href="https://code.visualstudio.com/docs/python/linting">VSCode default</a></li>
+<li>Prospector</li>
+<li>Flake8</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Pros and Cons</div>
+  <div class='dek-card-body'><ul>
+<li><strong>Advantages</strong><ul>
+<li>Catch possible errors</li>
+<li>Enforce consistent style</li>
+<li>Automatically fix problems</li>
+</ul>
+</li>
+<li><strong>Disadvantages</strong><ul>
+<li>Irritating and overbearing out of the box</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Automated Tests</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Definitions</div>
+  <div class='dek-card-body'><blockquote>
+<p><strong>Unit test</strong>: low-level test case written in the same language as the production code, which directly access its objects and members.</p>
+</blockquote>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Surprising Controversy</div>
+  <div class='dek-card-body'><ul>
+<li>Unit testing is surprisingly controversial<ul>
+<li>Probably because it’s hard to do well</li>
+<li>Think of testing as a skill-- like SQL</li>
+</ul>
+</li>
+<li>Top complaints<ul>
+<li>Time to write</li>
+<li>Time to maintain</li>
+<li>Tests are worthless if they don’t get run</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+      <aside class='notes'>
+        <p><a href="https://news.ycombinator.com/item?id=23755339">https://news.ycombinator.com/item?id=23755339</a></p>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Reasons to Test</div>
+  <div class='dek-card-body'><ol reversed style='font-size:150%; line-height: 200%;'>
+  <li>Catch <strong>bugs</strong> </li>
+  <li><strong>Refactor</strong> with confidence</li>
+  <li><strong>Documentation</strong> that doesn't get stale</li>
+  <li>Improved <strong>design</strong></li>
+</ol>
+
+
+
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Especially Python</div>
+  <div class='dek-card-body'><ul>
+<li>Typed languages are better<ul>
+<li>TypeScript eliminates 38% of bugs</li>
+</ul>
+</li>
+<li>Tests are especially important in Python<ul>
+<li>No compile-time help</li>
+<li>No expressiveness through the type</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section><section class= 'dek-spacer'></section><section class='dek-deck-title'>
+  <div class ='dek-card-title'>Functions</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>More About Functions</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Functions are Objects</div>
+  <div class='dek-card-body'><ul>
+<li>They have properties</li>
+<li>They can be passed as arguments</li>
+</ul>
+<pre><code  class="hljs python line-numbers">def <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token operator">:</span>
+  <span class="token keyword">return</span> a<span class="token operator">+</span>b
+
+add<span class="token punctuation">.</span>description <span class="token operator">=</span> <span class="token string">'Function to add stuff.'</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Keyword Arguments</div>
+  <div class='dek-card-body'><ul>
+<li>Name-value pair(s)</li>
+<li>No order requirement</li>
+<li>More explicit</li>
+</ul>
+<pre><code  class="hljs python line-numbers">def <span class="token function">describe_car</span><span class="token punctuation">(</span>make<span class="token punctuation">,</span> model<span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token string">""</span><span class="token string">"Display information about a car."</span><span class="token string">""</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">"\nI have a {make}."</span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>f<span class="token string">"My {make} is a {model}."</span><span class="token punctuation">)</span>
+
+<span class="token function">describe_car</span><span class="token punctuation">(</span>model<span class="token operator">=</span><span class="token string">'240'</span><span class="token punctuation">,</span> make<span class="token operator">=</span><span class="token string">'Volvo'</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'><a href="https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions">Default Values</a></div>
+  <div class='dek-card-body'><ul>
+<li>Can only come after positional arguments</li>
+<li>Makes parameters optional</li>
+</ul>
+<pre><code  class="hljs python line-numbers">def <span class="token function">get_confirmation</span><span class="token punctuation">(</span>prompt<span class="token punctuation">,</span> reminder<span class="token operator">=</span><span class="token string">'Try again!'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+  <span class="token keyword">while</span> True<span class="token operator">:</span>
+    response <span class="token operator">=</span> <span class="token function">input</span><span class="token punctuation">(</span>prompt<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> response <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'ye'</span><span class="token punctuation">,</span> <span class="token string">'yes'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> True
+    <span class="token keyword">if</span> response <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">'n'</span><span class="token punctuation">,</span> <span class="token string">'no'</span><span class="token punctuation">,</span> <span class="token string">'nop'</span><span class="token punctuation">,</span> <span class="token string">'nope'</span><span class="token punctuation">)</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> False
+    <span class="token function">print</span><span class="token punctuation">(</span>reminder<span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Multiple Return values</div>
+  <div class='dek-card-body'><ul>
+<li>Just make a tuple!</li>
+<li>Unpack</li>
+</ul>
+<pre><code  class="hljs python line-numbers">def <span class="token function">get_web_resource</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token operator">:</span>
+  response <span class="token operator">=</span> requests<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+  status <span class="token operator">=</span> response<span class="token punctuation">.</span>status_code
+  <span class="token keyword">return</span> response<span class="token punctuation">.</span>status_code<span class="token punctuation">,</span> response<span class="token punctuation">.</span>text
+
+status<span class="token punctuation">,</span> content <span class="token operator">=</span> <span class="token function">get_web_resource</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Higher-Order Functions</div>
+  <div class='dek-card-body'><ul>
+<li>A <strong>higher order</strong> function either <ul>
+<li>Takes a function as an argument</li>
+<li>Returns a function as a result</li>
+</ul>
+</li>
+<li>Examples:<ul>
+<li>Built-in: <a href="https://docs.python.org/3/library/functions.html#map">map</a></li>
+<li>Module: <a href="https://docs.python.org/3/library/itertools.html">itertools</a></li>
+<li>Module: <a href="https://docs.python.org/3/library/functools.html">functools</a></li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Passing Functions</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers">def <span class="token function">audited</span><span class="token punctuation">(</span>to_audit<span class="token punctuation">)</span><span class="token operator">:</span>
+  def <span class="token function">wrapped</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token operator">:</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'starting'</span><span class="token punctuation">)</span>
+    result <span class="token operator">=</span> <span class="token function">to_audit</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'done!'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> result
+  <span class="token keyword">return</span> wrapped
+
+def <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token operator">:</span>
+  <span class="token keyword">return</span> a<span class="token operator">+</span>b
+
+_add <span class="token operator">=</span> <span class="token function">audited</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">_add</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Lambda Functions</div>
+  <div class='dek-card-body'><ul>
+<li>Shorthand</li>
+<li>Only one-liners</li>
+<li>Handy for map and reduce</li>
+</ul>
+<pre><code  class="hljs python line-numbers">add <span class="token operator">=</span> lambda a<span class="token punctuation">,</span>b<span class="token operator">:</span>a<span class="token operator">+</span>b
+
+xs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span>
+squares <span class="token operator">=</span> <span class="token function">map</span><span class="token punctuation">(</span>lambda x<span class="token operator">:</span> x<span class="token operator">*</span>x<span class="token punctuation">,</span> xs<span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Best Practice: Prefer Purity</div>
+  <div class='dek-card-body'><ul>
+<li>A function is <strong>pure</strong> if:<ul>
+<li>It always returns the same thing given the same arguments</li>
+<li>Doesn’t change state</li>
+</ul>
+</li>
+<li>Advantages:<ul>
+<li>Testable</li>
+<li>Reusable</li>
+<li>Easy to reason about</li>
+<li>Doesn’t bork up shared state</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+</section>
+<section class='dek-topic-title'>
+  <div class ='dek-card-title'>Introducing Modules</div>
+  <div class='dek-card-body'></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>What <em>is</em> a Module?</div>
+  <div class='dek-card-body'><ul>
+<li>File with the extension &#39;.py&#39;</li>
+<li>Containing Python:<ul>
+<li>Variables</li>
+<li>Functions</li>
+<li>Classes</li>
+<li>Executable code</li>
+</ul>
+</li>
+</ul>
+</div>
+  
+      <aside class='notes'>
+        <ul>
+<li><a href="https://docs.python.org/3/tutorial/modules.html">https://docs.python.org/3/tutorial/modules.html</a></li>
+</ul>
+
+      </aside>
+    
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>Consumption with <a href="https://docs.python.org/3/reference/simple_stmts.html#import"><code>import</code></a></div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">import</span> car
+car<span class="token punctuation">.</span><span class="token function">describe_car</span><span class="token punctuation">(</span><span class="token string">'jeep'</span><span class="token punctuation">,</span><span class="token string">'wrangler'</span><span class="token punctuation">)</span></code></pre><pre><code  class="hljs python line-numbers"><span class="token keyword">from</span> car <span class="token keyword">import</span> describe_car
+<span class="token function">describe_car</span><span class="token punctuation">(</span><span class="token string">'jeep'</span><span class="token punctuation">,</span><span class="token string">'wrangler'</span><span class="token punctuation">)</span></code></pre><pre><code  class="hljs python line-numbers"><span class="token keyword">from</span> car <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token function">describe_car</span><span class="token punctuation">(</span><span class="token string">'jeep'</span><span class="token punctuation">,</span><span class="token string">'wrangler'</span><span class="token punctuation">)</span></code></pre></div>
+  
+</section>
+<section class='dek-content'>
+  <div class ='dek-card-title'>More Imports</div>
+  <div class='dek-card-body'><pre><code  class="hljs python line-numbers"><span class="token keyword">import</span> foo                 # foo imported and bound locally
+<span class="token keyword">import</span> foo<span class="token punctuation">.</span>bar<span class="token punctuation">.</span>baz         # foo<span class="token punctuation">.</span>bar<span class="token punctuation">.</span>baz imported<span class="token punctuation">,</span> foo bound locally
+<span class="token keyword">import</span> foo<span class="token punctuation">.</span>bar<span class="token punctuation">.</span>baz <span class="token keyword">as</span> fbb  # foo<span class="token punctuation">.</span>bar<span class="token punctuation">.</span>baz imported and bound <span class="token keyword">as</span> fbb
+<span class="token keyword">from</span> foo<span class="token punctuation">.</span>bar <span class="token keyword">import</span> baz    # foo<span class="token punctuation">.</span>bar<span class="token punctuation">.</span>baz imported and bound <span class="token keyword">as</span> baz
+<span class="token keyword">from</span> foo <span class="token keyword">import</span> attr       # foo imported and foo<span class="token punctuation">.</span>attr bound <span class="token keyword">as</span> attr</code></pre></div>
+  
 </section>
       </div>
     </div>
