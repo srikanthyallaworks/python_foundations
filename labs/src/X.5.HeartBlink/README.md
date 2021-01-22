@@ -12,3 +12,7 @@ good or ill.
 2. ...
 3. Profit!
 
+## Stretch Goals
+* Fix resource permissions so that users can run the script without sudo
+* Flicker both LEDs in an artistic or useful way
+  - i.e. led0 and led1
