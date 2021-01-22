@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "c:\\workspace\\python_foundations\\labs\\.venv\\Scripts\\python.exe",
+  "python.pythonPath": ".venv/bin/python",
   "terminal.integrated.environmentChangesIndicator": "off",
   "editor.tabSize": 2
 }
