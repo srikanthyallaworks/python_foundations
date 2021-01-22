@@ -86,7 +86,9 @@ ssh 10.0.0.102 -l pi
 Good guide [here](https://www.raspberrypi.org/documentation/linux/usage/users.md).
 
 ```
-sudo adduser jbloggs sudo spi
+sudo adduser jbloggs 
+sudo usermod -a -G sudo jbloggs
+sudo usermod -a -G spi jbloggs
 exit
 ```
 
@@ -99,7 +101,7 @@ sudo userdel -r pi
 
 ### Rename the host
 ```
-sudo hostname new-host
+sudo hostname fancypants
 ```
 
 ### Update Software
