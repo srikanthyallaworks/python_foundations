@@ -3,8 +3,8 @@ import time
 from enum import IntEnum
 
 class Led(IntEnum):
-  Zero = 0
-  One = 1
+  Green = 0
+  Red = 1
 
 class State(IntEnum):
   Off=0
@@ -19,7 +19,7 @@ def setup(led:Led):
 def set_state(led:Led, state:State):
   os.system(f'echo {state.value} | sudo tee {get_path(led)}/brightness > /dev/null') 
 
-led = Led.One
+led = Led.Green
 setup(led)
 
 for _ in range(10):
