@@ -4,7 +4,6 @@
     + ***Most Important:*** Seminar Survey 
     + Materials (Caveat: Pi Labs nascent)
     + Poll reminder
-    + Lunch @ 1130 MST
     + Pi lab stuff
        * Bad news: 5v fan
        * What's left
@@ -13,11 +12,14 @@
          - Toggle the on-board light
 
   2. Review Jeopardy
+
   3. Finish discussion: Functions
      Lab: FileFortune?
+
   4. Discussion: IoT & Pi
      Lab: Pi Setup
-  6. Discussion: Generators and Comprehensions
+
+  5. Discussion: Generators and Comprehensions
      Lab: Fibs?
 
 
