@@ -1,3 +1,5 @@
+import time
+
 min_possible=1
 max_possible=100
 guessed_correctly=False
@@ -6,8 +8,9 @@ def get_middle():
   spread = max_possible - min_possible
   return spread//2 + min_possible
 
-print("Think of a whole number between 1 and 100.")
-print("And I'll try to guess it.")
+print("\n\n\n\nThink of a whole number between 1 and 100.")
+print("And I'll try to guess it......")
+time.sleep(2)
 print("Ready?")
 
 while not guessed_correctly:
