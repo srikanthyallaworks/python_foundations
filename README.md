@@ -7,7 +7,7 @@ The Introduction to Python training course is designed to demonstrate the Python
 
 ### Duration 
 2 Days
- 
+
 
 ## Objectives
 Upon completion of this course, students will be able to:

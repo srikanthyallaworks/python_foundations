@@ -13,25 +13,11 @@ First, make sure you have the repository:
   git clone https://github.com/bathcat/python_foundations
   cd python_foundations/labs
 
-### On Windows
-  py -m venv .venv
-  .\.venv\Scripts\activate
-  py -m pip install -r requirements.txt
+That's it! There aren't any external dependencies, so you won't need `venv` or `pip`.
 
 
-### On Linux:
-  python3 -m venv .venv
-  source ./.venv/bin/activate
-  pip install -r requirements.txt
 
 ### Test it out:
 ```
-py .\src\A.1.HelloSetup\startingpoint\mood.py
+py .\src\A.0.HelloPython\complete\main.py
 ```
-
-## Troubleshooting
-
-You __may__ need to install [venv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-Here's how I did on Linux:
-  `sudo apt-get install python3-pip python3-venv idle3`
-Then try activating again.
