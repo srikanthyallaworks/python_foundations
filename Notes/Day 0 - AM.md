@@ -7,7 +7,7 @@
 ## Agenda
 * Introductions
 * Big Picture
-  - Lab: Monty Hall Walkthrough
+  - Lab: Setup + Monty Hall Walkthrough
 * Expressions
   - Lab: FizzBuzz
 
