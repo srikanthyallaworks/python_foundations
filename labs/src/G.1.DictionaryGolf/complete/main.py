@@ -10,12 +10,8 @@ def run_surname_report():
   """
   print(f'\nHere are some common surnames:')  
   surname_counts = {}
-  for student in roster:
-    surname = student['surname']
-    if surname in surname_counts:
-      surname_counts[surname]+=1
-    else:
-      surname_counts[surname]=1
+  for surname in [s['surname'] for s in roster]:
+    surname_counts[surname] = surname_counts.setdefault(surname,0)+1
 
   for surname,count in surname_counts.items():
     if count > 2:
@@ -27,10 +23,9 @@ def run_class_size_report():
      by grade
   """
   print(f'\nHere are the students in each grade:')  
-  grade_counts = { 1:0, 2:0, 3:0,4:0,5:0}
-  for student in roster:
-    grade = student['grade']
-    grade_counts[grade]+=1
+  grade_counts = {}
+  for grade in [student['grade'] for student in roster]:
+    grade_counts[grade] = grade_counts.setdefault(grade,0) + 1
   
   for grade,count in grade_counts.items():
     print(f'\t{grade}: {count}')   
