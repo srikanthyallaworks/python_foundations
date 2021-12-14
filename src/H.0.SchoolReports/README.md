@@ -1,4 +1,4 @@
-# Lab: Dictionary Golf
+# Lab: School Reports
 
 ## Summary 
 
