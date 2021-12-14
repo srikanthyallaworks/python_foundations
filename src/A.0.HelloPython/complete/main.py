@@ -19,9 +19,9 @@ while not guessed_correctly:
   print(f'Was I Right? Too low? Too high?')
   reply = input('[r/l/h]? ')
   if reply == 'l':
-    min_possible=guess
+    min_possible=guess+1
   elif reply == 'h':
-    max_possible=guess
+    max_possible=guess-1
   else:
     guessed_correctly=True
 
