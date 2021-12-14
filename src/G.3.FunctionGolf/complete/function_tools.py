@@ -1,0 +1,88 @@
+
+def make_adder(quantity_to_add=0):
+  """ Makes a function that adds the specified quantity to its argument.
+
+  Example:
+      add10 = make_adder(10)
+      result = add10(18) 
+      print(result) # Prints 28
+
+  Args:
+      quantity_to_add (int, optional): number that the returned function will add to
+      its argument. Defaults to 0.
+
+  Returns:
+      Callable[[int],int]: Function that adds a quantity to its argument.
+  """
+  return lambda x: x+quantity_to_add
+
+
+
+def sort_by_magnitude(vectors):
+  """Sorts a sequence of 2D vectors by magnitude, biggest first.
+
+     Note: Magnitude just means the length of the vector, using a**2+b**2 = c**2.
+           So for the vector (2,2)--
+               magnitude**2 == 2**2 + 2**2
+               magnitude**2 == 8
+               magnitude == 8 ** .5
+               magnitude == 2.83.....
+
+    Example: 
+      result = sort_by_magnitude([(1,1), (100,100), (4,2)])
+      print(result)
+      > [(100,100), (4,2), (1,1)]
+      
+    Args:
+        vectors (List[Tuple[int,int]]): A list of vectors in tuple form.
+  """
+  
+  def get_magnitude(v):
+    return (v[0] * v[1])**.5
+
+  return sorted(vectors,key=get_magnitude,reverse=True)
+
+
+
+
+
+def add_all_startingpoint(a,b,c=0,d=0):
+  """Takes an arbitrary number of numeric arguments and returns the sum.
+
+  Example:
+      add(1) # 1
+      add(1,2) # 3
+      add(1,2,3) # 6
+      ...
+
+  Returns:
+      [number]: sum of all arguments
+  """
+  return a+b+c+d
+
+def add_all(*terms):
+  total = 0
+  for term in terms:
+    total += term
+  return total
+
+
+
+
+
+
+
+
+def pipe(operations, first_argument):
+    result = first_argument
+    for operation in operations:
+        result = operation(result)
+    return result
+
+from functools import reduce
+
+def pipe_functional(operations, first_argument):
+    return reduce(lambda result, operation: operation(result),operations,first_argument)
+
+
+
