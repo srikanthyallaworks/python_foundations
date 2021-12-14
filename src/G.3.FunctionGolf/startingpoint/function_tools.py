@@ -14,7 +14,7 @@ def make_adder(quantity_to_add=0):
   Returns:
       Callable[[int],int]: Function that adds a quantity to its argument.
   """
-  return lambda x: x+quantity_to_add
+  return lambda x: print('Ummm...')
 
 
 
@@ -40,13 +40,15 @@ def sort_by_magnitude(vectors):
   def get_magnitude(v):
     return (v[0] * v[1])**.5
 
-  return sorted(vectors,key=get_magnitude,reverse=True)
+  return sorted(vectors)
 
 
 
 
 
-def add_all(*terms):
+
+
+def add_all(a,b,c=0,d=0):
   """Takes an arbitrary number of numeric arguments and returns the sum.
 
   Example:
@@ -58,10 +60,8 @@ def add_all(*terms):
   Returns:
       [number]: sum of all arguments
   """
-  total = 0
-  for term in terms:
-    total += term
-  return total
+  return a+b+c+d
+
 
 
 
@@ -77,10 +77,7 @@ def pipe(operations, argument):
   Returns:
       The result of applying each function in order.
   """
-  result = argument
-  for operation in operations:
-      result = operation(result)
-  return result
+  return operations[0](argument)
 
 
 
@@ -94,11 +91,5 @@ def compose(operations):
   Args:
       operations: 2 or more functions.
   """
-  def get_composed(argument):
-    result = argument
-    for operation in operations:
-        result = operation(result)
-    return result
-
-  return get_composed
+  return operations[0]
 

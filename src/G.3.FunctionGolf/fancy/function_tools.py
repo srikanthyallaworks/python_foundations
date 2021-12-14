@@ -1,3 +1,6 @@
+from functools import reduce
+import operator
+
 
 def make_adder(quantity_to_add=0):
   """ Makes a function that adds the specified quantity to its argument.
@@ -58,11 +61,7 @@ def add_all(*terms):
   Returns:
       [number]: sum of all arguments
   """
-  total = 0
-  for term in terms:
-    total += term
-  return total
-
+  return reduce(operator.add,terms,0)
 
 
 
@@ -77,13 +76,7 @@ def pipe(operations, argument):
   Returns:
       The result of applying each function in order.
   """
-  result = argument
-  for operation in operations:
-      result = operation(result)
-  return result
-
-
-
+  return reduce(lambda result, operation: operation(result),operations,argument)
 
 
 
@@ -94,11 +87,6 @@ def compose(operations):
   Args:
       operations: 2 or more functions.
   """
-  def get_composed(argument):
-    result = argument
-    for operation in operations:
-        result = operation(result)
-    return result
+  return lambda argument: reduce(lambda result, operation: operation(result),operations,argument)
 
-  return get_composed
 
