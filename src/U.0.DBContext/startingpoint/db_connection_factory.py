@@ -2,6 +2,11 @@ from typing import List, Optional
 from db_connection import DBConnection, DBConnectionStatus
 
 class DBConnectionFactory:
+  """Builds database connections. Keeps them in a pool for performance.
+
+  Raises:
+      Exception: Throws when the pool is full.
+  """
   _connection_string:str
   _max_connections = 5
   _pool:List[DBConnection] = []
@@ -10,6 +15,14 @@ class DBConnectionFactory:
     self._connection_string=connection_string
   
   def get_connection(self)->DBConnection:
+    """Gets a usable database connection.
+
+    Raises:
+        Exception: Throws when out of connections.
+
+    Returns:
+        DBConnection: Usable connection.
+    """
     con:Optional[DBConnection] = None
     if len(self._pool) <= self._max_connections:
       con = DBConnection()
@@ -20,5 +33,5 @@ class DBConnectionFactory:
         raise Exception('Out of database connections!')
       con = recyclable[0]
   
-    con.status=DBConnectionStatus.LentOut
+    con.status=DBConnectionStatus.ReadyToUse
     return con
