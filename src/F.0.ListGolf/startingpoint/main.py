@@ -24,6 +24,11 @@ class TestUniqueElements(unittest.TestCase):
     result = get_unique_elements([1,1,2,2,3,3,4,4,4,4,7])
     self.assertEqual(result,[1,2,3,4,7])
 
+  def test_preserves_order(self):
+    result = get_unique_elements([9,0,8,8,8,8,9,0,9,0,8])
+    self.assertEqual(result,[9,0,8])
+
+
 
 class TestClone(unittest.TestCase):
 
