@@ -1,8 +1,4 @@
-try: 
-  from .dice import Die,Cup
-except:
-  from dice import Die,Cup
-
+from dice import Die,Cup
 
 
 class Game:
@@ -12,9 +8,9 @@ class Game:
     self.cup= Cup()
   
   def shoot(self):
-    self.cup.roll()
-    print(f'{self.playerName} rolls a {self.cup.value}')
-    return self.cup.value
+    value = self.cup.roll()
+    print(f'{self.playerName} rolls a {value}')
+    return value
   
   def finish_game(self,outcome):
     self.outcome= outcome
