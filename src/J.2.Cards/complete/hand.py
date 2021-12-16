@@ -33,9 +33,11 @@ class HandRank(IntEnum):
 
 class Hands:
 
+    @staticmethod
     def is_flush(cards:Hand)->bool:
         return 1 == len({c.suite for c in cards})
 
+    @staticmethod
     def is_straight(cards:Hand)->bool:
         values = sorted([c.rank.value for c in cards])
         for a,b in pairwise(values):
@@ -43,18 +45,21 @@ class Hands:
                 return False
         return True
 
+    @staticmethod
     def get_sets(cards:Hand):
         groups = [list(g) for k,g in groupby(cards,lambda c:c.rank.value)]
         return [g for g in groups if len(g)>1]
 
-
+    @staticmethod
     def from_string(reprs:str)->Hand:
         return {Deck.from_string(s) for s in reprs.split(' ')}
 
+    @staticmethod
     def from_chars_string(reprs:str)->Hand:
         return {Deck.from_chars(s) for s in reprs.split(' ')}
 
     # TODO: Consider using struct.pack
+    @staticmethod
     def get_hand_value(cards:Hand):
         rank = Hands.get_hand_rank(cards)
         value = rank.value << 48
@@ -84,8 +89,8 @@ class Hands:
         return value 
 
 
+    @staticmethod
     def get_hand_rank(cards:Hand):
-
         sets = Hands.get_sets(cards)
         if sets:
             if len(sets)>1:

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import IntEnum,Enum
-from typing import Tuple
+from typing import Literal, Tuple
 
 
 
@@ -27,17 +27,17 @@ class CardRanks:
     _symbols=('2','3','4','5','6','7','8','9','10','J','Q','K','A')
     _lookup={s:CardRank(s,i+2) for i,s in enumerate(_symbols)}
 
+    @staticmethod
     def from_string(value:str)->CardRank:
         return CardRanks._lookup[value]
 
+    @staticmethod
     def get_all():
         return CardRanks._lookup.values()
 
 
-# Note: >=3.8 supports this:
-#     SuiteIdentifier=Literal['♠','♥','♦','♣']
+SuiteIdentifier=Literal['♠','♥','♦','♣']
 
-SuiteIdentifier=chr
 
 @dataclass(frozen=True)
 class Suite:
@@ -79,9 +79,11 @@ class Suites:
 
   _symbol_lookup={s.symbol:s for s in all}
 
+  @staticmethod
   def get_all():
       return list(Suites.all)
 
+  @staticmethod
   def from_symbol(value:SuiteIdentifier)->Suite:
       return Suites._symbol_lookup[value]
 
@@ -96,6 +98,7 @@ class Deck:
   _repr_lookup = {repr(c):c for c in _all}
   _chars_lookup = {c.chars:c for c in _all}  
 
+  @staticmethod
   def build_deck():
       return Deck._all[:]  
 
