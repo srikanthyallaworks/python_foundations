@@ -1,13 +1,19 @@
+from typing import List
 from user import User
 
 
 class UserService:
+    """Service that gets users from a RESTful web service.
+
+    (Except this one's fake.)
+    """
+
     _uri:str
 
     def __init__(self, uri:str) -> None:
         self._uri=uri
 
-    def get_users(self):
+    def get_users(self)->List[User]:
         return [
             User(id=932210, login='lsilva', given_name='Leroy', surname='Silva'),
             User(id=932211, login='lguerrero', given_name='Lynn', surname='Guerrero'),

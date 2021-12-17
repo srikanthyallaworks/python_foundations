@@ -1,13 +1,8 @@
+from contextlib import AbstractContextManager
 import random
 from enum import Enum
-from typing import ContextManager, Literal, Optional, Type, TypeVar
+from typing import Literal, Optional, Type
 from types import TracebackType
-
-try:
-    # Only exists >=3.10
-    from typing_extensions import Self
-except ImportError:
-    Self = TypeVar('Self')
 
 
 class DBConnectionStatus(Enum):
@@ -17,14 +12,8 @@ class DBConnectionStatus(Enum):
 
 
 
-class DBConnection(ContextManager[Self]):
+class DBConnection:
   """Connection to the database. Use this to execute queries.
-
-    Note on the typing:
-    * Uses the experimental [Self type](https://www.python.org/dev/peps/pep-0673/)
-    * Probably overkill
-    * Gets pylance to shut up about 'Expected type arguments for generic class'
-
   """
 
   status: DBConnectionStatus = DBConnectionStatus.ReadyToUse
