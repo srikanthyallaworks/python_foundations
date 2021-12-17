@@ -4,7 +4,7 @@ from user import User
 class UserService:
     _uri:str
 
-    def __init__(self,uri) -> None:
+    def __init__(self, uri:str) -> None:
         self._uri=uri
 
     def get_users(self):

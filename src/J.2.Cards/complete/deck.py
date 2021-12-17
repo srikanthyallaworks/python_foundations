@@ -15,6 +15,7 @@ class Color(Enum):
 class CardRank:
     symbol:str
     value:int
+
     @property
     def character(self):
         if self.symbol=='10':
@@ -22,7 +23,7 @@ class CardRank:
         return self.symbol
 
 
-#@dataclass(frozen=True)
+
 class CardRanks:
     _symbols=('2','3','4','5','6','7','8','9','10','J','Q','K','A')
     _lookup={s:CardRank(s,i+2) for i,s in enumerate(_symbols)}

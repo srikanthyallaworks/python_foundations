@@ -1,6 +1,6 @@
 from typing import List
 from user import User
-from db_connection_factory import DBConnectionFactory, DBConnection
+from db_connection_factory import DBConnectionFactory
 
 
 def to_sql(u:User)->str:
@@ -31,8 +31,7 @@ class UserImporter:
         Args:
             u (User): [description]
         """
-        con = self.factory.get_connection()
-        with con:
+        with self.factory.get_connection() as con:
             sql = to_sql(u)
             con.execute(sql)
 

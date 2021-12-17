@@ -1,12 +1,14 @@
 from enum import Enum
+from contextlib import AbstractContextManager
 import random
+from typing import Any
 
 class DBConnectionStatus(Enum):
   ReadyToUse = 0
   Open = 1
   Closed = 2
 
-class DBConnection:
+class DBConnection(AbstractContextManager[Any]):
   """Connection to the database. Use this to execute queries.
   """
 
@@ -57,10 +59,14 @@ class DBConnection:
     print(f'[[Executing {sql_command}]]')
     return '1 row affected'
 
+
   def __enter__(self):
     self.open()
+    return self
 
-  def __exit__(self, exc_type, exc_value, exc_tb):
-    self.close()
-    return exc_type == None
+
+  def __exit__(self, exc_type:Any, exc_value:Any, exc_tb:Any):
+    if self.status == DBConnectionStatus.Open:
+      self.close()
+    return False
 

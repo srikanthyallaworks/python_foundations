@@ -12,7 +12,7 @@ resource leak only a few of the new accounts actually get inserted.
 * Add a `try...finally` block to ensure that connections get closed when the database throws an exception.
 
 ### Sprint 1
-* Implement a context manager so the database connection can be used inside a [`with` statement](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement).
+* Implement the context manager protocol so the database connection can be used inside a [`with` statement](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement).
 
 
 
@@ -35,3 +35,7 @@ resource leak only a few of the new accounts actually get inserted.
 ## Hints
 * Add `__enter__()` and `__exit__` to DBConnection
 * There's a good tutorial [here](https://realpython.com/python-with-statement/).
+* Read up on typing here:
+  - https://docs.python.org/3/library/contextlib.html#contextlib.AbstractContextManager
+  - https://docs.python.org/3/library/stdtypes.html#typecontextmanager
+  - https://stackoverflow.com/questions/61471700/type-hint-where-one-argument-is-the-type-of-another
