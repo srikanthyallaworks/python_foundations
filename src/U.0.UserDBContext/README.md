@@ -39,3 +39,6 @@ resource leak only a few of the new accounts actually get inserted.
   - https://docs.python.org/3/library/contextlib.html#contextlib.AbstractContextManager
   - https://docs.python.org/3/library/stdtypes.html#typecontextmanager
   - https://stackoverflow.com/questions/61471700/type-hint-where-one-argument-is-the-type-of-another
+
+https://github.com/python/mypy/blob/4996d571272adde83a3de2689c0147ca1be23f2c/mypy/typeshed/stdlib/contextlib.pyi
+https://github.com/python/cpython/blob/3.10/Lib/contextlib.py
