@@ -1,15 +1,30 @@
-from enum import Enum
-from contextlib import AbstractContextManager
 import random
-from typing import Any
+from enum import Enum
+from typing import ContextManager, Literal, Optional, Type, TypeVar
+from types import TracebackType
+
+try:
+    # Only exists >=3.10
+    from typing_extensions import Self
+except ImportError:
+    Self = TypeVar('Self')
+
 
 class DBConnectionStatus(Enum):
   ReadyToUse = 0
   Open = 1
   Closed = 2
 
-class DBConnection(AbstractContextManager[Any]):
+
+
+class DBConnection(ContextManager[Self]):
   """Connection to the database. Use this to execute queries.
+
+    Note on the typing:
+    * Uses the experimental [Self type](https://www.python.org/dev/peps/pep-0673/)
+    * Probably overkill
+    * Gets pylance to shut up about 'Expected type arguments for generic class'
+
   """
 
   status: DBConnectionStatus = DBConnectionStatus.ReadyToUse
@@ -64,9 +79,34 @@ class DBConnection(AbstractContextManager[Any]):
     self.open()
     return self
 
-
-  def __exit__(self, exc_type:Any, exc_value:Any, exc_tb:Any):
+  def __dispose(self):
     if self.status == DBConnectionStatus.Open:
       self.close()
+
+  def __exit__(
+    self, 
+    exc_type:Optional[Type[BaseException]], 
+    exc_value:Optional[BaseException], 
+    exc_tb:Optional[TracebackType]
+  )->Literal[False]:
+    """Ensures that resources get released on exiting.
+
+    Args:
+        exc_type (Optional[Type[BaseException]]): Type of exception.
+        exc_value (Optional[BaseException]): Exception
+        exc_tb (Optional[TracebackType]): Traceback
+
+    Returns:
+        Literal[False]: Always returns false, indicating that the exception should be re-raised.
+    """
+    self.__dispose()
     return False
 
+
+  def __del__(self):
+    """Destructor. Releases resources just in case someone gets sloppy.
+
+    Note: Don't rely on this. Use a `with` block or manually close.
+
+    """
+    self.__dispose()
