@@ -1,5 +1,6 @@
 {
   "python.pythonPath": "/opt/conda/bin/python",
+  "python.analysis.typeCheckingMode": "off",
   "[python]":{
     "editor.wordBasedSuggestions": false,
     "editor.formatOnSave": true,

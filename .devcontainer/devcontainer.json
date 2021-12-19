@@ -21,7 +21,6 @@
 		"python.linting.pycodestylePath": "/opt/conda/bin/pycodestyle",
 		"python.linting.pydocstylePath": "/opt/conda/bin/pydocstyle",
 		"python.linting.pylintPath": "/opt/conda/bin/pylint",
-		"python.analysis.typeCheckingMode": "strict",
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
