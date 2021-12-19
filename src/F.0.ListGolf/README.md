@@ -37,5 +37,5 @@ list_tools.py module so the tests pass.
 
 ## Hints
 * Read the documentation on [sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range).
-
+* Stack Overflow discussion on performance [here](https://stackoverflow.com/questions/480214/how-do-you-remove-duplicates-from-a-list-whilst-preserving-order)
 
