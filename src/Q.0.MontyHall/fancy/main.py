@@ -1,10 +1,7 @@
 
 import random
 from typing import Callable, Tuple
-try:
-    from .game import Game, Door, DoorState
-except:
-    from game import Game, Door, DoorState
+from game import Game, Door, DoorState
 
 # Types for annotating functions
 Doors = Tuple[Door, Door, Door]
@@ -56,9 +53,9 @@ def test_strategies(game_count=100):
     }
     winnings = {label: 0 for label in strategies}
 
-    for i in range(game_count):
-        for label in strategies:
-            winnings[label] += play_simulation(strategies[label])
+    for _ in range(game_count):
+        for label, strategy in strategies.items():
+            winnings[label] += play_simulation(strategy)
 
     return winnings
 
