@@ -1,5 +1,6 @@
-import unittest 
+import unittest
 from main import toText
+
 
 class TestToText(unittest.TestCase):
     def test_threes_should_fizz(self):
@@ -20,6 +21,7 @@ class TestToText(unittest.TestCase):
 
     def test_primes_should_do_numbers(self):
         assert toText(17) == str(17)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

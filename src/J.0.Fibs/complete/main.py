@@ -8,7 +8,8 @@ def is_even(value):
     Returns:
         boolean: True means even; False means odd
     """
-    return value%2==0
+    return value % 2 == 0
+
 
 def get_fib_sequence(limit):
     """Gets a list containing the terms of the fibonacci
@@ -24,7 +25,7 @@ def get_fib_sequence(limit):
     previous = 1
     current = 2
     terms = [previous]
-    while current<=limit:
+    while current <= limit:
         terms.append(current)
         next_term = current + previous
         previous = current
@@ -46,8 +47,10 @@ def get_euler02_solution():
             total += term
     return total
 
+
 def main():
     print(f'Here is your answer: {get_euler02_solution()}')
+
 
 if __name__ == "__main__":
     main()

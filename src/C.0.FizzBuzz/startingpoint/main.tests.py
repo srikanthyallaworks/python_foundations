@@ -6,10 +6,10 @@ except:
 
 
 class TestToText(unittest.TestCase):
-    
+
     def test_4_should_be_4(self):
         result = toText(4)
-        self.assertEqual("4",result)
+        self.assertEqual("4", result)
 
 
 if __name__ == '__main__':

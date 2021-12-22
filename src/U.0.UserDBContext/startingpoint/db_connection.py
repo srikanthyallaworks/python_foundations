@@ -1,59 +1,59 @@
 from enum import Enum
 import random
 
+
 class DBConnectionStatus(Enum):
-  ReadyToUse = 0
-  Open = 1
-  Closed = 2
+    ReadyToUse = 0
+    Open = 1
+    Closed = 2
+
 
 class DBConnection:
-  """Connection to the database. Use this to execute queries.
-  """
-
-  status: DBConnectionStatus = DBConnectionStatus.ReadyToUse
-  
-  def open(self):
-    """Opens a connection to the database.
-
-    Raises:
-        Exception: Only ReadyToUse connections can be opened.
+    """Connection to the database. Use this to execute queries.
     """
-    if self.status != DBConnectionStatus.ReadyToUse:
-      raise Exception('Can\'t open an open connection!')
-    self.status = DBConnectionStatus.Open
 
+    status: DBConnectionStatus = DBConnectionStatus.ReadyToUse
 
-  def close(self):
-    """Closes database connection. Releases resources.
+    def open(self):
+        """Opens a connection to the database.
 
-    Raises:
-        Exception: Only open connections can be closed.
-    """
-    if  self.status != DBConnectionStatus.Open:
-      raise Exception('Can\'t close a closed or new connection!')
-    self.status = DBConnectionStatus.Closed
+        Raises:
+            Exception: Only ReadyToUse connections can be opened.
+        """
+        if self.status != DBConnectionStatus.ReadyToUse:
+            raise Exception('Can\'t open an open connection!')
+        self.status = DBConnectionStatus.Open
 
+    def close(self):
+        """Closes database connection. Releases resources.
 
-  def execute(self, sql_command:str)->str:
-    """Executes arbitrary SQL
+        Raises:
+            Exception: Only open connections can be closed.
+        """
+        if self.status != DBConnectionStatus.Open:
+            raise Exception('Can\'t close a closed or new connection!')
+        self.status = DBConnectionStatus.Closed
 
-    Args:
-        sql_command (str): SQL batch
+    def execute(self, sql_command: str) -> str:
+        """Executes arbitrary SQL
 
-    Raises:
-        Exception: Only open connections can execute queries
-        Exception: Sometimes the database returns an error.
+        Args:
+            sql_command (str): SQL batch
 
-    Returns:
-        str: Message from the database.
-    """
-    if self.status != DBConnectionStatus.Open:
-      raise Exception('Can\'t execute sql on a closed connection!')
+        Raises:
+            Exception: Only open connections can execute queries
+            Exception: Sometimes the database returns an error.
 
-    if random.random() > .8:
-      #Simulate the occasional error
-      raise Exception('Database returned an error. (String too long or something.)')
+        Returns:
+            str: Message from the database.
+        """
+        if self.status != DBConnectionStatus.Open:
+            raise Exception('Can\'t execute sql on a closed connection!')
 
-    print(f'[[Executing {sql_command}]]')
-    return '1 row affected'
+        if random.random() > .8:
+            # Simulate the occasional error
+            raise Exception(
+                'Database returned an error. (String too long or something.)')
 
+        print(f'[[Executing {sql_command}]]')
+        return '1 row affected'

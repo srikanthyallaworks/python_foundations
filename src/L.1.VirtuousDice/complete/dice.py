@@ -2,22 +2,20 @@ import random
 
 
 class Die:
-  _side_count = 6
+    _side_count = 6
 
-  def __init__(self):
-    self._value = None
+    def __init__(self):
+        self._value = None
 
-  def roll(self)->int:
-    self._value = random.randrange(1,Die._side_count+1)
-    return self._value
+    def roll(self) -> int:
+        self._value = random.randrange(1, Die._side_count+1)
+        return self._value
 
 
 class Cup:
 
-  def __init__(self,die_count=2):
-    self._dice = [Die() for i in range(die_count)]
+    def __init__(self, die_count=2):
+        self._dice = [Die() for i in range(die_count)]
 
-  def roll(self)->int:
-    return sum([die.roll() for die in self._dice])
-
-
+    def roll(self) -> int:
+        return sum([die.roll() for die in self._dice])

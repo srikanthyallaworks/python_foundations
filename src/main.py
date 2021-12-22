@@ -2,12 +2,14 @@ import sys
 
 
 def foo(value):
-  print(f'foo > Value: {value}')
-  print(f'foo > refcount: {sys.getrefcount(value)}')
-  value +=1
+    print(f'foo > Value: {value}')
+    print(f'foo > refcount: {sys.getrefcount(value)}')
+    value += 1
+
 
 class Node:
-  pass
+    pass
+
 
 def main():
     print('<main/>')
@@ -18,6 +20,7 @@ def main():
     print(f'main > Value: {a}')
 
     print('</main>')
+
 
 print('\n\n************** Begin *****************\n')
 main()

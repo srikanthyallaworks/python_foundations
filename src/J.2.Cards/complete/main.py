@@ -20,26 +20,26 @@ def get_data_file():
 
 def get_euler59_solution(data_file):
 
-    victories={
-        'p1':0,
-        'p2':0
+    victories = {
+        'p1': 0,
+        'p2': 0
     }
 
     for line in open(data_file):
         chars = line.strip().split(' ')
 
-        hand_1 =  tuple((Deck.from_chars(s) for s in chars[:5]))
-        hand_2 =  {Deck.from_chars(s) for s in chars[5:]}
+        hand_1 = tuple((Deck.from_chars(s) for s in chars[:5]))
+        hand_2 = {Deck.from_chars(s) for s in chars[5:]}
 
-        if Hands.get_hand_value(hand_1) >Hands.get_hand_value(hand_2):
-            victories['p1']+=1
+        if Hands.get_hand_value(hand_1) > Hands.get_hand_value(hand_2):
+            victories['p1'] += 1
         else:
-            victories['p2']+=1
+            victories['p2'] += 1
 
     return victories
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     data_file = get_data_file()
     victories = get_euler59_solution(data_file)
     print(f'Player 1: {victories["p1"]} wins')

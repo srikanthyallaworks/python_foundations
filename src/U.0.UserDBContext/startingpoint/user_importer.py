@@ -3,7 +3,7 @@ from user import User
 from db_connection_factory import DBConnectionFactory, DBConnection
 
 
-def to_sql(u:User)->str:
+def to_sql(u: User) -> str:
     """Builds an insert statement for the specified user.
 
     Args:
@@ -19,13 +19,12 @@ class UserImporter:
     """Tool for importing users into a database. 
     """
 
-    factory:DBConnectionFactory
-    
-    def __init__(self, connection_string:str) -> None:
+    factory: DBConnectionFactory
+
+    def __init__(self, connection_string: str) -> None:
         self.factory = DBConnectionFactory(connection_string)
 
-
-    def import_user(self, u:User):
+    def import_user(self, u: User):
         """Imports a single user into the database.
 
         Args:
@@ -37,8 +36,7 @@ class UserImporter:
         con.execute(sql)
         con.close()
 
-
-    def import_users(self, users:List[User]):
+    def import_users(self, users: List[User]):
         """Imports a batch of users.
 
         Args:
@@ -48,6 +46,5 @@ class UserImporter:
             try:
                 self.import_user(u)
             except Exception as e:
-                #TODO: Log this to a file so we can add the user manually
+                # TODO: Log this to a file so we can add the user manually
                 print(f'Error: [{e}] on user: [{u}]')
-
