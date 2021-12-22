@@ -33,6 +33,7 @@
 		"ms-python.vscode-pylance",
 		"ms-toolsai.jupyter",
 		"njpwerner.autodocstring",
+		"bungcip.better-toml",
 		"sdras.night-owl",
 	],
 
