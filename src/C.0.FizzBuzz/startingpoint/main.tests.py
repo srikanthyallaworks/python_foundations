@@ -1,14 +1,13 @@
 import unittest
-try:
-    from .main import toText
-except:
-    from main import toText
+from main import to_text
 
 
 class TestToText(unittest.TestCase):
+    """Tests for to_text
+    """
 
     def test_4_should_be_4(self):
-        result = toText(4)
+        result = to_text(4)
         self.assertEqual("4", result)
 
 

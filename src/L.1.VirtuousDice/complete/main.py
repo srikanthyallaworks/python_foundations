@@ -1,20 +1,21 @@
-from dice import Die, Cup
+from dice import Cup
 
 
 class Game:
-    def __init__(self, playerName):
-        self.playerName = playerName
+    def __init__(self, player_name):
+        self.player_name = player_name
         self.outcome = "Undecided"
+        self._first_roll = 0
         self.cup = Cup()
 
     def shoot(self):
         value = self.cup.roll()
-        print(f'{self.playerName} rolls a {value}')
+        print(f'{self.player_name} rolls a {value}')
         return value
 
     def finish_game(self, outcome):
         self.outcome = outcome
-        print(f'Game Over: {outcome} for {self.playerName}!')
+        print(f'Game Over: {outcome} for {self.player_name}!')
 
     def do_first_roll(self):
         result = self.shoot()
@@ -33,7 +34,7 @@ class Game:
 
     def play(self):
         self.do_first_roll()
-        while(self.outcome == "Undecided"):
+        while self.outcome == "Undecided":
             self.do_next_roll()
 
 

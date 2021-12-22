@@ -1,9 +1,11 @@
 import unittest
 import sys
-from list_tools import *
+from list_tools import get_unique_elements, get_clone, get_partitions, get_flattened
 
 
-class TestUniqueElements(unittest.TestCase):
+class TestGetUniqueElements(unittest.TestCase):
+    """Tests for get_unique_elements
+    """
 
     def test_empty_for_empty_array(self):
         result = get_unique_elements([])
@@ -27,7 +29,9 @@ class TestUniqueElements(unittest.TestCase):
         self.assertEqual(result, [9, 0, 8])
 
 
-class TestClone(unittest.TestCase):
+class TestGetClone(unittest.TestCase):
+    """Tests for get_clone
+    """
 
     def test_has_the_same_things(self):
         original = [2, 11, 'chicken', 0, 0, None]
@@ -40,7 +44,9 @@ class TestClone(unittest.TestCase):
         self.assertFalse(original is cloned)
 
 
-class TestPartition(unittest.TestCase):
+class TestGetPartitions(unittest.TestCase):
+    """Tests for get_partitions
+    """
 
     def test_wraps_for_single_partition(self):
         original = [2, 11, 'chicken', 0, 0, None]
@@ -57,7 +63,9 @@ class TestPartition(unittest.TestCase):
         self.assertEqual(original[3:6], partitions[1])
 
 
-class TestFlatten(unittest.TestCase):
+class TestGetFlattened(unittest.TestCase):
+    """Tests for get_flattened
+    """
 
     def test_single_dimension(self):
         expected = [1, 2, 3, 4]

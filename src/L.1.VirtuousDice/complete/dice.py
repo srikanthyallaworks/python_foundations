@@ -2,6 +2,7 @@ import random
 
 
 class Die:
+    """Represents a cubical 6-side die."""
     _side_count = 6
 
     def __init__(self):
@@ -13,6 +14,8 @@ class Die:
 
 
 class Cup:
+    """Represents a cup that holds 1 or more dice.
+    """
 
     def __init__(self, die_count=2):
         self._dice = [Die() for i in range(die_count)]

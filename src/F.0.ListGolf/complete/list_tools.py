@@ -4,11 +4,11 @@ def get_unique_elements(items):
        unique members of the original
 
     Args:
-        items (list): List, possibly containing 
+        items (list): List, possibly containing
           duplicate values
 
     Returns:
-        list: Subset, in the same order, with 
+        list: Subset, in the same order, with
           no duplicates.
     """
     unique_items = []
@@ -19,8 +19,8 @@ def get_unique_elements(items):
 
 
 def get_clone(items):
-    """Builds a new list with its 
-       contents identical to the specified 
+    """Builds a new list with its
+       contents identical to the specified
        value.
 
     Args:
@@ -40,8 +40,8 @@ def get_partitions(items, partition_size=2):
 
     Args:
         items (list): Arbitrary list
-        partition_size (int, optional): 
-          Size of each partition. 
+        partition_size (int, optional):
+          Size of each partition.
           Defaults to 2.
 
     Returns:
