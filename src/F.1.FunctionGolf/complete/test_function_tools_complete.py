@@ -1,9 +1,6 @@
-import unittest
-try:
-    from .function_tools import *
-except:
-    from function_tools import *
 import sys
+import unittest
+from function_tools import make_adder, sort_by_magnitude, pipe, compose, add_all
 
 
 class TestMakeAdder(unittest.TestCase):
