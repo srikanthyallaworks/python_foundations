@@ -1,7 +1,4 @@
-try:
-    from .game import Game
-except:
-    from game import Game
+from game import Game
 
 
 def play_not_interactive():

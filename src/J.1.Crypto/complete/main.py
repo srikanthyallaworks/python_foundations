@@ -1,9 +1,6 @@
 from typing import List
 from itertools import permutations
-try:
-    from .cypher_text import message
-except:
-    from cypher_text import message
+from cypher_text import message
 
 
 def crypt_stream(key: bytes, data: bytes):

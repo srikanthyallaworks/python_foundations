@@ -1,5 +1,4 @@
 import itertools
-import operator
 import functools
 
 limit = 4e6
@@ -19,14 +18,14 @@ def get_fib_term(position: int) -> int:
     at the specified position.
 
     Args:
-        position (int): position of the term 
+        position (int): position of the term
 
     Returns:
         int: Term at the specified position.
     """
     if position < 2:
         return position
-    return get_fib_term(position-1) + get_fib_term(position-2)
+    return get_fib_term(position - 1) + get_fib_term(position - 2)
 
 
 def get_fib_sequence():

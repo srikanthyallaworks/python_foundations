@@ -1,10 +1,6 @@
 import os
-try:
-    from .deck import Deck
-    from .hand import Hands
-except:
-    from deck import Deck
-    from hand import Hands
+from deck import Deck
+from hand import Hands
 
 
 def get_data_file():

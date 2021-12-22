@@ -14,7 +14,7 @@ def make_adder(quantity_to_add=0):
     Returns:
         Callable[[int],int]: Function that adds a quantity to its argument.
     """
-    return lambda x: x+quantity_to_add
+    return lambda x: x + quantity_to_add
 
 
 def sort_by_magnitude(vectors):

@@ -10,13 +10,13 @@ def to_sql(u: User) -> str:
         u (User): User that gets added to the database.
 
     Returns:
-        str: SQL query 
+        str: SQL query
     """
     return f'INSERT User({u.id}, {u.login},...)'
 
 
 class UserImporter:
-    """Tool for importing users into a database. 
+    """Tool for importing users into a database.
     """
 
     factory: DBConnectionFactory

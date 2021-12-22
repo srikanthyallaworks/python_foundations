@@ -5,7 +5,7 @@ https://en.wikipedia.org/wiki/Fortune_(Unix)
 
 
 ## Requirements
-1. 
+1.
 
 ## Stretch Goals
 1. Read-in the actual format.
@@ -41,7 +41,7 @@ def get_cat_fortune() -> str:
 def get_fortune():
     try:
         return get_cat_fortune()
-    except:
+    except Exception:
         # TODO: Log this or something
         return "The future is cloudy"
 

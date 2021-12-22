@@ -15,9 +15,9 @@ class Die:
         """Rolls the die
 
         Returns:
-            int: Some random value from 1 up to the number of sides 
+            int: Some random value from 1 up to the number of sides
         """
-        return random.randrange(1, self._side_count+1)
+        return random.randrange(1, self._side_count + 1)
 
 
 class Cup:

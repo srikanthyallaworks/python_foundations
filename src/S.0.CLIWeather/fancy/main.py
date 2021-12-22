@@ -38,7 +38,7 @@ def fetch_json(uri: str) -> dict:
         uri (str): Json endpoint
 
     Raises:
-        ConnectionError: If the endpoint refuses 
+        ConnectionError: If the endpoint refuse
 
     Returns:
         [dict]: Response json as a dict

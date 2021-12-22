@@ -50,7 +50,7 @@ def get_partitions(items, partition_size=2):
     partitions = []
 
     for start in range(0, len(items), partition_size):
-        part = items[start:start+partition_size]
+        part = items[start:start + partition_size]
         partitions.append(part)
 
     return partitions

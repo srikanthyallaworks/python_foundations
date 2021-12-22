@@ -27,7 +27,7 @@ def get_fortunes(data_file: str) -> List[str]:
 
 
 def get_fortune() -> str:
-    """Gets a single fortune at random 
+    """Gets a single fortune at random
 
     Returns:
         str: 1 fortune

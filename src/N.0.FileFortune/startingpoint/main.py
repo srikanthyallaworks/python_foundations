@@ -1,4 +1,3 @@
-import random
 import os
 
 
@@ -26,7 +25,7 @@ def get_fortunes():
 
 
 def get_fortune():
-    """Gets a single fortune 
+    """Gets a single fortune
 
     Returns:
         str: 1 fortune

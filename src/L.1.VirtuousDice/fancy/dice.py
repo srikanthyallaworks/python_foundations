@@ -20,7 +20,7 @@ class Die:
         self._value = None
 
     def roll(self) -> int:
-        self._value = random.randrange(1, Die._side_count+1)
+        self._value = random.randrange(1, Die._side_count + 1)
         return self._value
 
     @property

@@ -8,7 +8,7 @@ def run_surname_report():
     print('\nHere are some common surnames:')
     surname_counts = {}
     for surname in [s['surname'] for s in roster]:
-        surname_counts[surname] = surname_counts.setdefault(surname, 0)+1
+        surname_counts[surname] = surname_counts.setdefault(surname, 0) + 1
 
     for surname, count in surname_counts.items():
         if count > 2:
@@ -16,10 +16,10 @@ def run_surname_report():
 
 
 def run_class_size_report():
-    """Prints a report of the school population 
+    """Prints a report of the school population
        by grade
     """
-    print(f'Here are the students in each grade:')
+    print('Here are the students in each grade:')
     grade_counts = {}
     for grade in [student['grade'] for student in roster]:
         grade_counts[grade] = grade_counts.setdefault(grade, 0) + 1

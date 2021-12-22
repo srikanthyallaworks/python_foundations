@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from enum import IntEnum, Enum
-from typing import Literal, Tuple
+from enum import Enum
+from typing import Literal
 
 
 class Color(Enum):
@@ -24,7 +24,7 @@ class CardRank:
 class CardRanks:
     _symbols = ('2', '3', '4', '5', '6', '7', '8',
                 '9', '10', 'J', 'Q', 'K', 'A')
-    _lookup = {s: CardRank(s, i+2) for i, s in enumerate(_symbols)}
+    _lookup = {s: CardRank(s, i + 2) for i, s in enumerate(_symbols)}
 
     @staticmethod
     def from_string(value: str) -> CardRank:

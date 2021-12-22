@@ -1,15 +1,8 @@
-from abc import ABCMeta
-from dataclasses import dataclass
-from enum import IntEnum, Enum
+from enum import IntEnum
 from typing import Tuple
 
-
-try:
-    from .custom_iter_tools import pairwise, groupby
-    from .deck import *
-except:
-    from deck import *
-    from custom_iter_tools import *
+from deck import Card, Deck
+from custom_iter_tools import pairwise, groupby
 
 
 Hand = Tuple[Card, Card, Card, Card]
@@ -37,7 +30,7 @@ class Hands:
     def is_straight(cards: Hand) -> bool:
         values = sorted([c.rank.value for c in cards])
         for a, b in pairwise(values):
-            if (a+1) != b:
+            if (a + 1) != b:
                 return False
         return True
 
@@ -82,7 +75,7 @@ class Hands:
             tie_breaker_cards = sorted([c.rank.value for c in cards])
 
         for i, v in enumerate(tie_breaker_cards):
-            value |= v << (6*i)
+            value |= v << (6 * i)
 
         return value
 

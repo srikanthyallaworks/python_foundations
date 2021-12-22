@@ -1,14 +1,5 @@
-"""
-
-
-"""
-
-import random
 from enum import Enum
-try:
-    from .dice import Die, Cup
-except:
-    pass
+from dice import Cup
 
 
 class Outcome(Enum):
@@ -71,10 +62,9 @@ class Table:
 
 def main():
     table = Table(["Lizzy", "Kim", "Alphonso", "Martin"])
-    for i in range(10):
+    for _ in range(10):
         table.playGame()
 
 
 if __name__ == "__main__":
-    from dice import Die, Cup
     main()

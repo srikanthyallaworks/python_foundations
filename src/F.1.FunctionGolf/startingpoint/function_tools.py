@@ -4,7 +4,7 @@ def make_adder(quantity_to_add=0):
 
     Example:
         add10 = make_adder(10)
-        result = add10(18) 
+        result = add10(18)
         print(result) # Prints 28
 
     Args:
@@ -27,7 +27,7 @@ def sort_by_magnitude(vectors):
                  magnitude == 8 ** .5
                  magnitude == 2.83.....
 
-      Example: 
+      Example:
         result = sort_by_magnitude([(1,1), (100,100), (4,2)])
         print(result)
         > [(100,100), (4,2), (1,1)]
@@ -54,7 +54,7 @@ def add_all(a, b, c=0, d=0):
     Returns:
         [number]: sum of all arguments
     """
-    return a+b+c+d
+    return a + b + c + d
 
 
 def pipe(operations, argument):

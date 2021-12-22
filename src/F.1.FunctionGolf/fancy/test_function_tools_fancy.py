@@ -1,6 +1,6 @@
+import sys
 import unittest
 from function_tools import make_adder, sort_by_magnitude, pipe, compose, add_all
-
 
 
 class TestMakeAdder(unittest.TestCase):
@@ -60,16 +60,16 @@ class TestPipe(unittest.TestCase):
 
     def test_single_operation(self):
         operations = [
-            lambda x: x*x,
+            lambda x: x * x,
         ]
         actual = pipe(operations, 5)
         self.assertEqual(actual, 25)
 
     def test_operation_order(self):
         operations = [
-            lambda x: x*x,
-            lambda x: x+x,
-            lambda x: x-1
+            lambda x: x * x,
+            lambda x: x + x,
+            lambda x: x - 1
         ]
         actual = pipe(operations, 5)
         self.assertEqual(actual, 49)
@@ -79,8 +79,8 @@ class TestCompose(unittest.TestCase):
 
     def test_square_then_double(self):
         operations = [
-            lambda x: x*x,
-            lambda x: x+x
+            lambda x: x * x,
+            lambda x: x + x
         ]
         square_then_add = compose(operations)
 

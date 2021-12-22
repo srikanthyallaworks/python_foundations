@@ -1,9 +1,5 @@
 from collections import defaultdict
-
-try:
-    from .roster import roster
-except:
-    from roster import roster
+from roster import roster
 
 
 def get_frequencies_by(field):
@@ -42,17 +38,17 @@ def report_top_5_frequencies(field):
 
 
 def run_surname_report():
-    print(f'\nHere are the top 5 surnames:')
+    print('\nHere are the top 5 surnames:')
     report_top_5_frequencies('surname')
 
 
 def run_givenName_report():
-    print(f'\nHere are the top 5 given names:')
+    print('\nHere are the top 5 given names:')
     report_top_5_frequencies('givenName')
 
 
 def run_class_size_report():
-    print(f'\nHere are the students in each grade:')
+    print('\nHere are the students in each grade:')
     frequencies = get_frequencies_by('grade')
     sorted_by_grade = sorted(frequencies.items(), key=lambda t: t[0])
     for grade, count in sorted_by_grade:

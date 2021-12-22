@@ -7,7 +7,7 @@ def make_adder(quantity_to_add=0):
 
     Example:
         add10 = make_adder(10)
-        result = add10(18) 
+        result = add10(18)
         print(result) # Prints 28
 
     Args:
@@ -17,7 +17,7 @@ def make_adder(quantity_to_add=0):
     Returns:
         Callable[[int],int]: Function that adds a quantity to its argument.
     """
-    return lambda x: x+quantity_to_add
+    return lambda x: x + quantity_to_add
 
 
 def sort_by_magnitude(vectors):
@@ -30,7 +30,7 @@ def sort_by_magnitude(vectors):
                  magnitude == 8 ** .5
                  magnitude == 2.83.....
 
-      Example: 
+      Example:
         result = sort_by_magnitude([(1,1), (100,100), (4,2)])
         print(result)
         > [(100,100), (4,2), (1,1)]
