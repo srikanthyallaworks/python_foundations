@@ -1,14 +1,11 @@
-try:
-    from .roster import roster
-except:
-    from roster import roster
+from roster import roster
 
 
 def run_surname_report():
-    """Prints a report of surnames shared by 
+    """Prints a report of surnames shared by
        at least 3 people on the roster.
     """
-    print(f'\nHere are some common surnames:')
+    print('\nHere are some common surnames:')
     surname_counts = {}
     for surname in [s['surname'] for s in roster]:
         surname_counts[surname] = surname_counts.setdefault(surname, 0)+1
@@ -22,7 +19,7 @@ def run_class_size_report():
     """Prints a report of the school population 
        by grade
     """
-    print(f'\nHere are the students in each grade:')
+    print(f'Here are the students in each grade:')
     grade_counts = {}
     for grade in [student['grade'] for student in roster]:
         grade_counts[grade] = grade_counts.setdefault(grade, 0) + 1

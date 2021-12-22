@@ -1,5 +1,5 @@
 def is_even(value):
-    """Returns a value indicating whether the 
+    """Returns a value indicating whether the
     specified value is even
 
     Args:
@@ -37,7 +37,7 @@ def get_euler02_solution():
     """Gets the solution.
 
     Returns:
-        int: Sum of even terms of the fibonacci 
+        int: Sum of even terms of the fibonacci
         sequence below 4 million
     """
     limit = 4e6
