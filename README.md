@@ -1,6 +1,7 @@
 # Python Foundations
 
 
+
 ## Overview
 The Introduction to Python training course is designed to demonstrate the Python programming language. The course begins by examining why to adopt Python, where Python excels, and how it compares to other programming languages. Next, it transitions into a nuts-and-bolts examination of key language features, concepts, and functionalities. The course concludes by analyzing how to apply OO programming concepts with Python, work with exceptions, and create modularity in your applications.
 
@@ -31,6 +32,7 @@ However, the tools below are very nice to have:
 * [Git](https://git-scm.com/downloads)
 
 
+---
 
 
 ## Outline
@@ -86,3 +88,31 @@ However, the tools below are very nice to have:
 * OO concepts supported by Python
 * Creating classes, properties, methods, attributes, etc
 * Applying encapsulation using method access, visibility, and conventions
+
+
+---
+
+## Lab Details
+This is overkill. But it's a good practice.
+
+### On Windows
+1. Install Poetry as described [here](https://python-poetry.org/docs/#osx--linux--bashonwindows-install-instructions)
+```pwsh
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+
+```
+
+2. Install the project:
+```shell
+python -m poetry install
+```
+
+3. Activate your virtual environment:
+```shell
+python -m poetry shell
+python -m poetry --version
+```
+4. When VSCode asks for your interpreter like this:
+![xyz](./.assets/select_interpreter_toast.png "some title")
+Select the version in your virtual environment like this: 
+![xyz](./.assets/select_interpreter_menu.png "some title")
