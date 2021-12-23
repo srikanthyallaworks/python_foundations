@@ -3,8 +3,8 @@ from main import to_text
 
 
 class TestToText(unittest.TestCase):
-    """Tests for to_text
-    """
+    """Tests for to_text"""
+
     @staticmethod
     def test_threes_should_fizz():
         expected = "fizz"
@@ -29,5 +29,5 @@ class TestToText(unittest.TestCase):
         assert to_text(17) == str(17)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -2,20 +2,19 @@ import requests
 
 
 def get_geolocation_uri():
-    return 'http://www.geoplugin.net/json.gp'
+    return "http://www.geoplugin.net/json.gp"
 
 
 def get_gridlocation_uri(latitude, longitude):
-    return f'https://api.weather.gov/points/{latitude},{longitude}'
+    return f"https://api.weather.gov/points/{latitude},{longitude}"
 
 
 def get_forecast_uri(office, x, y):
-    return f'https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast'
+    return f"https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast"
 
 
 class GeoLocation:
-    """Simple type to hold lat/long coordinates
-    """
+    """Simple type to hold lat/long coordinates"""
 
     def __init__(self, latitude, longitude):
         self.latitude = latitude
@@ -23,8 +22,7 @@ class GeoLocation:
 
 
 class GridLocation:
-    """Simple type to hold coordinates used by weather.gov
-    """
+    """Simple type to hold coordinates used by weather.gov"""
 
     def __init__(self, office, x, y):
         self.office = office
@@ -63,7 +61,7 @@ def get_geo_location():
     json = fetch_json(uri)
     return GeoLocation(
         latitude=float(json["geoplugin_latitude"]),
-        longitude=float(json["geoplugin_longitude"])
+        longitude=float(json["geoplugin_longitude"]),
     )
 
 
@@ -78,11 +76,7 @@ def get_grid_location(geo):
     """
     url = get_gridlocation_uri(geo.latitude, geo.longitude)
     json = fetch_json(url)["properties"]
-    return GridLocation(
-        office=json["cwa"],
-        x=int(json["gridX"]),
-        y=int(json["gridY"])
-    )
+    return GridLocation(office=json["cwa"], x=int(json["gridX"]), y=int(json["gridY"]))
 
 
 def get_forecast(grid_loc):
@@ -100,13 +94,12 @@ def get_forecast(grid_loc):
 
 
 def main():
-    """Hits public APIs to get a short forcast for the local weather.
-    """
+    """Hits public APIs to get a short forcast for the local weather."""
     geo_location = get_geo_location()
     grid_location = get_grid_location(geo_location)
     forecast = get_forecast(grid_location)
 
-    print(f'\n\nForecast:\n     {forecast}\n\n')
+    print(f"\n\nForecast:\n     {forecast}\n\n")
 
 
 if __name__ == "__main__":

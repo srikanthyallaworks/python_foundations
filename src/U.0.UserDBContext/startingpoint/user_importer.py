@@ -12,12 +12,11 @@ def to_sql(u: User) -> str:
     Returns:
         str: SQL query
     """
-    return f'INSERT User({u.id}, {u.login},...)'
+    return f"INSERT User({u.id}, {u.login},...)"
 
 
 class UserImporter:
-    """Tool for importing users into a database.
-    """
+    """Tool for importing users into a database."""
 
     factory: DBConnectionFactory
 
@@ -47,4 +46,4 @@ class UserImporter:
                 self.import_user(u)
             except Exception as e:
                 # TODO: Log this to a file so we can add the user manually
-                print(f'Error: [{e}] on user: [{u}]')
+                print(f"Error: [{e}] on user: [{u}]")

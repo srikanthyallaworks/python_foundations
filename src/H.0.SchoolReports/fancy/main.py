@@ -23,11 +23,8 @@ def sort_by_frequency(frequency_dict):
     """
     frequency_list = []
     for key, value in frequency_dict.items():
-        frequency_list.append({
-            'key': key,
-            'count': value
-        })
-    return sorted(frequency_list, key=lambda r: r['count'], reverse=True)
+        frequency_list.append({"key": key, "count": value})
+    return sorted(frequency_list, key=lambda r: r["count"], reverse=True)
 
 
 def report_top_5_frequencies(field):
@@ -38,29 +35,29 @@ def report_top_5_frequencies(field):
 
 
 def run_surname_report():
-    print('\nHere are the top 5 surnames:')
-    report_top_5_frequencies('surname')
+    print("\nHere are the top 5 surnames:")
+    report_top_5_frequencies("surname")
 
 
 def run_givenName_report():
-    print('\nHere are the top 5 given names:')
-    report_top_5_frequencies('givenName')
+    print("\nHere are the top 5 given names:")
+    report_top_5_frequencies("givenName")
 
 
 def run_class_size_report():
-    print('\nHere are the students in each grade:')
-    frequencies = get_frequencies_by('grade')
+    print("\nHere are the students in each grade:")
+    frequencies = get_frequencies_by("grade")
     sorted_by_grade = sorted(frequencies.items(), key=lambda t: t[0])
     for grade, count in sorted_by_grade:
-        print(f'\t{grade}: {count}')
+        print(f"\t{grade}: {count}")
 
 
 def main():
-    print('\n=========================')
+    print("\n=========================")
     run_surname_report()
     run_givenName_report()
     run_class_size_report()
-    print('\n=========================')
+    print("\n=========================")
 
 
 if __name__ == "__main__":

@@ -4,8 +4,7 @@ from list_tools import get_unique_elements, get_clone, get_partitions, get_flatt
 
 
 class TestGetUniqueElements(unittest.TestCase):
-    """Tests for get_unique_elements
-    """
+    """Tests for get_unique_elements"""
 
     def test_empty_for_empty_array(self):
         result = get_unique_elements([])
@@ -30,32 +29,30 @@ class TestGetUniqueElements(unittest.TestCase):
 
 
 class TestGetClone(unittest.TestCase):
-    """Tests for get_clone
-    """
+    """Tests for get_clone"""
 
     def test_has_the_same_things(self):
-        original = [2, 11, 'chicken', 0, 0, None]
+        original = [2, 11, "chicken", 0, 0, None]
         cloned = get_clone(original)
         self.assertEqual(cloned, original)
 
     def test_not_the_same_container(self):
-        original = [2, 11, 'chicken', 0, 0, None]
+        original = [2, 11, "chicken", 0, 0, None]
         cloned = get_clone(original)
         self.assertFalse(original is cloned)
 
 
 class TestGetPartitions(unittest.TestCase):
-    """Tests for get_partitions
-    """
+    """Tests for get_partitions"""
 
     def test_wraps_for_single_partition(self):
-        original = [2, 11, 'chicken', 0, 0, None]
+        original = [2, 11, "chicken", 0, 0, None]
         partitions = get_partitions(original, 6)
         self.assertEqual(len(partitions), 1)
         self.assertEqual(original, partitions[0])
 
     def test_splits_evenly(self):
-        original = ['a', 'b', 'c', 'd', 'e', 'f']
+        original = ["a", "b", "c", "d", "e", "f"]
         partitions = get_partitions(original, 3)
         self.assertEqual(len(partitions), 2)
 
@@ -64,8 +61,7 @@ class TestGetPartitions(unittest.TestCase):
 
 
 class TestGetFlattened(unittest.TestCase):
-    """Tests for get_flattened
-    """
+    """Tests for get_flattened"""
 
     def test_single_dimension(self):
         expected = [1, 2, 3, 4]
@@ -85,5 +81,5 @@ def run_tests():
     runner.run(suite)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_tests()

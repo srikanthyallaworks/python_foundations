@@ -1,4 +1,3 @@
-
 def get_unique_elements(items):
     """Builds a new list using only
        unique members of the original

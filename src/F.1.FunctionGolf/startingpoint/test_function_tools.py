@@ -4,7 +4,6 @@ from function_tools import make_adder, sort_by_magnitude, pipe, compose, add_all
 
 
 class TestMakeAdder(unittest.TestCase):
-
     def test_default_adds_0(self):
         add0 = make_adder()
         self.assertEqual(add0(5), 5)
@@ -17,7 +16,6 @@ class TestMakeAdder(unittest.TestCase):
 
 
 class TestAddAll(unittest.TestCase):
-
     def test_adds_2_terms(self):
         actual = add_all(5, 1)
         self.assertEqual(actual, 6)
@@ -36,11 +34,8 @@ class TestAddAll(unittest.TestCase):
 
 
 class TestSortByMagnitude(unittest.TestCase):
-
     def test_sorts_singleton(self):
-        expected = [
-            (1, 1)
-        ]
+        expected = [(1, 1)]
         actual = sort_by_magnitude(expected)
         self.assertEqual(actual, expected)
 
@@ -57,7 +52,6 @@ class TestSortByMagnitude(unittest.TestCase):
 
 
 class TestPipe(unittest.TestCase):
-
     def test_single_operation(self):
         operations = [
             lambda x: x * x,
@@ -66,22 +60,14 @@ class TestPipe(unittest.TestCase):
         self.assertEqual(actual, 25)
 
     def test_operation_order(self):
-        operations = [
-            lambda x: x * x,
-            lambda x: x + x,
-            lambda x: x - 1
-        ]
+        operations = [lambda x: x * x, lambda x: x + x, lambda x: x - 1]
         actual = pipe(operations, 5)
         self.assertEqual(actual, 49)
 
 
 class TestCompose(unittest.TestCase):
-
     def test_square_then_double(self):
-        operations = [
-            lambda x: x * x,
-            lambda x: x + x
-        ]
+        operations = [lambda x: x * x, lambda x: x + x]
         square_then_add = compose(operations)
 
         actual = square_then_add(5)
@@ -95,5 +81,5 @@ def run_tests():
     runner.run(suite)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run_tests()

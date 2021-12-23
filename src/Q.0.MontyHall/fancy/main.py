@@ -1,4 +1,3 @@
-
 import random
 from typing import Callable, Tuple
 from game import Game, Door, DoorState
@@ -10,8 +9,7 @@ DoorChooser = Callable[[Doors], DoorNumber]
 
 
 def choose_stick(doors: Doors) -> DoorNumber:
-    """Stays with the door initially chosen
-    """
+    """Stays with the door initially chosen"""
     for door_number, door in enumerate(doors):
         if door.state == DoorState.InitialSelection:
             return door_number
@@ -19,8 +17,7 @@ def choose_stick(doors: Doors) -> DoorNumber:
 
 
 def choose_swap(doors: Doors) -> DoorNumber:
-    """Switches final selection to the other closed door
-    """
+    """Switches final selection to the other closed door"""
     for door_number, door in enumerate(doors):
         if door.state == DoorState.Closed:
             return door_number
@@ -28,9 +25,8 @@ def choose_swap(doors: Doors) -> DoorNumber:
 
 
 def choose_random(doors: Doors) -> DoorNumber:
-    """Randomly chooses a closed door
-    """
-    if random.random() > .5:
+    """Randomly chooses a closed door"""
+    if random.random() > 0.5:
         return choose_stick(doors)
     return choose_swap(doors)
 
@@ -47,9 +43,9 @@ def play_simulation(chooser: DoorChooser):
 
 def test_strategies(game_count=100):
     strategies = {
-        'swapper': choose_swap,
-        'sticker': choose_stick,
-        'randomr': choose_random
+        "swapper": choose_swap,
+        "sticker": choose_stick,
+        "randomr": choose_random,
     }
     winnings = {label: 0 for label in strategies}
 
@@ -62,11 +58,11 @@ def test_strategies(game_count=100):
 
 def main():
     results = test_strategies()
-    print('\nResults:')
+    print("\nResults:")
     for n, v in results.items():
-        print(f'\t{n}:${v}')
+        print(f"\t{n}:${v}")
     print()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

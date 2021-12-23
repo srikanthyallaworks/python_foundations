@@ -1,6 +1,5 @@
-
 def make_adder(quantity_to_add=0):
-    """ Makes a function that adds the specified quantity to its argument.
+    """Makes a function that adds the specified quantity to its argument.
 
     Example:
         add10 = make_adder(10)
@@ -14,30 +13,30 @@ def make_adder(quantity_to_add=0):
     Returns:
         Callable[[int],int]: Function that adds a quantity to its argument.
     """
-    return lambda x: print('Ummm...')
+    return lambda x: print("Ummm...")
 
 
 def sort_by_magnitude(vectors):
     """Sorts a sequence of 2D vectors by magnitude, biggest first.
 
-       Note: Magnitude just means the length of the vector, using a**2+b**2 = c**2.
-             So for the vector (2,2)--
-                 magnitude**2 == 2**2 + 2**2
-                 magnitude**2 == 8
-                 magnitude == 8 ** .5
-                 magnitude == 2.83.....
+     Note: Magnitude just means the length of the vector, using a**2+b**2 = c**2.
+           So for the vector (2,2)--
+               magnitude**2 == 2**2 + 2**2
+               magnitude**2 == 8
+               magnitude == 8 ** .5
+               magnitude == 2.83.....
 
-      Example:
-        result = sort_by_magnitude([(1,1), (100,100), (4,2)])
-        print(result)
-        > [(100,100), (4,2), (1,1)]
+    Example:
+      result = sort_by_magnitude([(1,1), (100,100), (4,2)])
+      print(result)
+      > [(100,100), (4,2), (1,1)]
 
-      Args:
-          vectors (List[Tuple[int,int]]): A list of vectors in tuple form.
+    Args:
+        vectors (List[Tuple[int,int]]): A list of vectors in tuple form.
     """
 
     def get_magnitude(v):
-        return (v[0] * v[1])**.5
+        return (v[0] * v[1]) ** 0.5
 
     return sorted(vectors)
 

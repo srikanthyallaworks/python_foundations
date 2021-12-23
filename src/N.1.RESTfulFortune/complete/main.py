@@ -7,10 +7,10 @@ def get_kanye_fortune() -> str:
     Returns:
         str: Kanye Quote. Warning: he gets salty
     """
-    response = requests.get('http://api.kanye.rest')
+    response = requests.get("http://api.kanye.rest")
     json = response.json()
     response.close()
-    return json['quote']
+    return json["quote"]
 
 
 def get_cat_fortune() -> str:
@@ -19,10 +19,10 @@ def get_cat_fortune() -> str:
     Returns:
         str: Cat fact
     """
-    response = requests.get('https://cat-fact.herokuapp.com/facts/random')
+    response = requests.get("https://cat-fact.herokuapp.com/facts/random")
     json = response.json()
     response.close()
-    return json['text']
+    return json["text"]
 
 
 get_fortune = get_kanye_fortune
@@ -30,8 +30,8 @@ get_fortune = get_kanye_fortune
 
 def main():
     message = get_fortune()
-    print('\nYour fortune is:')
-    print(f'   {message}\n\n')
+    print("\nYour fortune is:")
+    print(f"   {message}\n\n")
 
 
 if __name__ == "__main__":

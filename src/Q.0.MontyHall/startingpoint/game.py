@@ -24,8 +24,8 @@ class Door:
         if self.state == DoorState.Open:
             return self.prize.name
         if self.state == DoorState.InitialSelection:
-            return '🚪 *'
-        return '🚪'
+            return "🚪 *"
+        return "🚪"
 
 
 class GameState(Enum):
@@ -37,18 +37,14 @@ class GameState(Enum):
 class Game:
     def __init__(self):
         self._state = GameState.NeedInitialSelection
-        prizes = [
-            Prize('🚗', 100),
-            Prize('🐐', 0),
-            Prize('🐐', 0)
-        ]
+        prizes = [Prize("🚗", 100), Prize("🐐", 0), Prize("🐐", 0)]
         random.shuffle(prizes)
         self._doors = [Door(prize) for prize in prizes]
 
     def __str__(self):
-        msg = ''
+        msg = ""
         for i, door in enumerate(self._doors):
-            msg += f'Door #{i+1}: {door}\n'
+            msg += f"Door #{i+1}: {door}\n"
         return msg
 
     @property

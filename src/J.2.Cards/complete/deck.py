@@ -16,14 +16,13 @@ class CardRank:
 
     @property
     def character(self):
-        if self.symbol == '10':
-            return 'T'
+        if self.symbol == "10":
+            return "T"
         return self.symbol
 
 
 class CardRanks:
-    _symbols = ('2', '3', '4', '5', '6', '7', '8',
-                '9', '10', 'J', 'Q', 'K', 'A')
+    _symbols = ("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
     _lookup = {s: CardRank(s, i + 2) for i, s in enumerate(_symbols)}
 
     @staticmethod
@@ -35,7 +34,7 @@ class CardRanks:
         return CardRanks._lookup.values()
 
 
-SuiteIdentifier = Literal['♠', '♥', '♦', '♣']
+SuiteIdentifier = Literal["♠", "♥", "♦", "♣"]
 
 
 @dataclass(frozen=True)
@@ -67,10 +66,10 @@ class Card:
 
 @dataclass(frozen=True, init=False)
 class Suites:
-    spades = Suite('Spades', '♠', Color.Black)
-    hearts = Suite('Hearts', '♥', Color.Red)
-    diamonds = Suite('Diamonds', '♦', Color.Red)
-    clubs = Suite('Clubs', '♣', Color.Black)
+    spades = Suite("Spades", "♠", Color.Black)
+    hearts = Suite("Hearts", "♥", Color.Red)
+    diamonds = Suite("Diamonds", "♦", Color.Red)
+    clubs = Suite("Clubs", "♣", Color.Black)
     all = (clubs, diamonds, hearts, spades)
 
     _symbol_lookup = {s.symbol: s for s in all}

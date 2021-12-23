@@ -53,14 +53,12 @@ def get_fib_sequence_alternative():
 
 
 def get_even_fibs():
-    """Fibonacci sequence filtered for even terms
-    """
+    """Fibonacci sequence filtered for even terms"""
     return filter(is_even, get_fib_sequence())
 
 
 def get_even_fibs_below_limit():
-    """Gets even fibonacci terms below specified limit
-    """
+    """Gets even fibonacci terms below specified limit"""
     return itertools.takewhile(is_within_limit, get_even_fibs())
 
 
@@ -69,7 +67,7 @@ def get_euler02_solution():
 
 
 def main():
-    print(f'Here is your answer: {get_euler02_solution()}')
+    print(f"Here is your answer: {get_euler02_solution()}")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-
 def to_text(n):
     """Transforms this number to a fizbuzz message
 

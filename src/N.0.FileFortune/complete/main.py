@@ -1,4 +1,3 @@
-
 import random
 import os
 
@@ -11,7 +10,7 @@ def get_data_file():
     """
     this_directory = os.path.dirname(__file__)
     parent_directory = os.path.dirname(this_directory)
-    return os.path.join(parent_directory, '_data/fortunes.txt')
+    return os.path.join(parent_directory, "_data/fortunes.txt")
 
 
 def get_fortunes(data_file):
@@ -38,8 +37,8 @@ def get_fortune():
 
 
 def main():
-    print('\nYour fortune is:')
-    print(f'   {get_fortune()}\n\n')
+    print("\nYour fortune is:")
+    print(f"   {get_fortune()}\n\n")
 
 
 if __name__ == "__main__":

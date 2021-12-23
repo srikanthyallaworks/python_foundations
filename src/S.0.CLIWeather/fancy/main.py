@@ -4,31 +4,32 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class GeoLocation:
-    """Simple type to hold lat/long coordinates
-    """
+    """Simple type to hold lat/long coordinates"""
+
     latitude: float
     longitude: float
 
 
 @dataclass(frozen=True)
 class GridLocation:
-    """Simple type to hold coordinates used by weather.gov
-    """
+    """Simple type to hold coordinates used by weather.gov"""
+
     office: str
     x: int
     y: int
 
 
 class Uris:
-
     def for_geolocation():
-        return 'http://www.geoplugin.net/json.gp'
+        return "http://www.geoplugin.net/json.gp"
 
     def for_gridlocation(loc: GeoLocation):
-        return f'https://api.weather.gov/points/{loc.latitude},{loc.longitude}'
+        return f"https://api.weather.gov/points/{loc.latitude},{loc.longitude}"
 
     def for_forecast(loc: GridLocation):
-        return f'https://api.weather.gov/gridpoints/{loc.office}/{loc.x},{loc.y}/forecast'
+        return (
+            f"https://api.weather.gov/gridpoints/{loc.office}/{loc.x},{loc.y}/forecast"
+        )
 
 
 def fetch_json(uri: str) -> dict:
@@ -60,7 +61,7 @@ def get_geo_location() -> GeoLocation:
     json = fetch_json(uri)
     return GeoLocation(
         latitude=float(json["geoplugin_latitude"]),
-        longitude=float(json["geoplugin_longitude"])
+        longitude=float(json["geoplugin_longitude"]),
     )
 
 
@@ -75,11 +76,7 @@ def get_grid_location(geo: GeoLocation) -> GridLocation:
     """
     uri = Uris.for_gridlocation(geo)
     json = fetch_json(uri)["properties"]
-    return GridLocation(
-        office=json["cwa"],
-        x=int(json["gridX"]),
-        y=int(json["gridY"])
-    )
+    return GridLocation(office=json["cwa"], x=int(json["gridX"]), y=int(json["gridY"]))
 
 
 def get_forecast(loc: GridLocation) -> str:
@@ -96,12 +93,11 @@ def get_forecast(loc: GridLocation) -> str:
 
 
 def main():
-    """Hits public APIs to get a short forcast for the local weather.
-    """
+    """Hits public APIs to get a short forcast for the local weather."""
     geo_location = get_geo_location()
     grid_location = get_grid_location(geo_location)
     forecast = get_forecast(grid_location)
-    print(f'\n\nForecast:\n     {forecast}\n\n')
+    print(f"\n\nForecast:\n     {forecast}\n\n")
 
 
 if __name__ == "__main__":

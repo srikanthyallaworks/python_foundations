@@ -1,5 +1,3 @@
-
-
 roster = [
     {"givenName": "Leroy", "surname": "Silva", "grade": 4},
     {"givenName": "Lynn", "surname": "Guerrero", "grade": 2},
@@ -150,5 +148,5 @@ roster = [
     {"givenName": "Samuel", "surname": "Quinn", "grade": 1},
     {"givenName": "Cynthia", "surname": "Mclaughlin", "grade": 1},
     {"givenName": "Brenda", "surname": "Jackson", "grade": 5},
-    {"givenName": "Velma", "surname": "Lopez", "grade": 1}
+    {"givenName": "Velma", "surname": "Lopez", "grade": 1},
 ]

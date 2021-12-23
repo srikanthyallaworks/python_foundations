@@ -1,4 +1,3 @@
-
 class Game:
     _playerName: str
 
@@ -6,13 +5,13 @@ class Game:
         self._playerName = playerName
 
     def play(self):
-        print(f'New player: {self._playerName}!')
+        print(f"New player: {self._playerName}!")
         print("TODO: Implement me.")
 
 
 def main():
     print()
-    game = Game('Lizzy')
+    game = Game("Lizzy")
     game.play()
     print()
 

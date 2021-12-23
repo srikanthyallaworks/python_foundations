@@ -17,15 +17,15 @@ print("Ready?")
 
 while not guessed_correctly:
     guess = get_middle()
-    print(f'\nMy guess is...{guess}')
-    print('Was I Right? Too low? Too high?')
-    reply = input('[r/l/h]? ')
-    if reply == 'l':
+    print(f"\nMy guess is...{guess}")
+    print("Was I Right? Too low? Too high?")
+    reply = input("[r/l/h]? ")
+    if reply == "l":
         min_possible = guess + 1
-    elif reply == 'h':
+    elif reply == "h":
         max_possible = guess - 1
     else:
         guessed_correctly = True
 
-print('\nI won suckers!')
-print('Hoooooo!')
+print("\nI won suckers!")
+print("Hoooooo!")

@@ -8,6 +8,7 @@ class DBConnectionFactory:
     Raises:
         Exception: Throws when the pool is full.
     """
+
     _connection_string: str
     _max_connections = 5
     _pool: List[DBConnection] = []
@@ -29,10 +30,11 @@ class DBConnectionFactory:
             con = DBConnection()
             self._pool.append(con)
         else:
-            recyclable = [c for c in self._pool
-                          if c.status == DBConnectionStatus.Closed]
+            recyclable = [
+                c for c in self._pool if c.status == DBConnectionStatus.Closed
+            ]
             if len(recyclable) == 0:
-                raise Exception('Out of database connections!')
+                raise Exception("Out of database connections!")
             con = recyclable[0]
 
         con.status = DBConnectionStatus.ReadyToUse

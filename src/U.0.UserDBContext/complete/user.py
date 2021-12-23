@@ -3,8 +3,8 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class User:
-    """Application user
-    """
+    """Application user"""
+
     id: int
     login: str
     given_name: str

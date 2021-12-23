@@ -21,7 +21,6 @@ class HandRank(IntEnum):
 
 
 class Hands:
-
     @staticmethod
     def is_flush(cards: Hand) -> bool:
         return 1 == len({c.suite for c in cards})
@@ -36,16 +35,16 @@ class Hands:
 
     @staticmethod
     def get_sets(cards: Hand):
-        groups = [list(g) for k, g in groupby(cards, lambda c:c.rank.value)]
+        groups = [list(g) for k, g in groupby(cards, lambda c: c.rank.value)]
         return [g for g in groups if len(g) > 1]
 
     @staticmethod
     def from_string(reprs: str) -> Hand:
-        return {Deck.from_string(s) for s in reprs.split(' ')}
+        return {Deck.from_string(s) for s in reprs.split(" ")}
 
     @staticmethod
     def from_chars_string(reprs: str) -> Hand:
-        return {Deck.from_chars(s) for s in reprs.split(' ')}
+        return {Deck.from_chars(s) for s in reprs.split(" ")}
 
     # TODO: Consider using struct.pack
     @staticmethod
@@ -57,7 +56,8 @@ class Hands:
         if rank in [HandRank.ThreeOfAKind, HandRank.Pair, HandRank.FourOfAKind]:
             tuple_value = Hands.get_sets(cards)[0][0].rank
             tie_breaker_cards = sorted(
-                [c.rank.value for c in cards if c.rank != tuple_value])
+                [c.rank.value for c in cards if c.rank != tuple_value]
+            )
             tie_breaker_cards.append(tuple_value.value)
 
         elif rank == HandRank.FullHouse:
@@ -68,7 +68,8 @@ class Hands:
         elif rank == HandRank.TwoPair:
             pairs = [s[0].rank.value for s in Hands.get_sets(cards)]
             tie_breaker_cards = [
-                c.rank.value for c in cards if c.rank.value not in pairs]
+                c.rank.value for c in cards if c.rank.value not in pairs
+            ]
             tie_breaker_cards += sorted(pairs)
 
         else:

@@ -2,18 +2,17 @@ import requests
 
 
 class Uris:
-
     @staticmethod
     def for_geolocation():
-        return 'http://www.geoplugin.net/json.gp'
+        return "http://www.geoplugin.net/json.gp"
 
     @staticmethod
     def for_gridlocation(latitude, longitude):
-        return f'https://api.weather.gov/points/{latitude},{longitude}'
+        return f"https://api.weather.gov/points/{latitude},{longitude}"
 
     @staticmethod
     def for_forecast(office, x, y):
-        return f'https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast'
+        return f"https://api.weather.gov/gridpoints/{office}/{x},{y}/forecast"
 
 
 def get_geo_location():
@@ -32,10 +31,9 @@ def get_geo_location():
 
 
 def main():
-    """Hits public APIs to get a short forcast for the local weather.
-    """
+    """Hits public APIs to get a short forcast for the local weather."""
     geo_location = get_geo_location()
-    print(f'Here is your geo location: {geo_location}')
+    print(f"Here is your geo location: {geo_location}")
     # TODO: Figure out the forecast too
 
 

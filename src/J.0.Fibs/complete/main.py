@@ -49,7 +49,7 @@ def get_euler02_solution():
 
 
 def main():
-    print(f'Here is your answer: {get_euler02_solution()}')
+    print(f"Here is your answer: {get_euler02_solution()}")
 
 
 if __name__ == "__main__":

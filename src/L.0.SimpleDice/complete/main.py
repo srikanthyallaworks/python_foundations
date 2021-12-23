@@ -2,7 +2,6 @@ import random
 
 
 class Die:
-
     def __init__(self, side_count=6):
         """Sets up the class
 
@@ -46,7 +45,7 @@ def main():
     cup = Cup(dice)
     result = cup.roll()
     while result != 18:
-        print(f'Rolled a {result}')
+        print(f"Rolled a {result}")
         result = cup.roll()
     print("18! You won!")
 

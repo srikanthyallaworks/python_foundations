@@ -11,7 +11,7 @@ def get_data_file() -> str:
     """
     this_directory = os.path.dirname(__file__)
     parent_directory = os.path.dirname(this_directory)
-    return os.path.join(parent_directory, '_data/people')
+    return os.path.join(parent_directory, "_data/people")
 
 
 def get_fortunes(data_file: str) -> List[str]:
@@ -20,10 +20,10 @@ def get_fortunes(data_file: str) -> List[str]:
     Returns:
         List[str]: Fortunes
     """
-    fortune_text = ''
+    fortune_text = ""
     with open(data_file) as reader:
         fortune_text = reader.read()
-    return [fortune.strip() for fortune in fortune_text.split('%')]
+    return [fortune.strip() for fortune in fortune_text.split("%")]
 
 
 def get_fortune() -> str:
@@ -38,8 +38,8 @@ def get_fortune() -> str:
 
 
 def main():
-    print('\nYour fortune is:')
-    print(f'   {get_fortune()}\n\n')
+    print("\nYour fortune is:")
+    print(f"   {get_fortune()}\n\n")
 
 
 if __name__ == "__main__":

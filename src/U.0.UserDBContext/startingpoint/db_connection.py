@@ -9,8 +9,7 @@ class DBConnectionStatus(Enum):
 
 
 class DBConnection:
-    """Connection to the database. Use this to execute queries.
-    """
+    """Connection to the database. Use this to execute queries."""
 
     status: DBConnectionStatus = DBConnectionStatus.ReadyToUse
 
@@ -21,7 +20,7 @@ class DBConnection:
             Exception: Only ReadyToUse connections can be opened.
         """
         if self.status != DBConnectionStatus.ReadyToUse:
-            raise Exception('Can\'t open an open connection!')
+            raise Exception("Can't open an open connection!")
         self.status = DBConnectionStatus.Open
 
     def close(self):
@@ -31,7 +30,7 @@ class DBConnection:
             Exception: Only open connections can be closed.
         """
         if self.status != DBConnectionStatus.Open:
-            raise Exception('Can\'t close a closed or new connection!')
+            raise Exception("Can't close a closed or new connection!")
         self.status = DBConnectionStatus.Closed
 
     def execute(self, sql_command: str) -> str:
@@ -48,12 +47,13 @@ class DBConnection:
             str: Message from the database.
         """
         if self.status != DBConnectionStatus.Open:
-            raise Exception('Can\'t execute sql on a closed connection!')
+            raise Exception("Can't execute sql on a closed connection!")
 
-        if random.random() > .8:
+        if random.random() > 0.8:
             # Simulate the occasional error
             raise Exception(
-                'Database returned an error. (String too long or something.)')
+                "Database returned an error. (String too long or something.)"
+            )
 
-        print(f'[[Executing {sql_command}]]')
-        return '1 row affected'
+        print(f"[[Executing {sql_command}]]")
+        return "1 row affected"

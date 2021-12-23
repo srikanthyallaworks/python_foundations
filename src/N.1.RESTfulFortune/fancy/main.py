@@ -24,8 +24,8 @@ def get_kanye_fortune() -> str:
     Returns:
         str: Kanye Quote. Warning: he gets salty
     """
-    with requests.get('http://api.kanye.rest', timeout=timeout_in_secords) as response:
-        return response.json()['quote']
+    with requests.get("http://api.kanye.rest", timeout=timeout_in_secords) as response:
+        return response.json()["quote"]
 
 
 def get_cat_fortune() -> str:
@@ -34,8 +34,10 @@ def get_cat_fortune() -> str:
     Returns:
         str: Cat fact
     """
-    with requests.get('https://cat-fact.herokuapp.com/facts/random', timeout=timeout_in_secords) as response:
-        return response.json()['text']
+    with requests.get(
+        "https://cat-fact.herokuapp.com/facts/random", timeout=timeout_in_secords
+    ) as response:
+        return response.json()["text"]
 
 
 def get_fortune():
@@ -47,8 +49,8 @@ def get_fortune():
 
 
 def main():
-    print('\nYour fortune is:')
-    print(f'   {get_fortune()}\n\n')
+    print("\nYour fortune is:")
+    print(f"   {get_fortune()}\n\n")
 
 
 if __name__ == "__main__":

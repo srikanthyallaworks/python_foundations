@@ -16,12 +16,12 @@ class Game:
 
     def shoot(self):
         self.cup.roll()
-        print(f'{self.playerName} rolls {self.cup} for {self.cup.value}')
+        print(f"{self.playerName} rolls {self.cup} for {self.cup.value}")
         return self.cup.value
 
     def finish_game(self, outcome: Outcome):
         self.outcome = outcome
-        print(f'Game Over: {outcome.name} for {self.playerName}!')
+        print(f"Game Over: {outcome.name} for {self.playerName}!")
 
     def do_first_roll(self):
         result = self.shoot()
@@ -40,7 +40,7 @@ class Game:
 
     def play(self):
         self.do_first_roll()
-        while(self.outcome == Outcome.Undecided):
+        while self.outcome == Outcome.Undecided:
             self.do_next_roll()
 
 
@@ -57,7 +57,7 @@ class Table:
         self.gameNumber += 1
         game = Game(self.getCurrentPlayer())
         game.play()
-        print('\n')
+        print("\n")
 
 
 def main():

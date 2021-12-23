@@ -3,7 +3,7 @@ from collections import defaultdict
 from typing import Iterable, TypeVar, Tuple
 
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 def pairwise(iterable: Iterable[T]) -> Iterable[Tuple[T, T]]:

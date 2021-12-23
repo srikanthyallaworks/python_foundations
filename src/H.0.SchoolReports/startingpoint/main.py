@@ -9,26 +9,25 @@ def run_surname_report():
         "Bloggs": 1,
     }
     # TODO: Magic goes here
-    print('\nHere are some common surnames:')
+    print("\nHere are some common surnames:")
     for surname, count in surname_counts.items():
-        print(f'\t{surname}: {count}')
+        print(f"\t{surname}: {count}")
 
 
 def run_class_size_report():
-    """Prints a report of the school population by grade
-    """
+    """Prints a report of the school population by grade"""
     grade_counts = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
     # TODO: Magic goes here
-    print('\nHere are the students in each grade:')
+    print("\nHere are the students in each grade:")
     for grade, count in grade_counts.items():
-        print(f'\t{grade}: {count}')
+        print(f"\t{grade}: {count}")
 
 
 def main():
-    print('\n=========================')
+    print("\n=========================")
     run_surname_report()
     run_class_size_report()
-    print('\n=========================')
+    print("\n=========================")
 
 
 if __name__ == "__main__":

@@ -21,16 +21,16 @@ def to_bytes(text: str) -> List[int]:
 
 
 def from_bytes(bs: List[int]) -> str:
-    return bytes(bs).decode('ascii')
+    return bytes(bs).decode("ascii")
 
 
 def potential_keys():
-    letters = 'abcdefghijklmnopqrstuvwxyz'
-    return (f'{a}{b}{c}' for a, b, c in permutations(letters, 3))
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    return (f"{a}{b}{c}" for a, b, c in permutations(letters, 3))
 
 
 def looks_like_real_text(text: str) -> bool:
-    return ' the ' in text
+    return " the " in text
 
 
 def get_plaintext(encrypted: bytes) -> str:

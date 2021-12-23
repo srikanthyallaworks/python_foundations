@@ -10,12 +10,12 @@ class Game:
 
     def shoot(self):
         value = self.cup.roll()
-        print(f'{self.player_name} rolls a {value}')
+        print(f"{self.player_name} rolls a {value}")
         return value
 
     def finish_game(self, outcome):
         self.outcome = outcome
-        print(f'Game Over: {outcome} for {self.player_name}!')
+        print(f"Game Over: {outcome} for {self.player_name}!")
 
     def do_first_roll(self):
         result = self.shoot()
@@ -40,7 +40,7 @@ class Game:
 
 def main():
     print()
-    game = Game('Lizzy')
+    game = Game("Lizzy")
     game.play()
     print()
 

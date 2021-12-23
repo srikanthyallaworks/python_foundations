@@ -1,17 +1,15 @@
-
-
 import random
 
 
 class Die:
     _symbols = {
-        None: '?',
-        1: '⚀',
-        2: '⚁',
-        3: '⚂',
-        4: '⚃',
-        5: '⚄',
-        6: '⚅',
+        None: "?",
+        1: "⚀",
+        2: "⚁",
+        3: "⚂",
+        4: "⚃",
+        5: "⚄",
+        6: "⚅",
     }
 
     _side_count = 6
@@ -32,7 +30,6 @@ class Die:
 
 
 class Cup:
-
     def __init__(self, die_count=2):
         self._dice = [Die() for i in range(die_count)]
 
@@ -46,4 +43,4 @@ class Cup:
         return sum([die.value for die in self._dice])
 
     def __str__(self):
-        return ' '.join([str(die) for die in self._dice])
+        return " ".join([str(die) for die in self._dice])
