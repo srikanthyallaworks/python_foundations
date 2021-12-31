@@ -9,10 +9,10 @@ naive list functions and the unit tests are
 failing. 
 
 Your job is to fix the functions in the
-list_tools.py module so the tests pass.
+**list_tools.py** module so the tests pass.
 
 ## Details 
-* Run main.py to execute tests
+* Run **main.py** to execute tests
 
 ## Requirements   
 1. Tests pass
@@ -27,6 +27,8 @@ list_tools.py module so the tests pass.
 
 
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
