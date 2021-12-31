@@ -9,7 +9,7 @@ naive functions and the unit tests are
 failing. 
 
 Your job is to fix the functions in the
-function_tools.py module so the tests pass.
+**function_tools.py** module so the tests pass.
 
 ## Details 
 * Run main.py to execute tests
