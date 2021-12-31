@@ -5,6 +5,7 @@ This is a really simple terminal-based guessing game. You can crack out
 from scratch if you really want. For now though it's a good high-level
 picture of what a Python script looks like.
 
+
 ## Details
 
 The Federal Department of Fun has invented a new game. It's 
@@ -12,11 +13,9 @@ easy to play, an no one ever loses.
 
 Game play:
   1. Prompt the user to think of a number between 1 and 100.
-  2. Take a guess.
-     - For a correct guess, the game is over.
-     - For an incorrect guess, the user will give you a clue: either
-       too high or too low
-     - Repeat 
+  2. Take a guess
+     - **If the guess is correct**, the game is over. **Everyone  wins!**
+     - **If the guess is incorrect**, get input from the user indicating whether the guess is too high or too low. Then take another guess.
 
 
 ## Product Requirements
@@ -41,6 +40,4 @@ Game play:
 
 
 ## Hints
-* Read the docs on the module [random](https://docs.python.org/3/library/random.html)
-* Read up on Python [classes](https://docs.python.org/3/tutorial/classes.html)
-
+* Prompt for a text response with [`input`](https://docs.python.org/3/library/functions.html#input)
