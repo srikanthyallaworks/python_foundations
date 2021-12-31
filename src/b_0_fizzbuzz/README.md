@@ -7,15 +7,23 @@ code[1]. FizzBuzz is a classic interview question for sussing-out
 the non-skilled. 
                   
 Here it is:
-    Write a program that prints the numbers from 1 to 100. 
-    But--
-      * For multiples of 3 print “Fizz” instead of the number 
-      * For the multiples of 5 print “Buzz”. 
-      * For numbers which are multiples of both 3 and 5 print “FizzBuzz”.
+* Write a program that prints the numbers from 1 to 100. 
+* But--
+  - For multiples of 3 print “Fizz” instead of the number 
+  - For the multiples of 5 print “Buzz”. 
+  - For numbers which are multiples of both 3 and 5 print “FizzBuzz”.
+
+Your output should look like this:
+> 1  
+> 2  
+> fizz  
+> 4  
+> buzz  
+> ...  
 
 
 ## Requirements
-1. Implement toText method
+1. Implement `toText` method
 2. Write the correct output--described above-- to the console
 
 ## Stretch Goals
@@ -35,8 +43,8 @@ Notes:
 
 
 
-
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 ## Hints
