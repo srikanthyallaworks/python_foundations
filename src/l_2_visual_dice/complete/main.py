@@ -2,7 +2,7 @@ from typing import Final
 from collections import Counter
 import flask
 import pygal
-from dice import Die, Cup
+from dice import Cup
 
 app: Final = flask.Flask(__name__)    # Create an instance of the class for our use
 

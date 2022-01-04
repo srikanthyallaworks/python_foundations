@@ -13,18 +13,13 @@
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"python.terminal.activateEnvInCurrentTerminal": true,
-		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"python.defaultInterpreterPath": ".venv/bin/python",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
-		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-		"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+		"python.formatting.blackPath": ".venv/bin/black",
+		"python.linting.flake8Path": ".venv/bin/flake8",
+		"python.linting.mypyPath": ".venv/bin/mypy",
+		"python.linting.pylintPath": ".venv/bin/pylint",
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
