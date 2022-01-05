@@ -14,6 +14,6 @@ def build_chart_data_uri(experiment: Experiment) -> str:
     bar_chart = pygal.Bar()
     bar_chart.title = experiment.name
     bar_chart.x_labels = map(str, [dp.sum for dp in experiment.results])
-    bar_chart.add("Sic ominet", [dp.roll_count for dp in experiment.results])
+    bar_chart.add("Sic ominet", [dp.frequency for dp in experiment.results])
 
     return bar_chart.render_data_uri()

@@ -28,4 +28,4 @@ def home():
 
 
 def run():
-    __app.run("0.0.0.0", 5000)
+    __app.run("0.0.0.0", 5000, debug=True)
