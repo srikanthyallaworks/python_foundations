@@ -18,12 +18,15 @@ class Die:
 
 
 class Cup:
-    """Represents a cup that holds 1 or more dice."""
+    """Represents a cup that holds 1 or more dice.
+
+    _random is injectable for deterministic unit tests.
+    """
 
     _dice: Final[Tuple[Die, ...]]
 
-    def __init__(self, die_count=2, random: Random = Random()):
-        self._dice = tuple(Die(6, random) for _ in range(die_count))
+    def __init__(self, die_count=2, rand: Random = Random()):
+        self._dice = tuple(Die(6, rand) for _ in range(die_count))
 
     def roll(self) -> int:
         return sum(die.roll() for die in self._dice)
