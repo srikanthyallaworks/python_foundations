@@ -1,7 +1,6 @@
 from typing import Tuple
 from collections import Counter
 from dataclasses import dataclass
-
 from dice import Cup
 
 
