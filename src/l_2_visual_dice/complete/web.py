@@ -9,7 +9,7 @@ __app: Final = flask.Flask(__name__)
 
 @__app.route("/")
 def home():
-    results = experiment.get_results()
+    results = experiment.run_experiment("Looorem ipsum")
 
     return flask.render_template_string(
         f"""
