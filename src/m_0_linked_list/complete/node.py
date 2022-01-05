@@ -3,7 +3,7 @@ from functools import reduce
 from typing import Generic, TypeVar, Optional, Generator
 from typing_extensions import Self
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 @dataclass(frozen=True)
@@ -13,8 +13,10 @@ class Node(Generic[T]):
     Args:
         Generic ([type]): Type of thing to hold.
     """
+
     value: T
     tail: Optional[Self]
+
 
 @dataclass()
 class LinkedList(Generic[T]):
