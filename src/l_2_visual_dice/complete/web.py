@@ -11,26 +11,20 @@ __app: Final = flask.Flask(__name__)
 def home():
     results = experiment.get_results()
 
-    return flask.render_template_string(f"""
+    return flask.render_template_string(
+        f"""
         <!DOCTYPE html>
         <html>
             <head>
                 <meta charset="utf-8" />
                 <title>My Experiment</title>
-                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css') }}"  />
             </head>
-
             <body>
-                <div class="body-content">
-                    <img src='{chart.build_chart_data_uri(results)}'/>
-                    <hr/>
-                    <footer>
-                        <p>&copy; 2020</p>
-                    </footer>
-                </div>
+                <img src='{chart.build_chart_data_uri(results)}'/>
             </body>
         </html>
-        """)
+        """
+    )
 
 
 def run():
