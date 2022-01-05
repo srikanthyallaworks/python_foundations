@@ -4,10 +4,10 @@ import experiment
 import chart
 
 
-app: Final = flask.Flask(__name__)
+__app: Final = flask.Flask(__name__)
 
 
-@app.route("/")
+@__app.route("/")
 def home():
     results = experiment.get_results()
 
@@ -34,4 +34,4 @@ def home():
 
 
 def run():
-    app.run("0.0.0.0", 5000)
+    __app.run("0.0.0.0", 5000)
