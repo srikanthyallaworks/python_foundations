@@ -1,14 +1,17 @@
 from typing import Final
 import flask
-import experiment 
+import experiment
 import chart
 
 
 app: Final = flask.Flask(__name__)
 
 
-def get_page(data_url: str) -> str:
-    return f"""
+@app.route("/")
+def home():
+    results = experiment.get_results()
+
+    return flask.render_template_string(f"""
         <!DOCTYPE html>
         <html>
             <head>
@@ -19,7 +22,7 @@ def get_page(data_url: str) -> str:
 
             <body>
                 <div class="body-content">
-                    <img src='{data_url}'/>
+                    <img src='{chart.build_chart_data_uri(results)}'/>
                     <hr/>
                     <footer>
                         <p>&copy; 2020</p>
@@ -27,16 +30,7 @@ def get_page(data_url: str) -> str:
                 </div>
             </body>
         </html>
-        """
-
-
-
-@app.route("/")
-def home():
-    results = experiment.get_results() 
-    content = get_page(chart.build_chart_data_uri(results))
-
-    return flask.render_template_string(content)
+        """)
 
 
 def run():

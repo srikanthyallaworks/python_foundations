@@ -3,7 +3,7 @@ from experiment import ExperimentResult
 
 
 def build_chart_data_uri(results: ExperimentResult) -> str:
-    """Builds a bar chart from the supplied experiment. 
+    """Builds a bar chart from the supplied experiment.
 
     Args:
         results (ExperimentResult): [description]
@@ -17,4 +17,3 @@ def build_chart_data_uri(results: ExperimentResult) -> str:
     bar_chart.add("Sic ominet", [dp.roll_count for dp in results])
 
     return bar_chart.render_data_uri()
-
