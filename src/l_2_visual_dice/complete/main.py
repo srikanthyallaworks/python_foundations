@@ -3,6 +3,7 @@ from collections import Counter
 import flask
 import pygal
 from dice import Cup
+from experiment import get_results
 
 app: Final = flask.Flask(__name__)  # Create an instance of the class for our use
 
@@ -34,12 +35,10 @@ def get_data_url() -> str:
     bar_chart = pygal.Bar()
     bar_chart.title = "Lorem ipsum sic dolor"
 
-    cup: Final = Cup(10)
-    sums = [cup.roll() for _ in range(50000)]
-    counts = sorted(Counter(sums).items(), key=lambda kvp: kvp[0])
+    counts = get_results()
 
-    bar_chart.x_labels = map(str, [kvp[0] for kvp in counts])
-    bar_chart.add("Sic ominet", [kvp[1] for kvp in counts])
+    bar_chart.x_labels = map(str, [dp.sum for dp in counts])
+    bar_chart.add("Sic ominet", [dp.roll_count for dp in counts])
 
     return bar_chart.render_data_uri()
 
