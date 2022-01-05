@@ -1,17 +1,15 @@
+from dataclasses import dataclass
 import random
 
-
+@dataclass(frozen=True)
 class Die:
-    """Represents a cubical 6-side die."""
+    """Represents a 'cubical' n-side die."""
 
-    _side_count = 6
-
-    def __init__(self):
-        self._value = None
+    _side_count:int = 6
 
     def roll(self) -> int:
-        self._value = random.randrange(1, Die._side_count + 1)
-        return self._value
+        return random.randrange(1, self._side_count + 1)
+
 
 
 class Cup:
