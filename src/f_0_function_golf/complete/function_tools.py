@@ -76,7 +76,7 @@ def pipe(operations, argument):
     return result
 
 
-def compose(operations):
+def compose(*operations):
     """Takes a list of functions, returning a new function
        that takes an argument and applies each function in order.
 

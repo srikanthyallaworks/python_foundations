@@ -15,8 +15,8 @@ Results = Tuple[DataPoint, ...]
 
 @dataclass(frozen=True)
 class Parameters:
-    """Experiment parameters
-    """
+    """Experiment parameters"""
+
     dice_count: int
     roll_count: int
 

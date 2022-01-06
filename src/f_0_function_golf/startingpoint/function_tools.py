@@ -57,7 +57,7 @@ def add_all(a, b, c=0, d=0):
 
 
 def pipe(operations, argument):
-    """Takes a list of functions and applies each one in order,
+    """Takes a sequence of functions and applies each one in order,
        passing the result to the next function in line.
 
     Args:
@@ -70,8 +70,8 @@ def pipe(operations, argument):
     return operations[0](argument)
 
 
-def compose(operations):
-    """Takes a list of functions, returning a new function
+def compose(*operations):
+    """Takes a series of function arguments, returning a new function
        that takes an argument and applies each function in order.
 
     Args:

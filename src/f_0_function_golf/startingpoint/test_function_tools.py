@@ -1,5 +1,5 @@
-import unittest
 import sys
+import unittest
 from function_tools import make_adder, sort_by_magnitude, pipe, compose, add_all
 
 
@@ -67,11 +67,45 @@ class TestPipe(unittest.TestCase):
 
 class TestCompose(unittest.TestCase):
     def test_square_then_double(self):
-        operations = [lambda x: x * x, lambda x: x + x]
-        square_then_add = compose(operations)
-
+        square_then_add = compose(lambda x: x * x, lambda x: x + x)
         actual = square_then_add(5)
         self.assertEqual(actual, 50)
+
+    def test_increment_decrement(self):
+        increment_decrement = compose(
+            lambda x: x + 1,
+            lambda x: x - 1,
+            lambda x: x + 1,
+            lambda x: x - 1,
+        )
+        expected = 100
+        actual = increment_decrement(expected)
+        self.assertEqual(actual, expected)
+
+    def test_typing(self):
+        def get_abs(n: int) -> int:
+            return abs(n)
+
+        def get_square(n: int) -> int:
+            return n * n
+
+        def get_neg(n: int) -> int:
+            return abs(n) * -1
+
+        def get_shouty(s: str) -> str:
+            return s.capitalize() + "!!!!!"
+
+        # If the type hints are good enough, the line below
+        # should be red.
+        #
+        # (You'll also need to enable type
+        # checking in settings.json like this:
+        # >   "python.analysis.typeCheckingMode": "basic",
+        # )
+        #
+        # Note: this isn't really a unit test.
+        composed = compose(get_abs, get_square, get_neg, get_shouty)
+        self.assertIsNotNone(composed)
 
 
 def run_tests():

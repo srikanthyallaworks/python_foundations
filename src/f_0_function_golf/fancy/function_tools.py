@@ -1,5 +1,6 @@
 from functools import reduce
 import operator
+from typing import Callable, TypeVar, overload
 
 
 def make_adder(quantity_to_add=0):
@@ -74,13 +75,111 @@ def pipe(operations, argument):
     return reduce(lambda result, operation: operation(result), operations, argument)
 
 
-def compose(operations):
+Ta = TypeVar("Ta")
+Tb = TypeVar("Tb")
+Tc = TypeVar("Tc")
+Td = TypeVar("Td")
+Te = TypeVar("Te")
+Tf = TypeVar("Tf")
+Tg = TypeVar("Tg")
+
+
+
+@overload
+def compose(Fa: Callable[[Ta], Tb], Fb: Callable[[Tb], Tc]) -> Callable[[Ta], Tc]:
     """Takes a list of functions, returning a new function
        that takes an argument and applies each function in order.
 
     Args:
         operations: 2 or more functions.
     """
-    return lambda argument: reduce(
-        lambda result, operation: operation(result), operations, argument
-    )
+
+@overload
+def compose(
+    Fa: Callable[[Ta], Tb],
+    Fb: Callable[[Tb], Tc],
+    Fc: Callable[[Tc], Td],
+) -> Callable[[Ta], Td]:
+    """Takes a list of functions, returning a new function
+       that takes an argument and applies each function in order.
+
+    Args:
+        operations: 2 or more functions.
+    """
+
+@overload
+def compose(
+    Fa: Callable[[Ta], Tb],
+    Fb: Callable[[Tb], Tc],
+    Fc: Callable[[Tc], Td],
+    Fd: Callable[[Td], Te],
+) -> Callable[[Ta], Te]:
+    """Takes a list of functions, returning a new function
+       that takes an argument and applies each function in order.
+
+    Args:
+        operations: 2 or more functions.
+    """
+
+@overload
+def compose(
+    Fa: Callable[[Ta], Tb],
+    Fb: Callable[[Tb], Tc],
+    Fc: Callable[[Tc], Td],
+    Fd: Callable[[Td], Te],
+    Fe: Callable[[Te], Tf],
+) -> Callable[[Ta], Tf]:
+    """Takes a list of functions, returning a new function
+       that takes an argument and applies each function in order.
+
+    Args:
+        operations: 2 or more functions.
+    """    
+
+@overload
+def compose(
+    Fa: Callable[[Ta], Tb],
+    Fb: Callable[[Tb], Tc],
+    Fc: Callable[[Tc], Td],
+    Fd: Callable[[Td], Te],
+    Fe: Callable[[Te], Tf],
+    Ff: Callable[[Tf], Tg],
+) -> Callable[[Ta], Tg]:
+    """Takes a list of functions, returning a new function
+       that takes an argument and applies each function in order.
+
+    Args:
+        operations: 2 or more functions.
+    """
+
+@overload
+def compose(
+    Fa: Callable[[Ta], Tb],
+    Fb: Callable[[Tb], Tc],
+    Fc: Callable[[Tc], Td],
+    Fd: Callable[[Td], Te],
+    Fe: Callable[[Te], Tf],
+    Ff: Callable[[Tf], Tg],
+) -> Callable[[Ta], Tg]:
+    """Takes a list of functions, returning a new function
+       that takes an argument and applies each function in order.
+
+    Args:
+        operations: 2 or more functions.
+    """
+
+
+def compose(*operations):
+    """Takes a list of functions, returning a new function
+       that takes an argument and applies each function in order.
+
+    Args:
+        operations: 2 or more functions.
+    """
+
+    def compose_binary(
+        Fa: Callable[[Ta], Tb], Fb: Callable[[Tb], Tc]
+    ) -> Callable[[Ta], Tc]:
+        return lambda a: Fb(Fa(a))
+
+    return reduce(compose_binary, operations)
