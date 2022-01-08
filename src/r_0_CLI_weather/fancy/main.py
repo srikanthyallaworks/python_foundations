@@ -20,15 +20,12 @@ class GridLocation:
 
 
 class Uris:
-    @staticmethod
     def for_geolocation():
         return "http://www.geoplugin.net/json.gp"
 
-    @staticmethod
     def for_gridlocation(loc: GeoLocation):
         return f"https://api.weather.gov/points/{loc.latitude},{loc.longitude}"
 
-    @staticmethod
     def for_forecast(loc: GridLocation):
         return (
             f"https://api.weather.gov/gridpoints/{loc.office}/{loc.x},{loc.y}/forecast"
