@@ -53,30 +53,50 @@ class TestSortByMagnitude(unittest.TestCase):
 
 class TestPipe(unittest.TestCase):
     def test_single_operation(self):
-        operations = [
-            lambda x: x * x,
-        ]
-        actual = pipe(operations, 5)
+        def square(x: int) -> int:
+            return x * x
+
+        actual = pipe((square,), 5)
         self.assertEqual(actual, 25)
 
     def test_operation_order(self):
-        operations = [lambda x: x * x, lambda x: x + x, lambda x: x - 1]
-        actual = pipe(operations, 5)
+        def square(x: int) -> int:
+            return x * x
+
+        def double(x: int) -> int:
+            return x + x
+
+        def decrement(x: int) -> int:
+            return x - 1
+
+        actual = pipe((square, double, decrement), 5)
         self.assertEqual(actual, 49)
 
 
 class TestCompose(unittest.TestCase):
     def test_square_then_double(self):
-        square_then_add = compose(lambda x: x * x, lambda x: x + x)
+        def square(x: int) -> int:
+            return x * x
+
+        def double(x: int) -> int:
+            return x + x
+
+        square_then_add = compose(square,double)
         actual = square_then_add(5)
         self.assertEqual(actual, 50)
 
     def test_increment_decrement(self):
+        def decrement(x: int) -> int:
+            return x - 1
+
+        def increment(x: int) -> int:
+            return x + 1
+
         increment_decrement = compose(
-            lambda x: x + 1,
-            lambda x: x - 1,
-            lambda x: x + 1,
-            lambda x: x - 1,
+            increment,
+            decrement,
+            increment,
+            decrement,
         )
         expected = 100
         actual = increment_decrement(expected)
