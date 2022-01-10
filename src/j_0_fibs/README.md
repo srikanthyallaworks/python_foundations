@@ -22,3 +22,4 @@ Here's [problem #2](https://projecteuler.net/problem=2):
 
 ## Hints
 * Read up on [itertools](https://docs.python.org/3/library/itertools.html)
+* Article [here](https://realpython.com/fibonacci-sequence-python/).
