@@ -53,9 +53,7 @@ class TestSortByMagnitude(unittest.TestCase):
 
 class TestPipe(unittest.TestCase):
     def test_single_operation(self):
-        operations = (
-            lambda x: x * x,
-        )
+        operations = (lambda x: x * x,)
         actual = pipe(operations, 5)
         self.assertEqual(actual, 25)
 

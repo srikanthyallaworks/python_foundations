@@ -81,7 +81,7 @@ class TestCompose(unittest.TestCase):
         def double(x: int) -> int:
             return x + x
 
-        square_then_add = compose(square,double)
+        square_then_add = compose(square, double)
         actual = square_then_add(5)
         self.assertEqual(actual, 50)
 

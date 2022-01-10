@@ -3,7 +3,7 @@ from types import TracebackType
 from typing import Final, Literal, Optional, Type
 from color import Color
 
-_write:Final = sys.stdout.write
+_write: Final = sys.stdout.write
 
 
 class ColorContext:
@@ -13,7 +13,9 @@ class ColorContext:
         self.color = color
 
     def __enter__(self):
-        sys.stdout.write = lambda arg: _write(f"{self.color.value}{arg}{Color.Default.value}")
+        sys.stdout.write = lambda arg: _write(
+            f"{self.color.value}{arg}{Color.Default.value}"
+        )
         return self
 
     def __exit__(

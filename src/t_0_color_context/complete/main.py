@@ -1,6 +1,7 @@
 from color import Color
 from color_context import ColorContext
 
+
 def main():
     print("\nBefore")
     with ColorContext(Color.Green):
@@ -8,5 +9,5 @@ def main():
     print("After\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

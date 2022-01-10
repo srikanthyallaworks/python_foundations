@@ -30,6 +30,7 @@ def make_adder(quantity_to_add: int = 0) -> Callable[[int], int]:
 
 Vector = tuple[int, int]
 
+
 def sort_by_magnitude(vectors: Sequence[Vector]) -> Sequence[Vector]:
     """Sorts a sequence of 2D vectors by magnitude, biggest first.
 
@@ -127,6 +128,7 @@ def pipe(
     argument: Tp_a,
 ) -> Tp_e:
     """..."""
+
 
 @overload
 def pipe(
