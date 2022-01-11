@@ -8,12 +8,12 @@ easy to play, an no one ever loses.
 Equipment:
   * 2 standard 6-sided dice
   * 1 nerdy 10-sided die
-  * A cup to hold the dice
+  * 1 cup to hold the dice
 
 Game play:
   1. Put the dice in the cup.
   2. Shake with vigor.
-  3. Empty the cup onto a table and count the sum
+  3. Empty the cup onto a table and count the sum.
   4. Is the total 18? It's over. You win!
   5. Otherwise, go to step 1.
 
